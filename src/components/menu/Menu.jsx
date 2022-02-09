@@ -2,7 +2,7 @@ import * as Styled from './Menu.styled.js';
 
 export const Menu = () => {
 return (
-    <Styled.Menu>
+    // <Styled.Menu>
         <Styled.MenuList>
             <li><a href="/">Team members</a></li>
             <li><a href="/">Projects</a></li>
@@ -10,7 +10,7 @@ return (
             <li><a href="/">Documents</a></li>
             <li><a href="/">Timesheets</a></li>
         </Styled.MenuList>
-    </Styled.Menu>
+    // </Styled.Menu>
 )
 
 }
