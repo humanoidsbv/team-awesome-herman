@@ -6,16 +6,12 @@ export const Header = styled.header`
   flex-direction: row;
   justify-content: start;
   align-items: start;
-
   position: fixed;
-
   width: 100%;
 
-  @media only screen and (min-width: 960px) {
- 
+  // Desktop
+  @media only screen and (min-width: 1000px) {
     align-items: center;
-    justify-content: start;
-
   }
 
 `;

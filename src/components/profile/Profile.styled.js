@@ -6,7 +6,7 @@ export const Profile = styled.div`
     margin-left: auto;
     margin-right: 24px;
 
-    @media only screen and (max-width: 960px) {
+    @media only screen and (max-width: 1000px) {
         display: none;
     }
 `

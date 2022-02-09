@@ -11,10 +11,11 @@ export const Container = styled.div`
     align-items: center;
     flex-grow: 1;
     flex-basis: 0;
+    
 
-    @media only screen and (min-width: 960px) {
-
+    @media only screen and (min-width: 1000px) {
         flex-grow: 0;
         flex-basis: 0;
         min-width: 150px;
-`;
+    }
+`

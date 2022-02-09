@@ -18,7 +18,7 @@ export const MenuButton = styled.div`
     cursor: pointer;
   }
 
-  @media only screen and (min-width: 960px) {
+  @media only screen and (min-width: 1000px) {
     display: none
 }
 
