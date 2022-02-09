@@ -4,15 +4,19 @@ export const MenuList = styled.ul`
 
     ${props => props.isActive ? 'display: flex' : 'display: none'};
     color: white;
+    row-gap: 30px;
     flex-direction: column;
-    margin-top: 80px;
     font-family: Proxima Nova;
     font-size: 24px;
+    height: 100vh;
     line-height: 24px;
     list-style: none;
+    margin-top: 80px;
     padding: 0;
     text-align: center;
-    height: 100vh;
+
+    ul {
+    }
 
     li {
         margin: 10px;
@@ -36,7 +40,6 @@ export const MenuList = styled.ul`
         height: auto;
         row-gap: 0px;
     }
-
 
     a:hover {
         background-color: #1166a5;

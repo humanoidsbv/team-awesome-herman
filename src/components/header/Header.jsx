@@ -16,7 +16,7 @@ export const Header = (props) => {
     }
 
     return (
-        <Styled.Header>
+        <Styled.Header isActive={isActive}>
        
             <HeaderLogo />
             <Menu isActive={isActive}/>
