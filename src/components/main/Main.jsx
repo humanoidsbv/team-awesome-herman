@@ -1,7 +1,7 @@
 export const Main = () => {
+  const test = {
+    "her-man": "5",
+  };
 
-return (
-    <h1>TEST</h1>
-)
-
-}
+  return <h1></h1>;
+};

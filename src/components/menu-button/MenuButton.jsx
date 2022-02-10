@@ -4,10 +4,10 @@ import CloseIcon from '../../../public/assets/icons/Close.svg'
 
 export const MenuButton = (props) => {
 
-const icon = props.isActive ? <CloseIcon onClick={props.onClick}/> : <HamburgerIcon onClick={props.onClick}/>
+const icon = props.isActive ? <CloseIcon /> : <HamburgerIcon />
 
 return (
-    <Styled.MenuButton>
+    <Styled.MenuButton onClick={props.onClick}>
         
         {icon}
         
