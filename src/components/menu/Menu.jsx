@@ -3,6 +3,11 @@ import * as Styled from './Menu.styled.js';
 export const Menu = (props) => {
     console.log(props);
 
+    const test = {
+        'item- test': 5,
+        
+    }
+
 return (
     // 
         <Styled.MenuList isActive={props.isActive}>
