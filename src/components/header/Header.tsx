@@ -8,11 +8,8 @@ import { Profile } from "../profile/Profile";
 import * as Styled from "./Header.styled";
 
 export const Header = () => {
-  interface Props {
-    isActive: boolean;
-  }
-
   const [isActive, setIsActive] = useState(false);
+
   const handleClick = () => {
     setIsActive(!isActive);
   };

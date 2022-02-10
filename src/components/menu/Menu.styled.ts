@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MenuList = styled.ul`
+export const MenuList = styled.ul<{ isActive: boolean }>`
   ${(props) => (props.isActive ? "display: flex" : "display: none")};
   align-self: center;
   color: white;
