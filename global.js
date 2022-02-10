@@ -6,6 +6,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0px;
     padding: 0px;
   }
-`;
+
+  @font-face {
+    font-family: "Bello";
+    src: url("assets/") format("ttf")
+  }
+
+`;  
 
 export default GlobalStyle;

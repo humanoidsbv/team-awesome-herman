@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Profile = styled.div`
-    display: flex;
     align-items: center;
+    display: flex;
     margin-left: auto;
     margin-right: 24px;
 
@@ -11,32 +11,30 @@ export const Profile = styled.div`
     }
 `
 export const ProfileButton = styled.div`
-    display: flex;
     align-items: center;
-    justify-content: space-between;
     background-color: white;
-    padding-right: 3px;
-    padding-left: 10px;
     border-radius: 40px;
+    display: flex;
     height: 40px;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 3px;
 `
 
 export const DropdownArrow = styled.div`
-
-    display: flex;
     align-items: center;
-    margin-left: 15px;
+    display: flex;
     filter: brightness(0) invert(1);
     font-weight: bold;
-    width: 10px;
     height: 10px;
+    margin-left: 15px;
+    width: 10px;
     `
-
-    export const Avatar = styled.div`
-    height: 35px;
-    width: 35px;
-    border-radius: 30px;
+export const Avatar = styled.div`
     background-image: url('assets/images/amijs.png');
+    border-radius: 30px;
+    height: 35px;
     margin-left: 8px;
+    width: 35px;
+`
 
-    `

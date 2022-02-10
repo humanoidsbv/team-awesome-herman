@@ -11,7 +11,6 @@ export const Header = (props) => {
 
     const [isActive, setIsActive] = useState(false);
     const handleClick = () => {
-        console.log(isActive);
         setIsActive(!isActive); 
     }
 
@@ -27,5 +26,4 @@ export const Header = (props) => {
         </Styled.Header>
     );
   }
-
-//   
+ 

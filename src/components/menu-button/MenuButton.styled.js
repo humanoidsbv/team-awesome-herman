@@ -1,19 +1,15 @@
 import styled from 'styled-components';
 
-export const MenuButton = styled.div`
-    
-    align-items: center;
-    
-    flex-grow: 1;
-    flex-basis: 0;
+export const MenuButton = styled.button`
 
-    svg {
-        position: absolute;
-        top: 24px;
-        right: 24px;
-    }
-    
-  
+    margin-top: 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    background-color: transparent;
+    border: none;
+
   &:hover {
     cursor: pointer;
   }
@@ -23,3 +19,4 @@ export const MenuButton = styled.div`
 }
 
 `
+

@@ -3,20 +3,18 @@ import styled from 'styled-components';
 export const MenuList = styled.ul`
 
     ${props => props.isActive ? 'display: flex' : 'display: none'};
+
+    align-self: center;
     color: white;
-    row-gap: 30px;
     flex-direction: column;
     font-family: Proxima Nova;
     font-size: 24px;
     height: 100vh;
     line-height: 24px;
     list-style: none;
-    margin-top: 80px;
-    padding: 0;
+    margin-top: 40px;
+    row-gap: 30px;
     text-align: center;
-
-    ul {
-    }
 
     li {
         margin: 10px;
@@ -24,20 +22,20 @@ export const MenuList = styled.ul`
 
     a {
         color: white;
-        text-decoration: none;
         padding: 10px;
+        text-decoration: none;
     }
 
     @media only screen and (min-width: 1000px) {
+        align-items: center;
         display: flex;
         flex-direction: row;
-        justify-content: start;
-        list-style-type: none;
-        align-items: center;
         font-family: Proxima Nova;
         font-size: 14px;
-        margin-top: 0px;
         height: auto;
+        justify-content: start;
+        list-style-type: none;
+        margin-top: 0px;
         row-gap: 0px;
     }
 
