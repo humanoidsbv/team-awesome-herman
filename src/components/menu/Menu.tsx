@@ -1,9 +1,12 @@
 import * as Styled from "./Menu.styled";
 
-export const Menu = (props) => {
+type MenuProps = {
+  isActive: boolean;
+};
+
+export const Menu = ({ isActive }: MenuProps) => {
   return (
-    //
-    <Styled.MenuList isActive={props.isActive}>
+    <Styled.MenuList isActive={isActive}>
       <li>
         <a href="/">Team members</a>
       </li>

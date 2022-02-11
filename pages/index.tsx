@@ -1,4 +1,4 @@
-import { Header } from "../src/components/header/Header.tsx";
+import { Header } from "../src/components/header/Header";
 import GlobalStyle from "../global";
 import { Main } from "../src/components/main/Main";
 

@@ -9,7 +9,6 @@ export const Profile = () => {
         <HumanoidsLogo />
         <Styled.Avatar></Styled.Avatar>
       </Styled.ProfileButton>
-
       <Styled.DropdownArrow>
         <DropdownArrow />
       </Styled.DropdownArrow>

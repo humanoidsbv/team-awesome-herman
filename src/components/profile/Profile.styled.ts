@@ -10,6 +10,7 @@ export const Profile = styled.div`
     display: none;
   }
 `;
+
 export const ProfileButton = styled.div`
   align-items: center;
   background-color: white;
