@@ -1,6 +1,6 @@
 import * as Styled from "./Profile.styled";
-import HumanoidsLogo from "../../../public/assets/icons/humanoids_logo.svg";
-import DropdownArrow from "../../../public/assets/icons/Arrow-down.svg";
+import HumanoidsLogo from "../../../../public/assets/icons/humanoids_logo.svg";
+import DropdownArrow from "../../../../public/assets/icons/Arrow-down.svg";
 
 export const Profile = () => {
   return (
@@ -10,7 +10,7 @@ export const Profile = () => {
         <Styled.Avatar></Styled.Avatar>
       </Styled.ProfileButton>
       <Styled.DropdownArrow>
-        <DropdownArrow />
+        <DropdownArrow fill="#ffffff" />
       </Styled.DropdownArrow>
     </Styled.Profile>
   );

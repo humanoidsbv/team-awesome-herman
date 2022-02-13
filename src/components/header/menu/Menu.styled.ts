@@ -5,7 +5,7 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   color: white;
   display: ${({ isActive }) => (isActive ? "flex" : "none")};
   flex-direction: column;
-  font-family: Proxima Nova;
+  font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 24px;
   height: 100vh;
   line-height: 24px;
@@ -24,7 +24,7 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
     text-decoration: none;
   }
 
-  @media only screen and (min-width: 1000px) {
+  @media only screen and (min-width: 1024px) {
     align-items: center;
     display: flex;
     flex-direction: row;

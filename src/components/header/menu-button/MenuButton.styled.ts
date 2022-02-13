@@ -13,7 +13,7 @@ export const MenuButton = styled.button`
     cursor: pointer;
   }
 
-  @media only screen and (min-width: 1000px) {
+  @media only screen and (min-width: 1024px) {
     display: none;
   }
 `;

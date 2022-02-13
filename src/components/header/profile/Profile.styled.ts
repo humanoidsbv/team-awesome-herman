@@ -6,7 +6,7 @@ export const Profile = styled.div`
   margin-left: auto;
   margin-right: 24px;
 
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1024px) {
     display: none;
   }
 `;
@@ -24,7 +24,6 @@ export const ProfileButton = styled.div`
 export const DropdownArrow = styled.div`
   align-items: center;
   display: flex;
-  filter: brightness(0) invert(1);
   font-weight: bold;
   height: 10px;
   margin-left: 15px;

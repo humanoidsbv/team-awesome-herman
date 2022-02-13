@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Header = styled.header<{ isActive: boolean }>`
   align-items: start;
-  background: #4f88ef;
+  background-color: ${({ theme }) => theme.colorPrimary};
   display: flex;
   flex-direction: ${({ isActive }) => (isActive ? "column" : "row")};
   height: ${({ isActive }) => (isActive ? "100vh" : "auto")};
@@ -12,7 +12,7 @@ export const Header = styled.header<{ isActive: boolean }>`
   position: fixed;
   width: 100%;
 
-  @media only screen and (min-width: 1000px) {
+  @media only screen and (min-width: 1024px) {
     align-items: center;
     flex-direction: row;
     height: auto;
