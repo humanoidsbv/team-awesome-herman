@@ -9,7 +9,12 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: "Bello";
-    src: url("assets/") format("ttf")
+    src: url("../../public/assets/fonts/bello-script.ttf") format("ttf");
+  }
+
+  @font-face {
+    font-family: "Proxima Nova";
+    src: url("../../public/assets/fonts/proxima-nova-regular.ttf") format("ttf");
   }
 
 `;

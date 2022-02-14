@@ -4,9 +4,12 @@ type MenuProps = {
   isActive: boolean;
 };
 
-export const Menu = ({ isActive }: MenuProps) => {
+export const Menu = ({ isActive }: MenuProps): React.ReactElement => {
   return (
     <Styled.MenuList isActive={isActive}>
+      <li>
+        <a href="/">Timesheets</a>
+      </li>
       <li>
         <a href="/">Team members</a>
       </li>
@@ -18,9 +21,6 @@ export const Menu = ({ isActive }: MenuProps) => {
       </li>
       <li>
         <a href="/">Documents</a>
-      </li>
-      <li>
-        <a href="/">Timesheets</a>
       </li>
     </Styled.MenuList>
   );
