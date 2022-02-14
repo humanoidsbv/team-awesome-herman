@@ -7,10 +7,10 @@ export const Button = styled.button<{ style?: "primary" | "secondary" }>`
   border: none;
   color: white;
   column-gap: 18px;
+  cursor: pointer;
   display: flex;
   height: 50px;
   justify-content: center;
-  cursor: pointer;
 
   ${({ style }) =>
     style === "secondary" &&

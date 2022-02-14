@@ -1,5 +1,5 @@
 import { Button } from "../../UI/Button";
-import { Team } from "./team/Team";
+import { Timesheets } from "./timesheets/Timesheets";
 
 import * as Styled from "./SubHeader.styled";
 
@@ -10,7 +10,7 @@ export const SubHeader = () => {
 
   return (
     <Styled.SubHeader>
-      <Team />
+      <Timesheets />
       <Button label="New time entry" style="primary" plusIcon={true} onClick={clickHandler} />
     </Styled.SubHeader>
   );

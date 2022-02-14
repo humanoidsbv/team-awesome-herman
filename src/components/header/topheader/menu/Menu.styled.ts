@@ -24,7 +24,7 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
     text-decoration: none;
   }
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
     display: flex;
     flex-direction: row;

@@ -8,7 +8,7 @@ export const TopHeader = styled.header<{ isActive: boolean }>`
   height: ${({ isActive }) => (isActive ? "100vh" : "auto")};
   justify-content: start;
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
     flex-direction: row;
     height: auto;

@@ -12,7 +12,7 @@ export const SubHeader = styled.div`
     width: 100%;
   }
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (${({ theme }) => theme.tablet}) {
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
@@ -24,11 +24,11 @@ export const SubHeader = styled.div`
   }
 `;
 
-export const Team = styled.div`
+export const Timesheets = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (${({ theme }) => theme.tablet}) {
     column-gap: 20px;
   }
 `;
@@ -38,17 +38,17 @@ export const Divider = styled.div`
   color: ${({ theme }) => theme.shadeGrey700};
   display: none;
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (${({ theme }) => theme.tablet}) {
     display: flex;
   }
 `;
 
-export const TeamMembers = styled.div`
+export const Title = styled.div`
   color: ${({ theme }) => theme.shadeGrey800};
   font-size: ${({ theme }) => theme.fontSizeBody};
 `;
 
-export const TeamSize = styled.div`
+export const Entries = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.shadeGrey700};
   display: flex;

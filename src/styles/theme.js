@@ -11,6 +11,12 @@ export const theme = {
   // Fonts
   fontPrimary: "Proxima Nova",
   fontSecondary: "Bello",
+
+  // Font sizes
   fontSizeBody: "18px",
   fontSizeSmall: "14px",
+
+  // Breakpoints
+  tablet: "min-width: 600px",
+  desktop: "min-width: 1024px",
 };
