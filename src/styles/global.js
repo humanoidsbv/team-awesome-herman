@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -12,6 +12,6 @@ const GlobalStyle = createGlobalStyle`
     src: url("assets/") format("ttf")
   }
 
-`;  
+`;
 
 export default GlobalStyle;
