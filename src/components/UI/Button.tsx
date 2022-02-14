@@ -1,17 +1,18 @@
 import * as Styled from "./Button.styled";
-import PlusIcon from "../../../public/assets/icons/Plus-Icon.svg";
+
+import Icon from "../../../public/assets/icons/Plus-Icon.svg";
 
 type ButtonProps = {
+  icon: boolean;
   label: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   style?: "primary" | "secondary";
-  plusIcon: boolean;
 };
 
-export const Button = ({ label, onClick, style, plusIcon }: ButtonProps) => {
+export const Button = ({ icon, label, onClick, style }: ButtonProps) => {
   return (
-    <Styled.Button onClick={onClick} style={style}>
-      {plusIcon && <PlusIcon />}
+    <Styled.Button {...{ onClick, style }}>
+      {icon && <Icon fill="white" />}
       {label}
     </Styled.Button>
   );

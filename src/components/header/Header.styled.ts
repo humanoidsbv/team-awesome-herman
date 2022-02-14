@@ -6,6 +6,5 @@ export const Header = styled.header<{ isActive: boolean }>`
   height: auto;
   overflow: scroll;
   position: ${({ isActive }) => (isActive ? "fixed" : "static")};
-  position: fixed;
   width: 100%;
 `;

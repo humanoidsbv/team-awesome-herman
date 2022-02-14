@@ -15,6 +15,6 @@ export const Button = styled.button<{ style?: "primary" | "secondary" }>`
   ${({ style }) =>
     style === "secondary" &&
     css`
-      background-color: tomato;
+      background-color: ${({ theme }) => theme.shadeGrey100};
     `};
 `;

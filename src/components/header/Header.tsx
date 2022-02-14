@@ -1,5 +1,5 @@
-import { TopHeader } from "./topheader/TopHeader";
-import { SubHeader } from "./subheader/SubHeader";
+import { TopHeader } from "./top-header/TopHeader";
+import { SubHeader } from "./sub-header/SubHeader";
 
 import * as Styled from "./Header.styled";
 

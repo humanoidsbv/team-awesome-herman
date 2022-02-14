@@ -4,14 +4,14 @@ import { Timesheets } from "./timesheets/Timesheets";
 import * as Styled from "./SubHeader.styled";
 
 export const SubHeader = () => {
-  const clickHandler = (): void => {
+  const handleClick = (): void => {
     alert("Button clicked");
   };
 
   return (
     <Styled.SubHeader>
       <Timesheets />
-      <Button label="New time entry" style="primary" plusIcon={true} onClick={clickHandler} />
+      <Button icon={true} label="New time entry" onClick={handleClick} style="primary" />
     </Styled.SubHeader>
   );
 };
