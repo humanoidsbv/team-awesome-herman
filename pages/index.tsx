@@ -1,5 +1,4 @@
 import { Header } from "../src/components/header/Header";
-import { Main } from "../src/components/main/Main";
 import { ThemeProvider } from "styled-components";
 
 import GlobalStyle from "../src/styles/global";
@@ -11,7 +10,6 @@ const Homepage = () => {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Header />
-        <Main />
       </ThemeProvider>
     </>
   );

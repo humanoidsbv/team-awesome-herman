@@ -19,7 +19,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/header/Header.tsx",
+    "src/components/header/TopHeader.tsx",
     "src/components/header/profile/Profile.tsx"
   ],
   "exclude": ["node_modules"]

@@ -38,7 +38,7 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   }
 
   a:hover {
-    background-color: #1166a5;
+    background-color: ${({ theme }) => theme.colorBluePrimary700};
     color: white;
   }
 
