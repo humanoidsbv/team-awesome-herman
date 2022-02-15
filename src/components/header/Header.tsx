@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { TopHeader } from "./top-header/TopHeader";
-import { SubHeader } from "./sub-header/SubHeader";
+import { Topheader } from "./topheader/Topheader";
+import { Subheader } from "./subheader/Subheader";
 
 import * as Styled from "./Header.styled";
 
@@ -13,9 +13,9 @@ export const Header = () => {
   };
 
   return (
-    <Styled.Header {...{ isMenuVisible }}>
-      <TopHeader {...{ isMenuVisible, toggleMenu }} />
-      <SubHeader />
+    <Styled.Header isMenuVisible={isMenuVisible}>
+      <Topheader isMenuVisible={isMenuVisible} toggleMenu={toggleMenu} />
+      <Subheader />
     </Styled.Header>
   );
 };

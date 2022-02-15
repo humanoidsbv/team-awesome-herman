@@ -1,4 +1,4 @@
-import * as Styled from "../SubHeader.styled";
+import * as Styled from "../Subheader.styled";
 
 import { Title } from "./title/Title";
 import { Entries } from "./entries/Entries";

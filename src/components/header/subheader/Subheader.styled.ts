@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SubHeader = styled.div`
+export const Subheader = styled.div`
   background-color: #ffffff;
   display: flex;
   flex-direction: column;

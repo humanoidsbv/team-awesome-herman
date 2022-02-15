@@ -1,17 +1,17 @@
 import { Button } from "../../shared/Button";
 import { Timesheets } from "./timesheets/Timesheets";
 
-import * as Styled from "./SubHeader.styled";
+import * as Styled from "./Subheader.styled";
 
-export const SubHeader = () => {
+export const Subheader = () => {
   const handleClick = (): void => {
     alert("Button clicked");
   };
 
   return (
-    <Styled.SubHeader>
+    <Styled.Subheader>
       <Timesheets />
       <Button icon={true} label="New time entry" onClick={handleClick} style="primary" />
-    </Styled.SubHeader>
+    </Styled.Subheader>
   );
 };

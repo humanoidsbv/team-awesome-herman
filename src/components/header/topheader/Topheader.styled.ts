@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TopHeader = styled.header<{ isMenuVisible: boolean }>`
+export const Topheader = styled.header<{ isMenuVisible: boolean }>`
   align-items: start;
   background-color: ${({ theme }) => theme.colorBluePrimary500};
   display: flex;

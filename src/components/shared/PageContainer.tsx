@@ -2,7 +2,7 @@ import React from "react";
 import * as Styled from "./PageContainer.styled";
 
 interface PageContainerProps {
-  children: React.ReactChild | React.ReactChildren;
+  children: React.ReactNode;
 }
 
 export const PageContainer = ({ children }: PageContainerProps) => {
