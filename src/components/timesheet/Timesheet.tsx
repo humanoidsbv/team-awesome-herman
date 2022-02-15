@@ -1,6 +1,6 @@
 import * as Styled from "./Timesheet.styled";
 
-import { TimeEntry } from "../shared/TimeEntry";
+import { TimeEntries } from "./TimeEntries";
 
 export const Timesheet = () => {
   const timeEntries = [
@@ -24,9 +24,7 @@ export const Timesheet = () => {
         <span>Friday 29-07 (Today)</span>
         <span>08:00</span>
       </Styled.Day>
-      <Styled.TimeEntries>
-        <TimeEntry />
-      </Styled.TimeEntries>
+      <TimeEntries />
     </Styled.TimeSheet>
   );
 };

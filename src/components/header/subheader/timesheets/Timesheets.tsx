@@ -1,7 +1,7 @@
 import * as Styled from "../Subheader.styled";
 
 import { Title } from "./title/Title";
-import { Entries } from "./entries/Entries";
+import { Entries } from "./entries-amount/Entries";
 
 export const Timesheets = () => {
   return (
