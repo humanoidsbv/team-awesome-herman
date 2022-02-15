@@ -1,20 +1,20 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const SubHeader = styled.div`
-  background-color: aliceblue;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   font-family: ${({ theme }) => theme.fontPrimary};
   padding: 20px;
   row-gap: 10px;
-
-  button {
-    width: 100%;
-  }
+  border-bottom: 1px solid ${({ theme }) => theme.shadeGrey300};
+  width: 100%;
+  height: 120px;
 
   @media only screen and (${({ theme }) => theme.tablet}) {
     align-items: center;
     flex-direction: row;
+    height: 90px;
     justify-content: space-between;
 
     button {
@@ -44,7 +44,6 @@ export const Divider = styled.div`
 `;
 
 export const Title = styled.div`
-  color: ${({ theme }) => theme.shadeGrey800};
   font-size: ${({ theme }) => theme.fontSizeBody};
 `;
 

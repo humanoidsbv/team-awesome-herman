@@ -7,19 +7,18 @@ import { Profile } from "./profile/Profile";
 
 import * as Styled from "./TopHeader.styled";
 
-export const TopHeader = (): React.ReactElement => {
-  const [isActive, setIsActive] = useState(false);
+interface TopHeaderProps {
+  isMenuVisible: boolean;
+  toggleMenu: () => void;
+}
 
-  const handleClick = () => {
-    setIsActive(!isActive);
-  };
-
+export const TopHeader = ({ isMenuVisible, toggleMenu }: TopHeaderProps): React.ReactElement => {
   return (
-    <Styled.TopHeader isActive={isActive}>
+    <Styled.TopHeader isMenuVisible={isMenuVisible}>
       <HeaderLogo />
-      <Menu isActive={isActive} />
+      <Menu isMenuVisible={isMenuVisible} />
       <Profile />
-      <MenuButton onClick={handleClick} isActive={isActive} />
+      <MenuButton onClick={toggleMenu} isMenuVisible={isMenuVisible} />
     </Styled.TopHeader>
   );
 };

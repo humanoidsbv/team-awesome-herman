@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const MenuList = styled.ul<{ isActive: boolean }>`
+export const MenuList = styled.ul<{ isMenuVisible: boolean }>`
   align-self: center;
   color: white;
-  display: ${({ isActive }) => (isActive ? "flex" : "none")};
+  display: ${({ isMenuVisible }) => (isMenuVisible ? "flex" : "none")};
   flex-direction: column;
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 24px;

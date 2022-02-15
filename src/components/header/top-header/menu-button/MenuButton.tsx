@@ -4,13 +4,14 @@ import CloseIcon from "../../../../../public/assets/icons/Close.svg";
 
 type MenuButtonProps = {
   onClick: () => void;
-  isActive: boolean;
+  isMenuVisible: boolean;
 };
 
-export const MenuButton = ({ onClick, isActive }: MenuButtonProps): React.ReactElement => {
+export const MenuButton = ({ onClick, isMenuVisible }: MenuButtonProps): React.ReactElement => {
   return (
     <Styled.MenuButton onClick={onClick}>
-      {isActive ? <CloseIcon /> : <HamburgerIcon />}
+      {isMenuVisible && <CloseIcon />}
+      {!isMenuVisible && <HamburgerIcon />}
     </Styled.MenuButton>
   );
 };

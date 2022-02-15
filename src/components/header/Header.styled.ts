@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
-export const Header = styled.header<{ isActive: boolean }>`
+export const Header = styled.header<{ isMenuVisible: boolean }>`
   display: flex;
   flex-direction: column;
-  height: auto;
   overflow: scroll;
-  position: ${({ isActive }) => (isActive ? "fixed" : "static")};
+  position: ${({ isMenuVisible }) => (isMenuVisible ? "fixed" : "static")};
+
   width: 100%;
+
+  @media only screen and (${({ theme }) => theme.tablet}) {
+    position: ${({ isMenuVisible }) => (isMenuVisible ? "fixed" : "static")};
+  }
 `;
