@@ -14,11 +14,11 @@ interface TopHeaderProps {
 
 export const TopHeader = ({ isMenuVisible, toggleMenu }: TopHeaderProps): React.ReactElement => {
   return (
-    <Styled.TopHeader isMenuVisible={isMenuVisible}>
+    <Styled.TopHeader {...{ isMenuVisible }}>
       <HeaderLogo />
-      <Menu isMenuVisible={isMenuVisible} />
+      <Menu {...{ isMenuVisible }} />
       <Profile />
-      <MenuButton onClick={toggleMenu} isMenuVisible={isMenuVisible} />
+      <MenuButton onClick={toggleMenu} {...{ isMenuVisible }} />
     </Styled.TopHeader>
   );
 };

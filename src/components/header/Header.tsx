@@ -13,8 +13,8 @@ export const Header = () => {
   };
 
   return (
-    <Styled.Header isMenuVisible={isMenuVisible}>
-      <TopHeader isMenuVisible={isMenuVisible} toggleMenu={toggleMenu} />
+    <Styled.Header {...{ isMenuVisible }}>
+      <TopHeader {...{ isMenuVisible, toggleMenu }} />
       <SubHeader />
     </Styled.Header>
   );

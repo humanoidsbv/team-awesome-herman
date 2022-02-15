@@ -32,8 +32,6 @@ export const TimeEntry = styled.div`
   padding: 15px 20px;
 `;
 
-export const Client = styled.div``;
-
 export const Time = styled.div`
   display: flex;
   flex-direction: column;
@@ -46,15 +44,7 @@ export const Time = styled.div`
   }
 `;
 
-export const TimeRange = styled.div``;
-
 export const TimeAdded = styled.div`
   color: ${({ theme }) => theme.shadeGrey700};
   font-size: ${({ theme }) => theme.fontSizeSmall};
-`;
-
-export const Delete = styled.div``;
-
-export const Date = styled.div`
-  background: transparent;
 `;

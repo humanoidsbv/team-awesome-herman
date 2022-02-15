@@ -1,4 +1,4 @@
-import { Button } from "../../reusable-UI/Button";
+import { Button } from "../../shared/Button";
 import { Timesheets } from "./timesheets/Timesheets";
 
 import * as Styled from "./SubHeader.styled";

@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: #F5F7F9; 
-
   }
 
   @font-face {
