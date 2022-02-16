@@ -21,11 +21,21 @@ export const TimeEntries = (setTotalMinutes) => {
     ]);
   };
 
+  timeEntries.sort(function (a, b) {
+    return new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime();
+  });
+
+  const uniqueDates: string[] = [];
+
   return (
     <>
       {timeEntries.map((timeEntry) => (
         <>
-          <TimeEntryHeader />
+          {!uniqueDates.includes(timeEntry.startTimestamp.substring(0, 10)) && (
+            <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />
+          )}
+          {uniqueDates.push(timeEntry.startTimestamp.substring(0, 10))}
+
           <TimeEntry
             client={timeEntry.client}
             key={timeEntry.id}
