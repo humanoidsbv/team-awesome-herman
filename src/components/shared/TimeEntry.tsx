@@ -20,7 +20,7 @@ export const TimeEntry = ({ client, startTime, stopTime }: TimeEntryProps) => {
     minute: "2-digit",
   });
 
-  const diff = Math.abs(startDate - stopDate);
+  const diff = Math.abs(startDate.getTime() - stopDate.getTime());
   const totalMinutes = Math.floor(diff / 1000 / 60);
   const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;

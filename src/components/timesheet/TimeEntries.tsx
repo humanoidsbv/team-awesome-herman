@@ -5,8 +5,9 @@ import { Button } from "../shared/Button";
 import { TimeEntryHeader } from "./TimeEntryHeader";
 
 import timeEntriesData from "../../fixtures/MockTimeEntries.json";
+import * as Styled from "./Timesheet.styled";
 
-export const TimeEntries = (setTotalMinutes) => {
+export const TimeEntries = () => {
   const [timeEntries, setTimeEntries] = useState(timeEntriesData);
 
   const handleClick = () => {
@@ -34,17 +35,18 @@ export const TimeEntries = (setTotalMinutes) => {
           {!uniqueDates.includes(timeEntry.startTimestamp.substring(0, 10)) && (
             <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />
           )}
-          {uniqueDates.push(timeEntry.startTimestamp.substring(0, 10))}
-
           <TimeEntry
             client={timeEntry.client}
             key={timeEntry.id}
             startTime={timeEntry.startTimestamp}
             stopTime={timeEntry.stopTimestamp}
           />
+          {uniqueDates.push(timeEntry.startTimestamp.substring(0, 10))}
         </>
       ))}
-      <Button onClick={handleClick} label="Add time entry" icon />
+      <Styled.AddEntryButton>
+        <Button onClick={handleClick} label="Add time entry" icon />
+      </Styled.AddEntryButton>
     </>
   );
 };

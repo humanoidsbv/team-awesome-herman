@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 
 import { Header } from "../src/components/header/Header";
 import { PageContainer } from "../src/components/shared/PageContainer";
-import { Daysheet } from "../src/components/timesheet/Daysheet";
+import { Timesheet } from "../src/components/timesheet/Timesheet";
 
 import GlobalStyle from "../src/styles/global";
 import { theme } from "../src/styles/theme";
@@ -14,7 +14,7 @@ const Homepage = () => {
       <ThemeProvider {...{ theme }}>
         <Header />
         <PageContainer>
-          <Daysheet />
+          <Timesheet />
         </PageContainer>
       </ThemeProvider>
     </>

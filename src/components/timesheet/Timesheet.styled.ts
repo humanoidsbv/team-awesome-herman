@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Daysheet = styled.div`
+export const Timesheet = styled.div`
   max-width: 1000px;
   width: 100%;
 `;
@@ -14,6 +14,12 @@ export const TimeEntryHeader = styled.div`
   font-size: ${({ theme }) => theme.fontSizeHeader};
   justify-content: space-between;
   padding: 15px 0;
+`;
+
+export const AddEntryButton = styled.div`
+  button {
+    width: 100%;
+  }
 `;
 
 export const TimeEntry = styled.div`

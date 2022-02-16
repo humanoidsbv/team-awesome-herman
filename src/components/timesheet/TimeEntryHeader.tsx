@@ -1,6 +1,10 @@
-import * as Styled from "./Daysheet.styled";
+import * as Styled from "./Timesheet.styled";
 
-export const TimeEntryHeader = ({ timeStamp }) => {
+interface TimeEntryHeaderProps {
+  timeStamp: string;
+}
+
+export const TimeEntryHeader = ({ timeStamp }: TimeEntryHeaderProps) => {
   const dateObject = new Date(timeStamp);
 
   const dateFormatted = dateObject.toLocaleDateString("en-GB", {
