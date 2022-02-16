@@ -26,7 +26,7 @@ export const Time = styled.div`
   }
 `;
 
-export const TimeAdded = styled.div`
+export const Duration = styled.div`
   color: ${({ theme }) => theme.shadeGrey700};
   font-size: ${({ theme }) => theme.fontSizeSmall};
 `;
