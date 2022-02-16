@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const TopHeader = styled.header<{ isActive: boolean }>`
+export const Topheader = styled.header<{ isMenuVisible: boolean }>`
   align-items: start;
   background-color: ${({ theme }) => theme.colorBluePrimary500};
   display: flex;
-  flex-direction: ${({ isActive }) => (isActive ? "column" : "row")};
-  height: ${({ isActive }) => (isActive ? "100vh" : "auto")};
+  flex-direction: ${({ isMenuVisible }) => (isMenuVisible ? "column" : "row")};
+  height: ${({ isMenuVisible }) => (isMenuVisible ? "100vh" : "auto")};
   justify-content: start;
 
   @media only screen and (${({ theme }) => theme.desktop}) {

@@ -3,14 +3,15 @@ import HamburgerIcon from "../../../../../public/assets/icons/Hamburger.svg";
 import CloseIcon from "../../../../../public/assets/icons/Close.svg";
 
 type MenuButtonProps = {
+  isMenuVisible: boolean;
   onClick: () => void;
-  isActive: boolean;
 };
 
-export const MenuButton = ({ onClick, isActive }: MenuButtonProps): React.ReactElement => {
+export const MenuButton = ({ isMenuVisible, onClick }: MenuButtonProps): React.ReactElement => {
   return (
     <Styled.MenuButton onClick={onClick}>
-      {isActive ? <CloseIcon /> : <HamburgerIcon />}
+      {isMenuVisible && <CloseIcon />}
+      {!isMenuVisible && <HamburgerIcon />}
     </Styled.MenuButton>
   );
 };

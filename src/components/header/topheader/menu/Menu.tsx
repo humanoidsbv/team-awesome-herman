@@ -1,12 +1,12 @@
 import * as Styled from "./Menu.styled";
 
-type MenuProps = {
-  isActive: boolean;
-};
+interface MenuProps {
+  isMenuVisible: boolean;
+}
 
-export const Menu = ({ isActive }: MenuProps): React.ReactElement => {
+export const Menu = ({ isMenuVisible }: MenuProps): React.ReactElement => {
   return (
-    <Styled.MenuList isActive={isActive}>
+    <Styled.MenuList isMenuVisible={isMenuVisible}>
       <li>
         <a href="/">Timesheets</a>
       </li>
