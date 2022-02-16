@@ -19,6 +19,8 @@ export const Time = styled.div`
   flex-direction: column;
   row-gap: 10px;
   text-align: right;
+  margin-left: auto;
+  margin-right: 20px;
 
   @media only screen and (${({ theme }) => theme.tablet}) {
     margin-left: auto;
@@ -29,4 +31,13 @@ export const Time = styled.div`
 export const Duration = styled.div`
   color: ${({ theme }) => theme.shadeGrey700};
   font-size: ${({ theme }) => theme.fontSizeSmall};
+`;
+
+export const DeleteIcon = styled.div`
+  cursor: pointer;
+  padding: 10px;
+
+  svg:hover {
+    fill: red;
+  }
 `;

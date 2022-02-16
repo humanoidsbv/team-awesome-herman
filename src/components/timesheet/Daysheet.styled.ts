@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const TimeSheet = styled.div`
+export const Daysheet = styled.div`
   max-width: 1000px;
   width: 100%;
 `;
 
 export const TimeEntries = styled.div``;
 
-export const Day = styled.div`
+export const TimeEntryHeader = styled.div`
   color: ${({ theme }) => theme.shadeGrey700};
   display: flex;
   font-family: ${({ theme }) => theme.fontPrimary};

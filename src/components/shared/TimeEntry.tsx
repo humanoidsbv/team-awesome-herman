@@ -1,15 +1,13 @@
 import * as Styled from "./TimeEntry.styled";
-import Bin from "../../../public/assets/icons/Bin.svg";
+import DeleteIcon from "../../../public/assets/icons/Bin.svg";
 
 interface TimeEntryProps {
   client: string;
-  duration: string;
-  id: number;
   startTime: string;
   stopTime: string;
 }
 
-export const TimeEntry = ({ client, duration, id, startTime, stopTime }: TimeEntryProps) => {
+export const TimeEntry = ({ client, startTime, stopTime }: TimeEntryProps) => {
   const startDate = new Date(startTime);
   const formattedStartTime = startDate.toLocaleTimeString("nl-NL", {
     hour: "2-digit",
@@ -22,14 +20,26 @@ export const TimeEntry = ({ client, duration, id, startTime, stopTime }: TimeEnt
     minute: "2-digit",
   });
 
+  const diff = Math.abs(startDate - stopDate);
+  const totalMinutes = Math.floor(diff / 1000 / 60);
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
   return (
     <Styled.TimeEntry>
       {client}
       <Styled.Time>
         {formattedStartTime} - {formattedStopTime}
-        <Styled.Duration>{duration}</Styled.Duration>
+        <Styled.Duration>
+          {hours < 10 ? "0" : ""}
+          {hours + ":"}
+          {minutes < 10 ? "0" : ""}
+          {minutes}
+        </Styled.Duration>
       </Styled.Time>
-      <Bin />
+      <Styled.DeleteIcon>
+        <DeleteIcon />
+      </Styled.DeleteIcon>
     </Styled.TimeEntry>
   );
 };
