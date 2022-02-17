@@ -8,7 +8,7 @@ export const PageContainer = styled.div`
   height: 100vh;
   padding: 20px;
 
-  @media only screen and (${({ theme }) => theme.tablet}) {
-    padding-top: 15px;
+  @media screen and (max-width: 600px) {
+    padding-top: 190px;
   }
 `;
