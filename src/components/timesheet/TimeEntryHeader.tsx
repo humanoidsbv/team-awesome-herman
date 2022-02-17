@@ -16,7 +16,7 @@ export const TimeEntryHeader = ({ timeStamp }: TimeEntryHeaderProps) => {
   return (
     <Styled.TimeEntryHeader>
       <span>{dateFormatted}</span>
-      <span>08:00</span>
+      <span>Duration</span>
     </Styled.TimeEntryHeader>
   );
 };

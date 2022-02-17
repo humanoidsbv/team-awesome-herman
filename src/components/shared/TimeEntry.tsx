@@ -28,7 +28,7 @@ export const TimeEntry = ({ client, startTime, stopTime }: TimeEntryProps) => {
   return (
     <Styled.TimeEntry>
       {client}
-      <Styled.Time>
+      <Styled.TimeRange>
         {formattedStartTime} - {formattedStopTime}
         <Styled.Duration>
           {hours < 10 ? "0" : ""}
@@ -36,7 +36,7 @@ export const TimeEntry = ({ client, startTime, stopTime }: TimeEntryProps) => {
           {minutes < 10 ? "0" : ""}
           {minutes}
         </Styled.Duration>
-      </Styled.Time>
+      </Styled.TimeRange>
       <Styled.DeleteIcon>
         <DeleteIcon />
       </Styled.DeleteIcon>

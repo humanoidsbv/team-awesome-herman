@@ -5,8 +5,8 @@ import { Button } from "../shared/Button";
 import { TimeEntryHeader } from "./TimeEntryHeader";
 
 import timeEntriesData from "../../fixtures/MockTimeEntries.json";
+
 import * as Styled from "./Timesheet.styled";
-import { time } from "console";
 
 export const TimeEntries = () => {
   const [timeEntries, setTimeEntries] = useState(timeEntriesData);

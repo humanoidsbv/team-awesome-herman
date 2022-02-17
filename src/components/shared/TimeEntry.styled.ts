@@ -14,7 +14,7 @@ export const TimeEntry = styled.div`
   padding: 15px 20px;
 `;
 
-export const Time = styled.div`
+export const TimeRange = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -37,7 +37,9 @@ export const DeleteIcon = styled.div`
   cursor: pointer;
   padding: 10px;
 
-  svg:hover {
-    fill: red;
+  &:hover {
+    svg {
+      fill: red;
+    }
   }
 `;
