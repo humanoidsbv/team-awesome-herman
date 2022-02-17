@@ -1,4 +1,4 @@
-import * as Styled from "./Timesheet.styled";
+import * as Styled from "../timesheet/Timesheet.styled";
 
 interface TimeEntryHeaderProps {
   timeStamp: string;

@@ -2,23 +2,23 @@ import React, { useState } from "react";
 
 import { TimeEntry } from "../shared";
 import { Button } from "../shared/Button";
-import { TimeEntryHeader } from "./TimeEntryHeader";
+import { TimeEntryHeader } from "../shared/TimeEntryHeader";
 
-import timeEntriesData from "../../fixtures/MockTimeEntries.json";
+import importedTimeEntries from "../../fixtures/MockTimeEntries.json";
 
 import * as Styled from "./Timesheet.styled";
 
 export const TimeEntries = () => {
-  const [timeEntries, setTimeEntries] = useState(timeEntriesData);
+  const [timeEntries, setTimeEntries] = useState(importedTimeEntries);
 
   const handleClick = () => {
     setTimeEntries([
       ...timeEntries,
       {
-        id: 0.8524250995148188,
-        client: "Port of Rotterdam",
-        startTimestamp: "2019-09-26T16:00:00.000Z",
-        stopTimestamp: "2019-09-26T18:00:00.000Z",
+        id: Math.random() * 1000,
+        client: "AIVD",
+        startTimestamp: "2021-09-24T16:00:00.000Z",
+        stopTimestamp: "2021-09-24T18:00:00.000Z",
       },
     ]);
   };
@@ -31,7 +31,7 @@ export const TimeEntries = () => {
     <>
       {timeEntries.map((timeEntry, i, array) => {
         return (
-          <>
+          <React.Fragment key={timeEntry.id}>
             {array[i].startTimestamp.substring(0, 10) !==
               array[i - 1]?.startTimestamp.substring(0, 10) && (
               <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />
@@ -43,7 +43,7 @@ export const TimeEntries = () => {
               startTime={timeEntry.startTimestamp}
               stopTime={timeEntry.stopTimestamp}
             />
-          </>
+          </React.Fragment>
         );
       })}
       <Styled.AddEntryButton>

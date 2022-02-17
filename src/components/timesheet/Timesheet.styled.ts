@@ -18,6 +18,7 @@ export const TimeEntryHeader = styled.div`
 
 export const AddEntryButton = styled.div`
   button {
+    margin-top: 20px;
     width: 100%;
   }
 `;
