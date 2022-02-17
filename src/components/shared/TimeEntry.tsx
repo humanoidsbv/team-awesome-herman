@@ -1,5 +1,5 @@
 import * as Styled from "./TimeEntry.styled";
-import DeleteIcon from "../../../public/assets/icons/Bin.svg";
+import DeleteIconWrapper from "../../../public/assets/icons/Bin.svg";
 
 interface TimeEntryProps {
   client: string;
@@ -27,18 +27,22 @@ export const TimeEntry = ({ client, startTime, stopTime }: TimeEntryProps) => {
 
   return (
     <Styled.TimeEntry>
-      {client}
+      <span>{client}</span>
       <Styled.TimeRange>
-        {formattedStartTime} - {formattedStopTime}
+        <span>
+          {formattedStartTime} - {formattedStopTime}
+        </span>
         <Styled.Duration>
-          {hours < 10 ? "0" : ""}
-          {hours + ":"}
-          {minutes < 10 ? "0" : ""}
-          {minutes}
+          <span>
+            {hours < 10 ? "0" : ""}
+            {hours + ":"}
+            {minutes < 10 ? "0" : ""}
+            {minutes}
+          </span>
         </Styled.Duration>
       </Styled.TimeRange>
       <Styled.DeleteIcon>
-        <DeleteIcon />
+        <DeleteIconWrapper />
       </Styled.DeleteIcon>
     </Styled.TimeEntry>
   );

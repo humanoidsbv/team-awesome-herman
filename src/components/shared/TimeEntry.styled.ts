@@ -12,15 +12,15 @@ export const TimeEntry = styled.div`
   height: 80px;
   justify-content: space-between;
   padding: 15px 20px;
+  width: 100%;
 `;
 
 export const TimeRange = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 0 20px 0 auto;
   row-gap: 10px;
   text-align: right;
-  margin-left: auto;
-  margin-right: 20px;
 
   @media only screen and (${({ theme }) => theme.tablet}) {
     margin-left: auto;

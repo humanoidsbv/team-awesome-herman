@@ -14,7 +14,7 @@ export const Subheader = styled.div`
   @media only screen and (${({ theme }) => theme.tablet}) {
     align-items: center;
     flex-direction: row;
-    height: 90px;
+    height: 70px;
     justify-content: space-between;
 
     button {

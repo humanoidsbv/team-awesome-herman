@@ -6,7 +6,7 @@ import { TimeEntryHeader } from "../shared/TimeEntryHeader";
 
 import importedTimeEntries from "../../fixtures/MockTimeEntries.json";
 
-import * as Styled from "./Timesheet.styled";
+import * as Styled from "./TimeEntries.styled";
 
 export const TimeEntries = () => {
   const [timeEntries, setTimeEntries] = useState(importedTimeEntries);
@@ -23,7 +23,7 @@ export const TimeEntries = () => {
     ]);
   };
 
-  timeEntries.sort(function (a, b) {
+  timeEntries.sort((a, b) => {
     return new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime();
   });
 

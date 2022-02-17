@@ -1,4 +1,4 @@
-import * as Styled from "../timesheet/Timesheet.styled";
+import * as Styled from "../timesheet/TimeEntries.styled";
 
 interface TimeEntryHeaderProps {
   timeStamp: string;
@@ -16,7 +16,7 @@ export const TimeEntryHeader = ({ timeStamp }: TimeEntryHeaderProps) => {
   return (
     <Styled.TimeEntryHeader>
       <span>{dateFormatted}</span>
-      <span>Duration</span>
+      <span>Total time</span>
     </Styled.TimeEntryHeader>
   );
 };

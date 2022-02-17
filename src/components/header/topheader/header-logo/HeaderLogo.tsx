@@ -1,9 +1,11 @@
+import TeamAwesomeLogo from "../../../../../public/assets/icons/team-awesome.svg";
+
 import * as Styled from "./HeaderLogo.styled";
 
 export const HeaderLogo = (): React.ReactElement => {
   return (
     <Styled.Container>
-      <h4>team awesome</h4>
+      <TeamAwesomeLogo />
     </Styled.Container>
   );
 };
