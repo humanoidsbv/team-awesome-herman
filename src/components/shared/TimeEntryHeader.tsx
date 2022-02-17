@@ -1,13 +1,11 @@
-import * as Styled from "../timesheet/TimeEntries.styled";
+import * as Styled from "../time-entries/TimeEntries.styled";
 
 interface TimeEntryHeaderProps {
   timeStamp: string;
 }
 
 export const TimeEntryHeader = ({ timeStamp }: TimeEntryHeaderProps) => {
-  const dateObject = new Date(timeStamp);
-
-  const dateFormatted = dateObject.toLocaleDateString("en-GB", {
+  const dateFormatted = new Date(timeStamp).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "short",
     year: "numeric",

@@ -16,27 +16,23 @@ export const TimeEntries = () => {
       ...timeEntries,
       {
         id: Math.random() * 1000,
-        client: "AIVD",
+        client: "Uber",
         startTimestamp: "2021-09-24T16:00:00.000Z",
         stopTimestamp: "2021-09-24T18:00:00.000Z",
       },
     ]);
   };
 
-  timeEntries.sort((a, b) => {
-    return new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime();
-  });
-
   return (
     <>
-      {timeEntries.map((timeEntry, i, array) => {
-        return (
+      {timeEntries
+        .sort((a, b) => new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime())
+        .map((timeEntry, i) => (
           <React.Fragment key={timeEntry.id}>
-            {array[i].startTimestamp.substring(0, 10) !==
-              array[i - 1]?.startTimestamp.substring(0, 10) && (
+            {timeEntries[i].startTimestamp.substring(0, 10) !==
+              timeEntries[i - 1]?.startTimestamp.substring(0, 10) && (
               <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />
             )}
-
             <TimeEntry
               client={timeEntry.client}
               key={timeEntry.id}
@@ -44,8 +40,8 @@ export const TimeEntries = () => {
               stopTime={timeEntry.stopTimestamp}
             />
           </React.Fragment>
-        );
-      })}
+        ))}
+      ; )
       <Styled.AddEntryButton>
         <Button onClick={handleClick} label="Add time entry" icon />
       </Styled.AddEntryButton>

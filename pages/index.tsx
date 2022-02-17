@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 
 import { Header } from "../src/components/header/Header";
 import { PageContainer } from "../src/components/shared/PageContainer";
-import { TimeEntries } from "../src/components/timesheet/TimeEntries";
+import { TimeEntries } from "../src/components/time-entries/TimeEntries";
 
 import GlobalStyle from "../src/styles/global";
 import { theme } from "../src/styles/theme";

@@ -11,7 +11,6 @@ export const Topheader = styled.header<{ isMenuVisible: boolean }>`
   @media only screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
     flex-direction: row;
-    /* height: auto; */
     height: 70px;
     position: static;
   }

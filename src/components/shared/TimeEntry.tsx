@@ -1,5 +1,5 @@
 import * as Styled from "./TimeEntry.styled";
-import DeleteIconWrapper from "../../../public/assets/icons/Bin.svg";
+import DeleteIconWrapper from "../../../public/assets/icons/bin.svg";
 
 interface TimeEntryProps {
   client: string;
@@ -7,18 +7,14 @@ interface TimeEntryProps {
   stopTime: string;
 }
 
+const timeConfig: {} = { hour: "2-digit", minute: "2-digit" };
+
 export const TimeEntry = ({ client, startTime, stopTime }: TimeEntryProps) => {
   const startDate = new Date(startTime);
-  const formattedStartTime = startDate.toLocaleTimeString("nl-NL", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const formattedStartTime = startDate.toLocaleTimeString("nl-NL", timeConfig);
 
   const stopDate = new Date(stopTime);
-  const formattedStopTime = stopDate.toLocaleTimeString("nl-NL", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const formattedStopTime = stopDate.toLocaleTimeString("nl-NL", timeConfig);
 
   const diff = Math.abs(startDate.getTime() - stopDate.getTime());
   const totalMinutes = Math.floor(diff / 1000 / 60);
@@ -41,9 +37,9 @@ export const TimeEntry = ({ client, startTime, stopTime }: TimeEntryProps) => {
           </span>
         </Styled.Duration>
       </Styled.TimeRange>
-      <Styled.DeleteIcon>
+      <Styled.DeleteIconWrapper>
         <DeleteIconWrapper />
-      </Styled.DeleteIcon>
+      </Styled.DeleteIconWrapper>
     </Styled.TimeEntry>
   );
 };

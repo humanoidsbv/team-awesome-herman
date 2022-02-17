@@ -33,7 +33,7 @@ export const Duration = styled.div`
   font-size: ${({ theme }) => theme.fontSizeSmall};
 `;
 
-export const DeleteIcon = styled.div`
+export const DeleteIconWrapper = styled.div`
   cursor: pointer;
   padding: 10px;
 
