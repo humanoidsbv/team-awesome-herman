@@ -41,7 +41,6 @@ export const TimeEntries = () => {
             />
           </React.Fragment>
         ))}
-      ; )
       <Styled.AddEntryButton>
         <Button onClick={handleClick} label="Add time entry" icon />
       </Styled.AddEntryButton>

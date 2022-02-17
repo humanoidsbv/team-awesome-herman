@@ -5,10 +5,12 @@ export const PageContainer = styled.div`
   background-color: ${({ theme }) => theme.shadeGrey100};
   display: flex;
   flex-direction: column;
-  height: 100vh;
   padding: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media screen and (max-width: 600px) {
-    padding-top: 190px;
+    padding-top: 210px;
   }
 `;
