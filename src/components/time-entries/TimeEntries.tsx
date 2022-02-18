@@ -10,18 +10,29 @@ import * as Styled from "./TimeEntries.styled";
 export const TimeEntries = () => {
   const [timeEntries, setTimeEntries] = useState([]);
 
-  async function getTimeEntries(): Promise<Types.TimeEntry[]> {
-    try {
-      const response = await fetch("http://localhost:3004/time-entries", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      return response.json();
-    } catch (error) {
-      alert(error);
+  class NotFoundError extends Error {
+    constructor(message) {
+      super(message);
+      this.name = "NotFoundError";
     }
+  }
+
+  async function getTimeEntries() {
+    return fetch("http://localhost:3004/time-entries/")
+      .then((response) => {
+        if (response.status === 404) {
+          throw new NotFoundError(response);
+        }
+
+        return response;
+      })
+      .then((response) => response.json())
+      .catch((error) => error);
+  }
+
+  if (timeEntries instanceof NotFoundError) {
+    console.log("Not found!");
+    return;
   }
 
   async function fetchTimeEntries() {
@@ -31,8 +42,6 @@ export const TimeEntries = () => {
   useEffect(() => {
     fetchTimeEntries();
   }, []);
-
-  console.log(timeEntries);
 
   const handleClick = () => {
     setTimeEntries([
