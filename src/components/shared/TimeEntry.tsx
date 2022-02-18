@@ -7,14 +7,14 @@ interface TimeEntryProps {
   stopTime: string;
 }
 
-const timeConfig: {} = { hour: "2-digit", minute: "2-digit" };
-
 export const TimeEntry = ({ client, startTime, stopTime }: TimeEntryProps) => {
+  const timeFormat: {} = { hour: "2-digit", minute: "2-digit" };
+
   const startDate = new Date(startTime);
-  const formattedStartTime = startDate.toLocaleTimeString("nl-NL", timeConfig);
+  const formattedStartTime = startDate.toLocaleTimeString("nl-NL", timeFormat);
 
   const stopDate = new Date(stopTime);
-  const formattedStopTime = stopDate.toLocaleTimeString("nl-NL", timeConfig);
+  const formattedStopTime = stopDate.toLocaleTimeString("nl-NL", timeFormat);
 
   const diff = Math.abs(startDate.getTime() - stopDate.getTime());
   const totalMinutes = Math.floor(diff / 1000 / 60);
@@ -30,10 +30,7 @@ export const TimeEntry = ({ client, startTime, stopTime }: TimeEntryProps) => {
         </span>
         <Styled.Duration>
           <span>
-            {hours < 10 ? "0" : ""}
-            {hours + ":"}
-            {minutes < 10 ? "0" : ""}
-            {minutes}
+            {String(hours).padStart(2, "0")}:{String(minutes).padStart(2, "0")}
           </span>
         </Styled.Duration>
       </Styled.TimeRange>

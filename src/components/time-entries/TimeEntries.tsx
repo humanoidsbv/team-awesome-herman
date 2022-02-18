@@ -27,20 +27,24 @@ export const TimeEntries = () => {
     <>
       {timeEntries
         .sort((a, b) => new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime())
-        .map((timeEntry, i) => (
-          <React.Fragment key={timeEntry.id}>
-            {timeEntries[i].startTimestamp.substring(0, 10) !==
-              timeEntries[i - 1]?.startTimestamp.substring(0, 10) && (
-              <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />
-            )}
-            <TimeEntry
-              client={timeEntry.client}
-              key={timeEntry.id}
-              startTime={timeEntry.startTimestamp}
-              stopTime={timeEntry.stopTimestamp}
-            />
-          </React.Fragment>
-        ))}
+        .map((timeEntry, i) => {
+          const currentDate = new Date(timeEntries[i].startTimestamp).toLocaleDateString();
+          const previousDate = new Date(timeEntries[i - 1]?.startTimestamp).toLocaleDateString();
+          const isNewDate = currentDate !== previousDate;
+
+          return (
+            <React.Fragment key={timeEntry.id}>
+              {isNewDate && <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />}
+
+              <TimeEntry
+                client={timeEntry.client}
+                key={timeEntry.id}
+                startTime={timeEntry.startTimestamp}
+                stopTime={timeEntry.stopTimestamp}
+              />
+            </React.Fragment>
+          );
+        })}
       <Styled.AddEntryButton>
         <Button onClick={handleClick} label="Add time entry" icon />
       </Styled.AddEntryButton>
