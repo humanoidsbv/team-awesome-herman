@@ -4,14 +4,14 @@ export const Header = styled.header<{ isMenuVisible: boolean }>`
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  position: ${({ isMenuVisible }) => (isMenuVisible ? "fixed" : "static")};
+  position: ${({ isMenuVisible }) => (isMenuVisible ? "fixed" : "")};
   width: 100%;
 
   @media only screen and (${({ theme }) => theme.tablet}) {
-    position: ${({ isMenuVisible }) => (isMenuVisible ? "fixed" : "static")};
+    position: ${({ isMenuVisible }) => (isMenuVisible ? "fixed" : "")};
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (${({ theme }) => theme.tabletMaxWidth}) {
     position: fixed;
   }
 `;

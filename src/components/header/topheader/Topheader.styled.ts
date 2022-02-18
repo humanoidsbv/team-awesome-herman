@@ -12,6 +12,5 @@ export const Topheader = styled.header<{ isMenuVisible: boolean }>`
     align-items: center;
     flex-direction: row;
     height: 70px;
-    position: static;
   }
 `;

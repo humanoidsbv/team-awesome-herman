@@ -5,12 +5,12 @@ export const PageContainer = styled.div`
   background-color: ${({ theme }) => theme.shadeGrey100};
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  max-width: 1000px;
+  padding: 210px 20px 20px;
 
-  @media screen and (max-width: 600px) {
-    padding-top: 210px;
+  @media only screen and (${({ theme }) => theme.tablet}) {
+    padding-top: 20px;
   }
 `;
