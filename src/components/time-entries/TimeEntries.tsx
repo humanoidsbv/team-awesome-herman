@@ -5,22 +5,23 @@ import { TimeEntry } from "../shared";
 import { Button } from "../shared/Button";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
 
-import importedTimeEntries from "../../fixtures/MockTimeEntries.json";
-
 import * as Styled from "./TimeEntries.styled";
 
 export const TimeEntries = () => {
   const [timeEntries, setTimeEntries] = useState([]);
 
   async function getTimeEntries(): Promise<Types.TimeEntry[]> {
-    const response = await fetch("http://localhost:3004/time-entries", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    return response.json();
+    try {
+      const response = await fetch("http://localhost:3004/time-entries", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      return response.json();
+    } catch (error) {
+      alert(error);
+    }
   }
 
   async function fetchTimeEntries() {
@@ -30,6 +31,8 @@ export const TimeEntries = () => {
   useEffect(() => {
     fetchTimeEntries();
   }, []);
+
+  console.log(timeEntries);
 
   const handleClick = () => {
     setTimeEntries([
