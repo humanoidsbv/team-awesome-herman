@@ -22,5 +22,6 @@ export const theme = {
 
   // Breakpoints
   tablet: "min-width: 600px",
+  tabletMaxWidth: "max-width: 600px",
   desktop: "min-width: 1024px",
 };

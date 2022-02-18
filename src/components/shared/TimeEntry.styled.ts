@@ -12,11 +12,13 @@ export const TimeEntry = styled.div`
   height: 80px;
   justify-content: space-between;
   padding: 15px 20px;
+  width: 100%;
 `;
 
-export const Time = styled.div`
+export const TimeRange = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 0 20px 0 auto;
   row-gap: 10px;
   text-align: right;
 
@@ -26,7 +28,18 @@ export const Time = styled.div`
   }
 `;
 
-export const TimeAdded = styled.div`
+export const Duration = styled.div`
   color: ${({ theme }) => theme.shadeGrey700};
   font-size: ${({ theme }) => theme.fontSizeSmall};
+`;
+
+export const DeleteIconWrapper = styled.div`
+  cursor: pointer;
+  padding: 10px;
+
+  &:hover {
+    svg {
+      fill: red;
+    }
+  }
 `;
