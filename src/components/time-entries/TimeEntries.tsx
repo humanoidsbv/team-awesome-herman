@@ -7,41 +7,50 @@ import { TimeEntryHeader } from "../shared/TimeEntryHeader";
 
 import * as Styled from "./TimeEntries.styled";
 
+class NotFoundError extends Error {
+  constructor(response) {
+    super(response);
+    this.name = "NotFoundError";
+  }
+}
+
+async function getTimeEntries() {
+  return fetch("http://localhost:3004/time-entries", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.status === 404) {
+        throw new NotFoundError(response);
+      }
+      return response;
+    })
+    .then((response) => response.json())
+    .catch((error) => error);
+}
+
 export const TimeEntries = () => {
   const [timeEntries, setTimeEntries] = useState([]);
 
-  class NotFoundError extends Error {
-    constructor(message) {
-      super(message);
-      this.name = "NotFoundError";
+  useEffect(() => {
+    fetchTimeEntries();
+  }, []);
+
+  async function fetchTimeEntries() {
+    const timeEntriesFetched = await getTimeEntries();
+    if (timeEntriesFetched instanceof NotFoundError) {
+      console.log("Not found!");
+      return;
     }
-  }
-
-  async function getTimeEntries() {
-    return fetch("http://localhost:3004/time-entries/")
-      .then((response) => {
-        if (response.status === 404) {
-          throw new NotFoundError(response);
-        }
-
-        return response;
-      })
-      .then((response) => response.json())
-      .catch((error) => error);
+    setTimeEntries(timeEntriesFetched);
   }
 
   if (timeEntries instanceof NotFoundError) {
     console.log("Not found!");
     return;
   }
-
-  async function fetchTimeEntries() {
-    setTimeEntries(await getTimeEntries());
-  }
-
-  useEffect(() => {
-    fetchTimeEntries();
-  }, []);
 
   const handleClick = () => {
     setTimeEntries([
