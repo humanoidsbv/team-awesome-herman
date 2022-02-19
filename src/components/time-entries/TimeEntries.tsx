@@ -20,9 +20,11 @@ export const TimeEntries = () => {
 
   async function fetchTimeEntries() {
     const timeEntriesFetched = await getTimeEntries();
+
     if (timeEntriesFetched instanceof NotFoundError) {
       return;
     }
+
     setTimeEntries(timeEntriesFetched);
   }
 
