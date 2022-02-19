@@ -15,10 +15,7 @@ export const TimeEntryHeader = styled.div`
   width: 100%;
 `;
 
-export const AddEntryButton = styled.button`
-  background: none;
-  border: none;
-
+export const AddEntryButton = styled.div`
   button {
     margin-top: 20px;
     padding: 0 20px;

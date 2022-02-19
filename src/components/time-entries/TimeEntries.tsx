@@ -1,35 +1,15 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-import { TimeEntry } from "../shared";
 import { Button } from "../shared/Button";
+import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
+import { NotFoundError } from "../../classes/errors/NotFoundError";
+
+import { getTimeEntries } from "../../utilities/GetTimeEntries";
 
 import * as Styled from "./TimeEntries.styled";
 
-class NotFoundError extends Error {
-  constructor(response) {
-    super(response);
-    this.name = "NotFoundError";
-  }
-}
-
-async function getTimeEntries() {
-  return fetch("http://localhost:3004/time-entries", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => {
-      if (response.status === 404) {
-        throw new NotFoundError(response);
-      }
-      return response;
-    })
-    .then((response) => response.json())
-    .catch((error) => error);
-}
+getTimeEntries();
 
 export const TimeEntries = () => {
   const [timeEntries, setTimeEntries] = useState([]);
@@ -41,15 +21,9 @@ export const TimeEntries = () => {
   async function fetchTimeEntries() {
     const timeEntriesFetched = await getTimeEntries();
     if (timeEntriesFetched instanceof NotFoundError) {
-      console.log("Not found!");
       return;
     }
     setTimeEntries(timeEntriesFetched);
-  }
-
-  if (timeEntries instanceof NotFoundError) {
-    console.log("Not found!");
-    return;
   }
 
   const handleClick = () => {
