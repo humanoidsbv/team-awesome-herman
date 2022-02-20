@@ -1,7 +1,7 @@
-import { NotFoundError } from "../classes/errors/NotFoundError";
+import { notFoundError } from "../errors/not-found-error";
 
 export async function getTimeEntries() {
-  return fetch("http://localhost:3004/time-entries/id/5", {
+  return fetch("http://localhost:3004/time-entries/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export async function getTimeEntries() {
   })
     .then((response) => {
       if (response.status === 404) {
-        throw new NotFoundError(response);
+        throw new notFoundError(response);
       }
       return response;
     })

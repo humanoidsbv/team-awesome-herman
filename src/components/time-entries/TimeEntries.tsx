@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button } from "../shared/Button";
+import { getTimeEntries } from "../../services/time-entries-api";
+import { notFoundError } from "../../errors/not-found-error";
 import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
-import { NotFoundError } from "../../classes/errors/NotFoundError";
-
-import { getTimeEntries } from "../../utilities/GetTimeEntries";
 
 import * as Styled from "./TimeEntries.styled";
-
-getTimeEntries();
 
 export const TimeEntries = () => {
   const [timeEntries, setTimeEntries] = useState([]);
@@ -21,7 +18,7 @@ export const TimeEntries = () => {
   async function fetchTimeEntries() {
     const timeEntriesFetched = await getTimeEntries();
 
-    if (timeEntriesFetched instanceof NotFoundError) {
+    if (timeEntriesFetched instanceof notFoundError) {
       return;
     }
 
