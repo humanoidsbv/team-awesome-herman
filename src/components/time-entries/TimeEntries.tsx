@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Button } from "../shared/Button";
 import { getTimeEntries } from "../../services/time-entries-api";
-import { notFoundError } from "../../errors/not-found-error";
+import { NotFoundError } from "../../errors/not-found-error";
 import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
 
@@ -18,7 +18,7 @@ export const TimeEntries = () => {
   async function fetchTimeEntries() {
     const timeEntriesFetched = await getTimeEntries();
 
-    if (timeEntriesFetched instanceof notFoundError) {
+    if (timeEntriesFetched instanceof NotFoundError) {
       return;
     }
 
