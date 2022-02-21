@@ -1,15 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { TimeEntry } from "../shared";
 import { Button } from "../shared/Button";
+import { getTimeEntries } from "../../services/time-entries-api";
+import { NotFoundError } from "../../errors/not-found-error";
+import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
-
-import importedTimeEntries from "../../fixtures/MockTimeEntries.json";
 
 import * as Styled from "./TimeEntries.styled";
 
 export const TimeEntries = () => {
-  const [timeEntries, setTimeEntries] = useState(importedTimeEntries);
+  const [timeEntries, setTimeEntries] = useState([]);
+
+  useEffect(() => {
+    fetchTimeEntries();
+  }, []);
+
+  async function fetchTimeEntries() {
+    const timeEntriesFetched = await getTimeEntries();
+
+    if (timeEntriesFetched instanceof NotFoundError) {
+      return;
+    }
+
+    setTimeEntries(timeEntriesFetched);
+  }
 
   const handleClick = () => {
     setTimeEntries([
