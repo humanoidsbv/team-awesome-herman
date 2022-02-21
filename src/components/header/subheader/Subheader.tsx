@@ -1,17 +1,30 @@
+import { useState } from "react";
+
 import { Button } from "../../shared/Button";
+import { Modal } from "../../modal/Modal";
 import { Timesheets } from "./timesheets/Timesheets";
 
 import * as Styled from "./Subheader.styled";
 
 export const Subheader = () => {
-  const handleClick = (): void => {
-    alert("Button clicked");
-  };
+  const [isModalActive, setIsModalActive] = useState(false);
 
   return (
     <Styled.Subheader>
       <Timesheets />
-      <Button icon={true} label="New time entry" onClick={handleClick} style="primary" />
+
+      <Styled.Modal>
+        <Modal isActive={isModalActive} onClose={() => setIsModalActive(false)}>
+          <p>Hi viewers!</p>
+        </Modal>
+      </Styled.Modal>
+
+      <Button
+        icon={true}
+        label="New time entry"
+        onClick={() => setIsModalActive(true)}
+        style="primary"
+      />
     </Styled.Subheader>
   );
 };

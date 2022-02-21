@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Button } from "../shared/Button";
 import { getTimeEntries } from "../../services/time-entries-api";
+import { Modal } from "../modal/Modal";
 import { NotFoundError } from "../../errors/not-found-error";
 import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
@@ -39,6 +40,8 @@ export const TimeEntries = () => {
 
   return (
     <>
+      {/* <button onClick={() => setIsModalActive(true)}>Open modal</button> */}
+
       {timeEntries
         .sort((a, b) => new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime())
         .map((timeEntry, i) => {

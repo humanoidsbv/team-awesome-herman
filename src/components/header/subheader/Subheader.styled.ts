@@ -53,3 +53,7 @@ export const Entries = styled.div`
   display: flex;
   font-size: ${({ theme }) => theme.fontSizeSmall};
 `;
+
+export const Modal = styled.div`
+  position: absolute;
+`;
