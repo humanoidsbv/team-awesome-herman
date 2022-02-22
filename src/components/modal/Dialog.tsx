@@ -5,14 +5,31 @@ import { DialogHeader } from "./DialogHeader";
 
 import * as Styled from "./Modal.styled";
 
-export const Dialog = ({ onClose }) => {
-  const [newTimeEntry, setNewTimeEntry] = useState<TimeEntry>({});
+export const Dialog = ({ onClose, setTimeEntries, timeEntries }) => {
+  const [newTimeEntry, setNewTimeEntry] = useState({});
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
   };
 
-  const submitHandler = () => {};
+  const handleSubmit = () => {
+    const timeFromISOstring = new Date(
+      newTimeEntry.timeFrom + " " + newTimeEntry.date,
+    ).toISOString();
+    const timeToISOstring = new Date(newTimeEntry.timeTo + " " + newTimeEntry.date).toISOString();
+
+    newTimeEntry.startTimestamp = timeFromISOstring;
+    newTimeEntry.stopTimestamp = timeToISOstring;
+    newTimeEntry.key = Math.random() * 1000;
+
+    delete newTimeEntry.date;
+    delete newTimeEntry.timeFrom;
+    delete newTimeEntry.timeTo;
+
+    setTimeEntries([...timeEntries, newTimeEntry]);
+    setNewTimeEntry({});
+    console.log(timeEntries);
+  };
 
   return (
     <Styled.Dialog
@@ -72,7 +89,7 @@ export const Dialog = ({ onClose }) => {
         </Styled.FormDateTime>
       </form>
 
-      <DialogButtons onClose={onClose} submitHandler={submitHandler} />
+      <DialogButtons onClose={onClose} handleSubmit={handleSubmit} onClick={onClose} />
     </Styled.Dialog>
   );
 };

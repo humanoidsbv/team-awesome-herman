@@ -1,32 +1,20 @@
-import { useState } from "react";
-
 import { Button } from "../../shared/Button";
-import { Modal } from "../../modal/Modal";
-import { Timesheets } from "./timesheets/Timesheets";
+import { TitleAndStatistic } from "./title-and-statistic/TitleAndStatistic";
 
 import * as Styled from "./Subheader.styled";
 
-export const Subheader = () => {
-  const [isModalActive, setIsModalActive] = useState(false);
+interface SubheaderProps {
+  handleButtonClick: (arg: boolean) => void;
+}
 
-  const handleClose = () => {
-    setIsModalActive(false);
-  };
-
+export const Subheader = ({ handleButtonClick }: SubheaderProps) => {
   return (
     <Styled.Subheader>
-      <Timesheets />
-
-      <Styled.Modal>
-        <Modal isActive={isModalActive} onClose={handleClose}>
-          <p>Hi viewers!</p>
-        </Modal>
-      </Styled.Modal>
-
+      <TitleAndStatistic />
       <Button
         icon={true}
         label="New time entry"
-        onClick={() => setIsModalActive(true)}
+        onClick={() => handleButtonClick(true)}
         variety="primary"
       />
     </Styled.Subheader>

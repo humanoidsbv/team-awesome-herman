@@ -5,11 +5,21 @@ import { Dialog } from "./Dialog";
 
 import * as Styled from "./Modal.styled";
 
-export const Modal = ({ children, isActive, onClose }) =>
+interface ModalProps {
+  isActive: boolean;
+  onClose: () => void;
+}
+
+export const Modal = ({ isActive, onClose, setTimeEntries, timeEntries }): ModalProps =>
   isActive &&
   createPortal(
     <Styled.Backdrop onClick={onClose}>
-      <Dialog onClick={(event) => event.stopPropagation()} onClose={onClose} />
+      <Dialog
+        onClick={(event) => event.stopPropagation()}
+        onClose={onClose}
+        setTimeEntries={setTimeEntries}
+        timeEntries={timeEntries}
+      />
     </Styled.Backdrop>,
     document.body,
   );

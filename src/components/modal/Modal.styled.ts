@@ -1,24 +1,24 @@
 import styled from "styled-components";
 
 export const Backdrop = styled.div`
-  display: flex;
-  justify-content: center;
   align-items: center;
-  position: absolute;
+  background: rgba(0, 0, 50, 0.5);
+  display: flex;
+  height: 100%;
+  justify-content: center;
   left: 50%;
+  position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 100%;
   width: 100%;
-  background: rgba(0, 0, 50, 0.5);
 `;
 
 export const Dialog = styled.div`
-  font-family: Proxima Nova;
-  padding: 30px;
-  height: 100%;
-  width: 100%;
   background-color: white;
+  font-family: Proxima Nova;
+  height: 100%;
+  padding: 30px;
+  width: 100%;
 
   form {
     display: flex;
@@ -26,17 +26,16 @@ export const Dialog = styled.div`
   }
 
   input {
-    border: solid 1px lightgrey;
     border-radius: 5px;
+    border: solid 1px lightgrey;
     font-family: Proxima Nova;
-
     padding: 10px;
   }
 
   label {
-    margin: 18px 0 8px;
     color: ${({ theme }) => theme.shadeGrey700};
     font-size: ${({ theme }) => theme.fontSizeSmall};
+    margin: 18px 0 8px;
   }
 
   span {
@@ -54,18 +53,22 @@ export const Dialog = styled.div`
 `;
 
 export const DialogHeader = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   font-size: 20px;
+  justify-content: space-between;
   margin-bottom: 20px;
+
+  svg:hover {
+    cursor: pointer;
+  }
 `;
 
 export const DialogButtons = styled.div`
+  column-gap: 30px;
   display: flex;
   justify-content: space-between;
-  column-gap: 30px;
   margin-top: 40px;
 
   button {
@@ -74,10 +77,10 @@ export const DialogButtons = styled.div`
 `;
 
 export const FormDateTime = styled.div`
-  display: flex;
-  flex-direction: row;
   align-items: center;
   column-gap: 20px;
+  display: flex;
+  flex-direction: row;
 `;
 
 export const FormDate = styled.div`

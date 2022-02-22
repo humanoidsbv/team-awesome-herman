@@ -5,7 +5,7 @@ import { Subheader } from "./subheader/Subheader";
 
 import * as Styled from "./Header.styled";
 
-export const Header = () => {
+export const Header = ({ children }) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const toggleMenu = () => {
@@ -15,7 +15,7 @@ export const Header = () => {
   return (
     <Styled.Header isMenuVisible={isMenuVisible}>
       <Topheader isMenuVisible={isMenuVisible} toggleMenu={toggleMenu} />
-      <Subheader />
+      {children}
     </Styled.Header>
   );
 };
