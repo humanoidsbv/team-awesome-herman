@@ -9,7 +9,7 @@ export const Modal = ({ children, isActive, onClose }) =>
   isActive &&
   createPortal(
     <Styled.Backdrop onClick={onClose}>
-      <Dialog onClick={(event) => event.stopPropagation()} />
+      <Dialog onClick={(event) => event.stopPropagation()} onClose={onClose} />
     </Styled.Backdrop>,
     document.body,
   );

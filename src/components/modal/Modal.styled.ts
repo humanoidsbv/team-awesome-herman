@@ -15,7 +15,7 @@ export const Backdrop = styled.div`
 
 export const Dialog = styled.div`
   font-family: Proxima Nova;
-  padding: 20px;
+  padding: 30px;
   height: 100%;
   width: 100%;
   background-color: white;
@@ -29,6 +29,7 @@ export const Dialog = styled.div`
     border: solid 1px lightgrey;
     border-radius: 5px;
     font-family: Proxima Nova;
+
     padding: 10px;
   }
 
@@ -42,9 +43,13 @@ export const Dialog = styled.div`
     color: ${({ theme }) => theme.shadeGrey700};
   }
 
+  button {
+    padding: 10px;
+  }
+
   @media only screen and (${({ theme }) => theme.tablet}) {
-    height: 50%;
-    width: 50%;
+    height: fit-content;
+    width: 70%;
   }
 `;
 
@@ -53,4 +58,45 @@ export const DialogHeader = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+`;
+
+export const DialogButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  column-gap: 30px;
+  margin-top: 40px;
+
+  button {
+    width: 50%;
+  }
+`;
+
+export const FormDateTime = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 20px;
+`;
+
+export const FormDate = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const FormTimeFrom = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const FormTimeTo = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const FormTimeDuration = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: ${({ theme }) => theme.fontSizeSmall};
 `;

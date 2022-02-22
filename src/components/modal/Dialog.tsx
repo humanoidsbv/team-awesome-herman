@@ -1,9 +1,19 @@
+import React, { useState } from "react";
+
+import { DialogButtons } from "./DialogButtons";
 import { DialogHeader } from "./DialogHeader";
-import { Button } from "../shared";
 
 import * as Styled from "./Modal.styled";
 
-export const Dialog = (props) => {
+export const Dialog = ({ onClose }) => {
+  const [newTimeEntry, setNewTimeEntry] = useState<TimeEntry>({});
+
+  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
+  };
+
+  const submitHandler = () => {};
+
   return (
     <Styled.Dialog
       onClick={(event) => event.stopPropagation()}
@@ -11,26 +21,58 @@ export const Dialog = (props) => {
       aria-labelledby="dialog"
       aria-modal="true"
     >
-      <DialogHeader />
+      <DialogHeader onClose={onClose} />
       <form>
         <label>Client</label>
-        <input type="text"></input>
+        <input
+          name="client"
+          type="text"
+          value={newTimeEntry.client ?? ""}
+          onChange={handleChange}
+        ></input>
         <label>Activity</label>
-        <input type="text"></input>
-        <label>Date</label>
-        <input type="date"></input>
-        <label>From</label>
-        <input type="time"></input>
-        <label>To</label>
-        <input type="time"></input>
+        <input
+          name="activity"
+          type="text"
+          value={newTimeEntry.activity ?? ""}
+          onChange={handleChange}
+        ></input>
+        <Styled.FormDateTime>
+          <Styled.FormDate>
+            <label>Date</label>
+            <input
+              name="date"
+              type="date"
+              value={newTimeEntry.date ?? ""}
+              onChange={handleChange}
+            ></input>
+          </Styled.FormDate>
+          <Styled.FormTimeFrom>
+            <label>From</label>
+            <input
+              name="timeFrom"
+              type="time"
+              value={newTimeEntry.timeFrom ?? ""}
+              onChange={handleChange}
+            ></input>
+          </Styled.FormTimeFrom>
+          <Styled.FormTimeTo>
+            <label>To</label>
+            <input
+              name="timeTo"
+              type="time"
+              value={newTimeEntry.timeTo ?? ""}
+              onChange={handleChange}
+            ></input>
+          </Styled.FormTimeTo>
+          <Styled.FormTimeDuration>
+            <span>Total</span>
+            <span>08:00</span>
+          </Styled.FormTimeDuration>
+        </Styled.FormDateTime>
       </form>
-      <span>Total</span>
-      {/* <Button
-        icon={false}
-        label="Add time entry"
-        onClick={() => setIsModalActive(false)}
-        style="secondary"
-      /> */}
+
+      <DialogButtons onClose={onClose} submitHandler={submitHandler} />
     </Styled.Dialog>
   );
 };

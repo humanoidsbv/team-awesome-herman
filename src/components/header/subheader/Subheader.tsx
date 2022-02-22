@@ -9,12 +9,16 @@ import * as Styled from "./Subheader.styled";
 export const Subheader = () => {
   const [isModalActive, setIsModalActive] = useState(false);
 
+  const handleClose = () => {
+    setIsModalActive(false);
+  };
+
   return (
     <Styled.Subheader>
       <Timesheets />
 
       <Styled.Modal>
-        <Modal isActive={isModalActive} onClose={() => setIsModalActive(false)}>
+        <Modal isActive={isModalActive} onClose={handleClose}>
           <p>Hi viewers!</p>
         </Modal>
       </Styled.Modal>
@@ -23,7 +27,7 @@ export const Subheader = () => {
         icon={true}
         label="New time entry"
         onClick={() => setIsModalActive(true)}
-        style="primary"
+        variety="primary"
       />
     </Styled.Subheader>
   );
