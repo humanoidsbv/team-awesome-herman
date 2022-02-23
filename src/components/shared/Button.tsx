@@ -6,7 +6,7 @@ type ButtonProps = {
   icon?: boolean;
   label: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  variety?: "primary" | "secondary";
+  variety?: "primary" | "secondary" | undefined;
   disabled?: boolean;
 };
 

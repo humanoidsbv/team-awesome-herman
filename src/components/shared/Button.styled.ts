@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Button = styled.button`
+export const Button = styled.button<{ variety: "primary" | "secondary" | undefined }>`
   align-items: center;
   background-color: ${({ theme }) => theme.colorGreenPrimary500};
   border-radius: 4px;

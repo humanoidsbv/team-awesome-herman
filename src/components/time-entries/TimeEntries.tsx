@@ -11,8 +11,8 @@ import { getTimeEntries } from "../../services/time-entries-api";
 import * as Styled from "./TimeEntries.styled";
 
 export const TimeEntries = () => {
-  const [timeEntries, setTimeEntries] = useState([]);
-  const [isModalActive, setIsModalActive] = useState(false);
+  const [timeEntries, setTimeEntries] = useState<[]>([]);
+  const [isModalActive, setIsModalActive] = useState<boolean>(false);
 
   const handleClose = () => {
     setIsModalActive(false);

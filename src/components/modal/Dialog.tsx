@@ -9,11 +9,13 @@ import * as Styled from "./Modal.styled";
 
 interface DialogProps {
   onClose: () => void;
+  setTimeEntries: React.Dispatch<React.SetStateAction<{}>>;
+  timeEntries: {}[];
 }
 
 export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) => {
-  const [newTimeEntry, setNewTimeEntry] = useState({});
-  const [isFormValid, setIsFormValid] = useState();
+  const [newTimeEntry, setNewTimeEntry] = useState<any>({});
+  const [isFormValid, setIsFormValid] = useState<boolean>();
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -23,15 +25,13 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
   };
 
   const handleSubmit = () => {
-    const timeFromISOstring = new Date(
-      newTimeEntry.timeFrom + " " + newTimeEntry.date,
-    ).toISOString();
-    const timeToISOstring = new Date(newTimeEntry.timeTo + " " + newTimeEntry.date).toISOString();
+    const startTimestamp = new Date(newTimeEntry.timeFrom + " " + newTimeEntry.date).toISOString();
+    const stopTimestamp = new Date(newTimeEntry.timeTo + " " + newTimeEntry.date).toISOString();
 
     const newTimeEntryFormatted = {
       ...newTimeEntry,
-      startTimestamp: timeFromISOstring,
-      stopTimestamp: timeToISOstring,
+      startTimestamp,
+      stopTimestamp,
     };
 
     delete newTimeEntryFormatted.timeFrom;

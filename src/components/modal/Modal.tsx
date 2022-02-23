@@ -8,14 +8,16 @@ import * as Styled from "./Modal.styled";
 interface ModalProps {
   isActive: boolean;
   onClose: () => void;
+  setTimeEntries: React.Dispatch<React.SetStateAction<{}>>;
+  timeEntries: {}[];
 }
 
-export const Modal = ({ isActive, onClose, setTimeEntries, timeEntries }): ModalProps =>
+export const Modal = ({ isActive, onClose, setTimeEntries, timeEntries }: ModalProps) =>
   isActive &&
   createPortal(
     <Styled.Backdrop onClick={onClose}>
       <Dialog
-        onClick={(event) => event.stopPropagation()}
+        onClick={(event: { stopPropagation: () => any }) => event.stopPropagation()}
         onClose={onClose}
         setTimeEntries={setTimeEntries}
         timeEntries={timeEntries}

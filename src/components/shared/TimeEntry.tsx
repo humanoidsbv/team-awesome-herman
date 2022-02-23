@@ -8,7 +8,7 @@ interface TimeEntryProps {
     startTimestamp: string;
     stopTimestamp: string;
   };
-  setTimeEntries: (value: []) => void;
+  setTimeEntries: any;
 }
 
 export const TimeEntry = ({
@@ -29,7 +29,7 @@ export const TimeEntry = ({
   const minutes = totalMinutes % 60;
 
   const removeTimeEntry = () => {
-    setTimeEntries((entries) => entries.filter((entry) => entry.id !== id));
+    setTimeEntries((entries: any[]) => entries.filter((entry) => entry.id !== id));
   };
 
   return (

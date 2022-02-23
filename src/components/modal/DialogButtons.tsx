@@ -2,7 +2,14 @@ import { Button } from "../shared";
 
 import * as Styled from "../modal/Modal.styled";
 
-export const DialogButtons = ({ isFormValid, handleSubmit, onClose }) => {
+interface DialogButtonsProps {
+  handleSubmit: () => void;
+  isFormValid: boolean | undefined;
+  onClick: () => void;
+  onClose: () => void;
+}
+
+export const DialogButtons = ({ handleSubmit, isFormValid, onClose }: DialogButtonsProps) => {
   return (
     <Styled.DialogButtons>
       <Button icon={false} label="Cancel" onClick={onClose} variety="secondary" />
