@@ -40,14 +40,17 @@ export const TimeEntries = () => {
           onClose={handleClose}
           setTimeEntries={setTimeEntries}
           timeEntries={timeEntries}
-        ></Modal>
+        />
       </Styled.Modal>
 
-      <Subheader handleButtonClick={setIsModalActive} />
+      <Subheader setIsModalActive={setIsModalActive} />
 
       {timeEntries
-        .sort((a, b) => new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime())
-        .map((timeEntry, i) => {
+        .sort(
+          (a: any, b: any) =>
+            new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime(),
+        )
+        .map((timeEntry: any, i) => {
           const currentDate = new Date(timeEntries[i].startTimestamp).toLocaleDateString();
           const previousDate = new Date(timeEntries[i - 1]?.startTimestamp).toLocaleDateString();
           const isNewDate = currentDate !== previousDate;

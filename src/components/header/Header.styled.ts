@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Header = styled.header<{ isMenuVisible: boolean }>`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
   position: ${({ isMenuVisible }) => (isMenuVisible ? "fixed" : "")};
   width: 100%;
 

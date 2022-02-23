@@ -12,7 +12,7 @@ type ButtonProps = {
 
 export const Button = ({ disabled, icon, label, onClick, variety }: ButtonProps) => {
   return (
-    <Styled.Button onClick={onClick} variety={variety} {...{ disabled }}>
+    <Styled.Button onClick={onClick} variety={variety} disabled={disabled}>
       {icon && <Icon fill="white" />}
       {label}
     </Styled.Button>

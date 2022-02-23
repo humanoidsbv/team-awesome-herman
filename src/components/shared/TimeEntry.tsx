@@ -1,6 +1,8 @@
 import * as Styled from "./TimeEntry.styled";
 import DeleteIconWrapper from "../../../public/assets/icons/bin.svg";
 
+import { deleteTimeEntry } from "../../services/time-entries-api";
+
 interface TimeEntryProps {
   timeEntry: {
     client: string;
@@ -29,7 +31,9 @@ export const TimeEntry = ({
   const minutes = totalMinutes % 60;
 
   const removeTimeEntry = () => {
-    setTimeEntries((entries: any[]) => entries.filter((entry) => entry.id !== id));
+    setTimeEntries((timeEntries: any[]) => timeEntries.filter((entry) => entry.id !== id));
+
+    deleteTimeEntry(id);
   };
 
   return (

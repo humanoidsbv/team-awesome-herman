@@ -1,6 +1,6 @@
 import { NotFoundError } from "../errors/not-found-error";
 
-export async function getTimeEntries() {
+export const getTimeEntries = async () => {
   return fetch("http://localhost:3004/time-entries/", {
     method: "GET",
     headers: {
@@ -15,15 +15,25 @@ export async function getTimeEntries() {
     })
     .then((response) => response.json())
     .catch((error) => error);
-}
+};
 
-export const addTimeEntry = async (newTimeEntry: TimeEntry) => {
+export const addTimeEntry = async (newTimeEntry: any) => {
   const response = await fetch("http://localhost:3004/time-entries/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newTimeEntry),
+  });
+  return response.json();
+};
+
+export const deleteTimeEntry = async (id: number) => {
+  const response = await fetch("http://localhost:3004/time-entries/" + id, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
   return response.json();
 };
