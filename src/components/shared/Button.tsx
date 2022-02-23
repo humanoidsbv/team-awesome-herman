@@ -7,11 +7,12 @@ type ButtonProps = {
   label: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   variety?: "primary" | "secondary";
+  disabled?: boolean;
 };
 
-export const Button = ({ icon, label, onClick, variety }: ButtonProps) => {
+export const Button = ({ disabled, icon, label, onClick, variety }: ButtonProps) => {
   return (
-    <Styled.Button onClick={onClick} variety={variety}>
+    <Styled.Button onClick={onClick} variety={variety} {...{ disabled }}>
       {icon && <Icon fill="white" />}
       {label}
     </Styled.Button>

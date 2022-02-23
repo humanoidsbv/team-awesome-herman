@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { DialogButtons } from "./DialogButtons";
 import { DialogHeader } from "./DialogHeader";
@@ -7,8 +7,11 @@ import * as Styled from "./Modal.styled";
 
 export const Dialog = ({ onClose, setTimeEntries, timeEntries }) => {
   const [newTimeEntry, setNewTimeEntry] = useState({});
+  const [isFormValid, setIsFormValid] = useState();
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    setIsFormValid(formRef.current?.checkValidity());
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
   };
 
@@ -17,6 +20,7 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }) => {
       newTimeEntry.timeFrom + " " + newTimeEntry.date,
     ).toISOString();
     const timeToISOstring = new Date(newTimeEntry.timeTo + " " + newTimeEntry.date).toISOString();
+    console.log(timeToISOstring);
 
     newTimeEntry.startTimestamp = timeFromISOstring;
     newTimeEntry.stopTimestamp = timeToISOstring;
@@ -28,58 +32,66 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }) => {
 
     setTimeEntries([...timeEntries, newTimeEntry]);
     setNewTimeEntry({});
-    console.log(timeEntries);
   };
 
   return (
     <Styled.Dialog
-      onClick={(event) => event.stopPropagation()}
-      role="dialog"
       aria-labelledby="dialog"
       aria-modal="true"
+      onClick={(event) => event.stopPropagation()}
+      role="dialog"
     >
       <DialogHeader onClose={onClose} />
-      <form>
+      <form ref={formRef}>
         <label>Client</label>
         <input
+          maxLength={20}
+          minLength={3}
           name="client"
+          onChange={handleChange}
+          required
           type="text"
           value={newTimeEntry.client ?? ""}
-          onChange={handleChange}
         ></input>
         <label>Activity</label>
         <input
+          maxLength={20}
+          minLength={3}
           name="activity"
+          onChange={handleChange}
+          required
           type="text"
           value={newTimeEntry.activity ?? ""}
-          onChange={handleChange}
         ></input>
         <Styled.FormDateTime>
           <Styled.FormDate>
             <label>Date</label>
             <input
               name="date"
+              onChange={handleChange}
+              required
               type="date"
               value={newTimeEntry.date ?? ""}
-              onChange={handleChange}
             ></input>
           </Styled.FormDate>
           <Styled.FormTimeFrom>
             <label>From</label>
             <input
               name="timeFrom"
+              onChange={handleChange}
+              required
               type="time"
               value={newTimeEntry.timeFrom ?? ""}
-              onChange={handleChange}
             ></input>
           </Styled.FormTimeFrom>
           <Styled.FormTimeTo>
             <label>To</label>
             <input
               name="timeTo"
+              onChange={handleChange}
+              required
               type="time"
               value={newTimeEntry.timeTo ?? ""}
-              onChange={handleChange}
             ></input>
           </Styled.FormTimeTo>
           <Styled.FormTimeDuration>
@@ -89,7 +101,12 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }) => {
         </Styled.FormDateTime>
       </form>
 
-      <DialogButtons onClose={onClose} handleSubmit={handleSubmit} onClick={onClose} />
+      <DialogButtons
+        onClose={onClose}
+        handleSubmit={handleSubmit}
+        onClick={onClose}
+        isFormValid={isFormValid}
+      />
     </Styled.Dialog>
   );
 };

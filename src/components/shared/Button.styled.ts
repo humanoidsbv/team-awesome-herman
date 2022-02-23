@@ -19,4 +19,13 @@ export const Button = styled.button`
       background-color: ${({ theme }) => theme.shadeGrey100};
       color: ${({ theme }) => theme.shadeGrey700};
     `}
+
+  ${({ disabled }) =>
+    disabled === true &&
+    css`
+      background-color: ${({ theme }) => theme.shadeGrey100};
+      color: ${({ theme }) => theme.shadeGrey700};
+      cursor: not-allowed;
+      border: 2px solid red;
+    `}
 `;

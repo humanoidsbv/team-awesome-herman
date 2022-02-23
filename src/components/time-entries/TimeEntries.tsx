@@ -58,12 +58,7 @@ export const TimeEntries = () => {
             <React.Fragment key={timeEntry.id}>
               {isNewDate && <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />}
 
-              <TimeEntry
-                client={timeEntry.client}
-                key={timeEntry.id}
-                startTime={timeEntry.startTimestamp}
-                stopTime={timeEntry.stopTimestamp}
-              />
+              <TimeEntry timeEntry={timeEntry} setTimeEntries={setTimeEntries} />
             </React.Fragment>
           );
         })}

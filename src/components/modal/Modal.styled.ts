@@ -32,6 +32,11 @@ export const Dialog = styled.div`
     padding: 10px;
   }
 
+  input:invalid:not([value=""]) {
+    border: 2px solid red;
+    background-color: pink;
+  }
+
   label {
     color: ${({ theme }) => theme.shadeGrey700};
     font-size: ${({ theme }) => theme.fontSizeSmall};
