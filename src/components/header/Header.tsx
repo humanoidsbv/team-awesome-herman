@@ -5,7 +5,11 @@ import { Subheader } from "./subheader/Subheader";
 
 import * as Styled from "./Header.styled";
 
-export const Header = ({ children }) => {
+interface HeaderProps {
+  children: React.ReactNode;
+}
+
+export const Header = ({ children }: HeaderProps) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const toggleMenu = () => {

@@ -1,13 +1,20 @@
 import React, { useState, useRef } from "react";
 
+import { addTimeEntry } from "../../services/time-entries-api";
+
 import { DialogButtons } from "./DialogButtons";
 import { DialogHeader } from "./DialogHeader";
 
 import * as Styled from "./Modal.styled";
 
-export const Dialog = ({ onClose, setTimeEntries, timeEntries }) => {
+interface DialogProps {
+  onClose: () => void;
+}
+
+export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) => {
   const [newTimeEntry, setNewTimeEntry] = useState({});
   const [isFormValid, setIsFormValid] = useState();
+
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,17 +27,18 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }) => {
       newTimeEntry.timeFrom + " " + newTimeEntry.date,
     ).toISOString();
     const timeToISOstring = new Date(newTimeEntry.timeTo + " " + newTimeEntry.date).toISOString();
-    console.log(timeToISOstring);
 
-    newTimeEntry.startTimestamp = timeFromISOstring;
-    newTimeEntry.stopTimestamp = timeToISOstring;
-    newTimeEntry.key = Math.random() * 1000;
+    const newTimeEntryFormatted = {
+      ...newTimeEntry,
+      startTimestamp: timeFromISOstring,
+      stopTimestamp: timeToISOstring,
+    };
 
-    delete newTimeEntry.date;
-    delete newTimeEntry.timeFrom;
-    delete newTimeEntry.timeTo;
+    delete newTimeEntryFormatted.timeFrom;
+    delete newTimeEntryFormatted.timeTo;
 
-    setTimeEntries([...timeEntries, newTimeEntry]);
+    setTimeEntries([...timeEntries, newTimeEntryFormatted]);
+    addTimeEntry(newTimeEntryFormatted);
     setNewTimeEntry({});
   };
 
@@ -52,7 +60,7 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }) => {
           required
           type="text"
           value={newTimeEntry.client ?? ""}
-        ></input>
+        />
         <label>Activity</label>
         <input
           maxLength={20}
@@ -62,7 +70,7 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }) => {
           required
           type="text"
           value={newTimeEntry.activity ?? ""}
-        ></input>
+        />
         <Styled.FormDateTime>
           <Styled.FormDate>
             <label>Date</label>
@@ -72,7 +80,7 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }) => {
               required
               type="date"
               value={newTimeEntry.date ?? ""}
-            ></input>
+            />
           </Styled.FormDate>
           <Styled.FormTimeFrom>
             <label>From</label>

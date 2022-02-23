@@ -40,9 +40,7 @@ export const TimeEntries = () => {
           onClose={handleClose}
           setTimeEntries={setTimeEntries}
           timeEntries={timeEntries}
-        >
-          <p>Hi viewers!</p>
-        </Modal>
+        ></Modal>
       </Styled.Modal>
 
       <Subheader handleButtonClick={setIsModalActive} />

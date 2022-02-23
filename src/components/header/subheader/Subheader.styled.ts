@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Subheader = styled.div`
-  background-color: #ffffff;
+  background-color: #fff;
   border-bottom: 1px solid ${({ theme }) => theme.shadeGrey300};
   display: flex;
   flex-direction: column;
