@@ -5,12 +5,13 @@ import * as Styled from "./Subheader.styled";
 
 interface SubheaderProps {
   setIsModalActive: (arg: boolean) => void;
+  timeEntries: {}[];
 }
 
 export const Subheader = ({ setIsModalActive, timeEntries }: SubheaderProps) => {
   return (
     <Styled.Subheader>
-      <TitleAndStatistic timeEntries={timeEntries} />
+      <TitleAndStatistic timeEntriesLength={timeEntries.length} />
       <Button
         icon={true}
         label="New time entry"

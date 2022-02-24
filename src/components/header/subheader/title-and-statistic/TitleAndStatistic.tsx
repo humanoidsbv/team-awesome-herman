@@ -1,11 +1,15 @@
 import * as Styled from "../Subheader.styled";
 
-export const TitleAndStatistic = ({ timeEntries }) => {
+interface timeEntriesLengthProps {
+  timeEntriesLength: number;
+}
+
+export const TitleAndStatistic = ({ timeEntriesLength }: timeEntriesLengthProps) => {
   return (
     <Styled.TitleAndStatistic>
       <Styled.Title>Timesheets</Styled.Title>
       <Styled.Divider>|</Styled.Divider>
-      <Styled.Statistic>{timeEntries.length} Entries</Styled.Statistic>
+      <Styled.Statistic>{timeEntriesLength} Entries</Styled.Statistic>
     </Styled.TitleAndStatistic>
   );
 };

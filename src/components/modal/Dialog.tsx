@@ -1,8 +1,7 @@
 import React, { useState, useRef } from "react";
 
 import { addTimeEntry } from "../../services/time-entries-api";
-
-import { DialogButtons } from "./DialogButtons";
+import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
 
 import * as Styled from "./Modal.styled";
@@ -15,14 +14,12 @@ interface DialogProps {
 
 export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) => {
   const [newTimeEntry, setNewTimeEntry] = useState<any>({});
-  const [isFormValid, setIsFormValid] = useState();
-
+  const [isFormValid, setIsFormValid] = useState<boolean>();
   const [validityOfInputs, setValidityOfInputs] = useState({});
-  const formRef = useRef<HTMLFormElement>(null);
+  const formRef = useRef<HTMLFormElement>();
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setIsFormValid(formRef.current?.checkValidity());
-
     setValidityOfInputs({ ...validityOfInputs, [target.name]: target.checkValidity() });
 
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
@@ -111,12 +108,15 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
         </Styled.FormDateTime>
       </form>
 
-      <DialogButtons
-        onClose={onClose}
-        handleSubmit={handleSubmit}
-        onClick={onClose}
-        isFormValid={isFormValid}
-      />
+      <Styled.DialogButtons>
+        <Button icon={false} label="Cancel" onClick={onClose} variety="secondary" />
+        <Button
+          icon={false}
+          label="Add time entry"
+          onClick={handleSubmit}
+          disabled={!isFormValid}
+        />
+      </Styled.DialogButtons>
     </Styled.Dialog>
   );
 };

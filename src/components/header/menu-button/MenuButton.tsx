@@ -10,7 +10,7 @@ type MenuButtonProps = {
 export const MenuButton = ({ isMenuVisible, onClick }: MenuButtonProps): React.ReactElement => {
   return (
     <Styled.MenuButton isMenuVisible={isMenuVisible} onClick={onClick}>
-      {isMenuVisible && <CloseIcon />}
+      {isMenuVisible && <CloseIcon fill="white" />}
       {!isMenuVisible && <HamburgerIcon />}
     </Styled.MenuButton>
   );
