@@ -38,18 +38,10 @@
     {
       "client": "Nike",
       "activity": "Development",
-      "date": "2022-02-27",
-      "startTimestamp": "2022-02-27T19:39:00.000Z",
-      "stopTimestamp": "2022-02-27T21:39:00.000Z",
+      "date": "2022-02-17",
+      "startTimestamp": "2022-02-17T10:20:00.000Z",
+      "stopTimestamp": "2022-02-17T12:20:00.000Z",
       "id": 7
-    },
-    {
-      "client": "Adidas",
-      "activity": "Development",
-      "date": "2022-02-28",
-      "startTimestamp": "2022-02-28T19:44:00.000Z",
-      "stopTimestamp": "2022-02-28T20:44:00.000Z",
-      "id": 8
     }
   ]
 }
