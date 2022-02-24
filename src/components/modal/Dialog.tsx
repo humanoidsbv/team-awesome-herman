@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-import { addTimeEntry } from "../../services/time-entries-api";
+import { addTimeEntry } from "../../services/time-entry-api/add-time-entry";
 import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
 
@@ -21,7 +21,6 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setIsFormValid(formRef.current?.checkValidity());
     setValidityOfInputs({ ...validityOfInputs, [target.name]: target.checkValidity() });
-
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
   };
 
