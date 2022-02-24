@@ -1,4 +1,4 @@
-import TeamAwesomeLogo from "../../../../../public/assets/icons/team-awesome.svg";
+import TeamAwesomeLogo from "../../../../public/assets/icons/team-awesome.svg";
 
 import * as Styled from "./HeaderLogo.styled";
 

@@ -1,7 +1,9 @@
 import { useState } from "react";
 
-import { Topheader } from "./topheader/Topheader";
-import { Subheader } from "./subheader/Subheader";
+import { Menu } from "../header/menu/Menu";
+import { HeaderLogo } from "../header/header-logo/HeaderLogo";
+import { MenuButton } from "../header/menu-button/MenuButton";
+import { Profile } from "../header/profile/Profile";
 
 import * as Styled from "./Header.styled";
 
@@ -18,8 +20,10 @@ export const Header = ({ children }: HeaderProps) => {
 
   return (
     <Styled.Header isMenuVisible={isMenuVisible}>
-      <Topheader isMenuVisible={isMenuVisible} toggleMenu={toggleMenu} />
-      {children}
+      <HeaderLogo />
+      <Menu isMenuVisible={isMenuVisible} />
+      <Profile />
+      <MenuButton isMenuVisible={isMenuVisible} onClick={toggleMenu} />
     </Styled.Header>
   );
 };
