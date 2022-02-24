@@ -44,7 +44,8 @@ export const Dialog = styled.div`
   }
 
   span {
-    color: ${({ theme }) => theme.shadeGrey700};
+    color: red;
+    margin-top: 5px;
   }
 
   button {
@@ -64,6 +65,11 @@ export const DialogHeader = styled.div`
   font-size: 20px;
   justify-content: space-between;
   margin-bottom: 20px;
+
+  h5 {
+    font-weight: normal;
+    color: ${({ theme }) => theme.shadeGrey700};
+  }
 
   svg:hover {
     cursor: pointer;

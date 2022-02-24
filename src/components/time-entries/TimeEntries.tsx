@@ -6,16 +6,12 @@ import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
 
 export const TimeEntries = (props) => {
-  const [timeEntries, setTimeEntries] = useState([]);
+  const [timeEntries, setTimeEntries] = useState(props.timeEntries);
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
 
   const handleClose = () => {
     setIsModalActive(false);
   };
-
-  useEffect(() => {
-    setTimeEntries(props.timeEntries);
-  }, []);
 
   return (
     <>
@@ -26,7 +22,7 @@ export const TimeEntries = (props) => {
         timeEntries={timeEntries}
       />
 
-      <Subheader setIsModalActive={setIsModalActive} />
+      <Subheader setIsModalActive={setIsModalActive} timeEntries={timeEntries} />
 
       {timeEntries
         .sort(

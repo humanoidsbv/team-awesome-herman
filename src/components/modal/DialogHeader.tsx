@@ -9,7 +9,7 @@ interface DialogHeaderProps {
 export const DialogHeader = ({ onClose }: DialogHeaderProps) => {
   return (
     <Styled.DialogHeader>
-      <span>New time entry</span>
+      <h5>New time entry</h5>
       <CloseIconWrapper fill="black" onClick={onClose} />
     </Styled.DialogHeader>
   );

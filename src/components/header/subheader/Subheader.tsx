@@ -7,10 +7,10 @@ interface SubheaderProps {
   setIsModalActive: (arg: boolean) => void;
 }
 
-export const Subheader = ({ setIsModalActive }: SubheaderProps) => {
+export const Subheader = ({ setIsModalActive, timeEntries }: SubheaderProps) => {
   return (
     <Styled.Subheader>
-      <TitleAndStatistic />
+      <TitleAndStatistic timeEntries={timeEntries} />
       <Button
         icon={true}
         label="New time entry"
