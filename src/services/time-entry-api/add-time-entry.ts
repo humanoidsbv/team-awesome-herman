@@ -1,4 +1,11 @@
-export const addTimeEntry = async (newTimeEntry: any) => {
+interface TimeEntryProps {
+  client: string;
+  id: number;
+  startTimestamp: string;
+  stopTimestamp: string;
+}
+
+export const addTimeEntry = async (newTimeEntry: TimeEntryProps) => {
   const response = await fetch("http://localhost:3004/time-entries/", {
     method: "POST",
     headers: {

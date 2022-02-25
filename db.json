@@ -50,6 +50,14 @@
       "startTimestamp": "2022-02-24T14:35:00.000Z",
       "stopTimestamp": "2022-02-24T16:35:00.000Z",
       "id": 8
+    },
+    {
+      "client": "Patagonia",
+      "activity": "Development",
+      "date": "2022-02-03",
+      "startTimestamp": "2022-02-03T11:55:00.000Z",
+      "stopTimestamp": "2022-02-03T12:55:00.000Z",
+      "id": 9
     }
   ]
 }

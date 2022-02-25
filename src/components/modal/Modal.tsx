@@ -13,15 +13,18 @@ interface ModalProps {
 }
 
 export const Modal = ({ isActive, onClose, setTimeEntries, timeEntries }: ModalProps) =>
-  isActive &&
-  createPortal(
-    <Styled.Backdrop onClick={onClose}>
-      <Dialog
-        onClick={(event: { stopPropagation: () => any }) => event.stopPropagation()}
-        onClose={onClose}
-        setTimeEntries={setTimeEntries}
-        timeEntries={timeEntries}
-      />
-    </Styled.Backdrop>,
-    document.body,
+  isActive ? (
+    createPortal(
+      <Styled.Backdrop onClick={onClose}>
+        <Dialog
+          onClick={(event: { stopPropagation: () => any }) => event.stopPropagation()}
+          onClose={onClose}
+          setTimeEntries={setTimeEntries}
+          timeEntries={timeEntries}
+        />
+      </Styled.Backdrop>,
+      document.body,
+    )
+  ) : (
+    <></>
   );

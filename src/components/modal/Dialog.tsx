@@ -15,8 +15,8 @@ interface DialogProps {
 export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) => {
   const [newTimeEntry, setNewTimeEntry] = useState<any>({});
   const [isFormValid, setIsFormValid] = useState<boolean>();
-  const [validityOfInputs, setValidityOfInputs] = useState({});
-  const formRef = useRef<HTMLFormElement>();
+  const [validityOfInputs, setValidityOfInputs] = useState<any>({});
+  const formRef = useRef();
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setIsFormValid(formRef.current?.checkValidity());

@@ -5,7 +5,7 @@ import { Subheader } from "../header/subheader/Subheader";
 import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
 
-export const TimeEntries = (props) => {
+export const TimeEntries = (props: { timeEntries: any }) => {
   const [timeEntries, setTimeEntries] = useState(props.timeEntries);
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
 
@@ -29,19 +29,29 @@ export const TimeEntries = (props) => {
           (a: any, b: any) =>
             new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime(),
         )
-        .map((timeEntry: any, i) => {
-          const currentDate = new Date(timeEntries[i].startTimestamp).toLocaleDateString();
-          const previousDate = new Date(timeEntries[i - 1]?.startTimestamp).toLocaleDateString();
-          const isNewDate = currentDate !== previousDate;
+        .map(
+          (
+            timeEntry: {
+              client: string;
+              id: number;
+              startTimestamp: string;
+              stopTimestamp: string;
+            },
+            i: number,
+          ) => {
+            const currentDate = new Date(timeEntries[i].startTimestamp).toLocaleDateString();
+            const previousDate = new Date(timeEntries[i - 1]?.startTimestamp).toLocaleDateString();
+            const isNewDate = currentDate !== previousDate;
 
-          return (
-            <React.Fragment key={timeEntry.id}>
-              {isNewDate && <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />}
+            return (
+              <React.Fragment key={timeEntry.id}>
+                {isNewDate && <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />}
 
-              <TimeEntry timeEntry={timeEntry} setTimeEntries={setTimeEntries} />
-            </React.Fragment>
-          );
-        })}
+                <TimeEntry timeEntry={timeEntry} setTimeEntries={setTimeEntries} />
+              </React.Fragment>
+            );
+          },
+        )}
     </>
   );
 };

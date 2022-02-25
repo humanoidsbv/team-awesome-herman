@@ -7,7 +7,7 @@ export const Backdrop = styled.div`
   height: 100%;
   justify-content: center;
   left: 50%;
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
