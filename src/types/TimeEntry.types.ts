@@ -1,4 +1,4 @@
-export interface ITimeEntry {
+export interface TimeEntryProps {
   activity?: string;
   date?: string;
   timeTo?: string;

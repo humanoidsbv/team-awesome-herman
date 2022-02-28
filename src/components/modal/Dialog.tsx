@@ -5,8 +5,8 @@ import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
 
 import * as Styled from "./Modal.styled";
-import * as Types from "../shared/TimeEntry.types";
-import { ITimeEntry } from "../shared/TimeEntry.types";
+import * as Types from "../../types/TimeEntry.types";
+import { ITimeEntry } from "../../types/TimeEntry.types";
 
 interface DialogProps {
   onClose: () => void;

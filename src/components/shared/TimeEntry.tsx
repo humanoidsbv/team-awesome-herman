@@ -3,12 +3,13 @@ import DeleteIconWrapper from "../../../public/assets/icons/bin.svg";
 import { deleteTimeEntry } from "../../services/time-entry-api/delete-time-entry";
 
 import * as Styled from "./TimeEntry.styled";
-import { ITimeEntry } from "./TimeEntry.types";
 
-interface TimeEntryProps {
-  timeEntry: ITimeEntry;
-  setTimeEntries: React.Dispatch<React.SetStateAction<ITimeEntry[]>>;
-}
+import { TimeEntryProps } from "../../types/TimeEntry.types";
+
+// interface TimeEntryProps2 {
+//   timeEntry: TimeEntryProps;
+//   setTimeEntries: React.Dispatch<React.SetStateAction<TimeEntryProps[]>>;
+// }
 
 export const TimeEntry = ({
   timeEntry: { client, id, startTimestamp, stopTimestamp },
@@ -28,7 +29,7 @@ export const TimeEntry = ({
   const minutes = totalMinutes % 60;
 
   const removeTimeEntry = () => {
-    setTimeEntries((timeEntries: ITimeEntry[]) =>
+    setTimeEntries((timeEntries: TimeEntryProps[]) =>
       timeEntries.filter((entry: { id: number }) => entry.id !== id),
     );
     deleteTimeEntry(id);

@@ -9,7 +9,7 @@ import { NotFoundError } from "../src/errors/not-found-error";
 
 import GlobalStyle from "../src/styles/global";
 import { theme } from "../src/styles/theme";
-import { StoreContext } from "../src/StoreProvider";
+import { StoreProvider } from "../src/components/providers/StoreProvider";
 
 export const getServerSideProps = async () => {
   const timeEntries = await getTimeEntries();
@@ -30,12 +30,12 @@ const Homepage = ({ timeEntries }) => {
     <>
       <GlobalStyle />
       <ThemeProvider {...{ theme }}>
-        <StoreContext.Provider>
+        <StoreProvider>
           <Header />
           <PageContainer>
             <TimeEntries timeEntries={timeEntries} />
           </PageContainer>
-        </StoreContext.Provider>
+        </StoreProvider>
       </ThemeProvider>
     </>
   );

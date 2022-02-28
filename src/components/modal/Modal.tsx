@@ -1,6 +1,6 @@
 import React from "react";
 import { createPortal } from "react-dom";
-import { ITimeEntry } from "../shared/TimeEntry.types";
+import { ITimeEntry } from "../../types/TimeEntry.types";
 
 import { Dialog } from "./Dialog";
 
