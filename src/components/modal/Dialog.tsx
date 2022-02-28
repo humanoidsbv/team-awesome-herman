@@ -5,15 +5,17 @@ import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
 
 import * as Styled from "./Modal.styled";
+import * as Types from "../shared/TimeEntry.types";
+import { ITimeEntry } from "../shared/TimeEntry.types";
 
 interface DialogProps {
   onClose: () => void;
-  setTimeEntries: React.Dispatch<React.SetStateAction<{}>>;
-  timeEntries: {}[];
+  setTimeEntries: React.Dispatch<React.SetStateAction<ITimeEntry[]>>;
+  timeEntries: ITimeEntry[];
 }
 
 export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) => {
-  const [newTimeEntry, setNewTimeEntry] = useState<any>({});
+  const [newTimeEntry, setNewTimeEntry] = useState<Types.ITimeEntry>({} as Types.ITimeEntry);
   const [isFormValid, setIsFormValid] = useState<boolean>();
   const [validityOfInputs, setValidityOfInputs] = useState<any>({});
   const formRef = useRef();
@@ -24,7 +26,7 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const startTimestamp = new Date(newTimeEntry.timeFrom + " " + newTimeEntry.date).toISOString();
     const stopTimestamp = new Date(newTimeEntry.timeTo + " " + newTimeEntry.date).toISOString();
 
@@ -37,8 +39,11 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
     delete newTimeEntryFormatted.timeFrom;
     delete newTimeEntryFormatted.timeTo;
 
-    setTimeEntries([...timeEntries, newTimeEntryFormatted]);
-    addTimeEntry(newTimeEntryFormatted);
+    const addedTimeEntry = await addTimeEntry(newTimeEntryFormatted);
+
+    if (addedTimeEntry) {
+      setTimeEntries([...timeEntries, addedTimeEntry]);
+    }
     setNewTimeEntry({});
   };
 
@@ -55,6 +60,7 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
         <input
           name="client"
           onChange={handleChange}
+          placeholder="Client"
           required
           type="text"
           value={newTimeEntry.client ?? ""}
@@ -64,6 +70,7 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
         <input
           name="activity"
           onChange={handleChange}
+          placeholder="Activity"
           required
           type="text"
           value={newTimeEntry.activity ?? ""}

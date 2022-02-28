@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { Modal } from "../modal/Modal";
 import { Subheader } from "../header/subheader/Subheader";
 import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
+import { ITimeEntry } from "../shared/TimeEntry.types";
 
-export const TimeEntries = (props: { timeEntries: any }) => {
+export const TimeEntries = (props: { timeEntries: ITimeEntry[] }) => {
   const [timeEntries, setTimeEntries] = useState(props.timeEntries);
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
 
