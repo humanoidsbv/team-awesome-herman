@@ -6,11 +6,6 @@ import * as Styled from "./TimeEntry.styled";
 
 import { TimeEntryProps } from "../../types/TimeEntry.types";
 
-// interface TimeEntryProps2 {
-//   timeEntry: TimeEntryProps;
-//   setTimeEntries: React.Dispatch<React.SetStateAction<TimeEntryProps[]>>;
-// }
-
 export const TimeEntry = ({
   timeEntry: { client, id, startTimestamp, stopTimestamp },
   setTimeEntries,
