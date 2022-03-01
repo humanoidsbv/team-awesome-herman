@@ -6,16 +6,18 @@ import { DialogHeader } from "./DialogHeader";
 
 import * as Styled from "./Modal.styled";
 import * as Types from "../../types/TimeEntry.types";
-import { ITimeEntry } from "../../types/TimeEntry.types";
+import { TimeEntryProps } from "../../types/TimeEntry.types";
 
 interface DialogProps {
   onClose: () => void;
-  setTimeEntries: React.Dispatch<React.SetStateAction<ITimeEntry[]>>;
-  timeEntries: ITimeEntry[];
+  setTimeEntries: React.Dispatch<React.SetStateAction<TimeEntryProps[]>>;
+  timeEntries: TimeEntryProps[];
 }
 
 export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) => {
-  const [newTimeEntry, setNewTimeEntry] = useState<Types.ITimeEntry>({} as Types.ITimeEntry);
+  const [newTimeEntry, setNewTimeEntry] = useState<Types.TimeEntryProps>(
+    {} as Types.TimeEntryProps,
+  );
   const [isFormValid, setIsFormValid] = useState<boolean>();
   const [validityOfInputs, setValidityOfInputs] = useState<any>({});
   const formRef = useRef();
