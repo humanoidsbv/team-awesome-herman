@@ -1,17 +1,16 @@
 import styled from "styled-components";
 
 export const Header = styled.header<{ isMenuVisible: boolean }>`
+  align-items: center;
+  background-color: ${({ theme }) => theme.colorBluePrimary500};
   display: flex;
-  flex-direction: column;
-  overflow: scroll;
-  position: ${({ isMenuVisible }) => (isMenuVisible ? "fixed" : "")};
-  width: 100%;
+  flex-direction: ${({ isMenuVisible }) => (isMenuVisible ? "column" : "row")};
+  height: ${({ isMenuVisible }) => (isMenuVisible ? "100vh" : "70px")};
+  justify-content: start;
 
-  @media only screen and (${({ theme }) => theme.tablet}) {
-    position: ${({ isMenuVisible }) => (isMenuVisible ? "fixed" : "")};
-  }
-
-  @media screen and (${({ theme }) => theme.tabletMaxWidth}) {
-    position: fixed;
+  @media only screen and (${({ theme }) => theme.desktop}) {
+    align-items: center;
+    flex-direction: row;
+    height: 70px;
   }
 `;

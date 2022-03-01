@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 
-export const Button = styled.button<{ style?: "primary" | "secondary" }>`
+export const Button = styled.button<{ variety: "primary" | "secondary" | undefined }>`
   align-items: center;
   background-color: ${({ theme }) => theme.colorGreenPrimary500};
   border-radius: 4px;
-  border: none;
+  border: 1px solid ${({ theme }) => theme.shadeGrey300};
   color: white;
   column-gap: 18px;
   cursor: pointer;
@@ -13,9 +13,19 @@ export const Button = styled.button<{ style?: "primary" | "secondary" }>`
   height: 50px;
   justify-content: center;
 
-  ${({ style }) =>
-    style === "secondary" &&
+  ${({ variety }) =>
+    variety === "secondary" &&
     css`
       background-color: ${({ theme }) => theme.shadeGrey100};
-    `};
+      color: ${({ theme }) => theme.shadeGrey700};
+    `}
+
+  ${({ disabled }) =>
+    disabled === true &&
+    css`
+      background-color: ${({ theme }) => theme.shadeGrey100};
+      color: ${({ theme }) => theme.shadeGrey700};
+      cursor: not-allowed;
+      border: 2px solid red;
+    `}
 `;

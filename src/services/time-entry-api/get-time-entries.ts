@@ -1,6 +1,6 @@
-import { NotFoundError } from "../errors/not-found-error";
+import { NotFoundError } from "../../errors/not-found-error";
 
-export async function getTimeEntries() {
+export const getTimeEntries = async () => {
   return fetch("http://localhost:3004/time-entries/", {
     method: "GET",
     headers: {
@@ -15,4 +15,4 @@ export async function getTimeEntries() {
     })
     .then((response) => response.json())
     .catch((error) => error);
-}
+};

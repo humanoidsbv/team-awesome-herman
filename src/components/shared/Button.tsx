@@ -3,15 +3,16 @@ import * as Styled from "./Button.styled";
 import Icon from "../../../public/assets/icons/Plus-Icon.svg";
 
 type ButtonProps = {
-  icon: boolean;
+  icon?: boolean;
   label: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  style?: "primary" | "secondary";
+  variety?: "primary" | "secondary" | undefined;
+  disabled?: boolean;
 };
 
-export const Button = ({ icon, label, onClick, style }: ButtonProps) => {
+export const Button = ({ disabled, icon, label, onClick, variety }: ButtonProps) => {
   return (
-    <Styled.Button {...{ onClick, style }}>
+    <Styled.Button onClick={onClick} variety={variety} disabled={disabled}>
       {icon && <Icon fill="white" />}
       {label}
     </Styled.Button>

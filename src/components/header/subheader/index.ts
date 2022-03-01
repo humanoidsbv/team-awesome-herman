@@ -1,1 +1,1 @@
-export { SubHeader } from "./Subheader";
+export { Subheader } from "./Subheader";

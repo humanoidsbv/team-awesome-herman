@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const Subheader = styled.div`
-  background-color: #ffffff;
+  background-color: #fff;
+  border-bottom: 1px solid ${({ theme }) => theme.shadeGrey300};
   display: flex;
   flex-direction: column;
   font-family: ${({ theme }) => theme.fontPrimary};
+  height: 120px;
   padding: 20px;
   row-gap: 10px;
-  border-bottom: 1px solid ${({ theme }) => theme.shadeGrey300};
-  width: 100%;
-  height: 120px;
+  width: 100vw;
 
   @media only screen and (${({ theme }) => theme.tablet}) {
     align-items: center;
@@ -24,7 +24,7 @@ export const Subheader = styled.div`
   }
 `;
 
-export const Timesheets = styled.div`
+export const TitleAndStatistic = styled.div`
   display: flex;
   justify-content: space-between;
 
@@ -47,7 +47,7 @@ export const Title = styled.div`
   font-size: ${({ theme }) => theme.fontSizeBody};
 `;
 
-export const Entries = styled.div`
+export const Statistic = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.shadeGrey700};
   display: flex;

@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-export const TimeEntries = styled.div`
-  max-width: 1000px;
-  width: 100%;
-`;
-
 export const TimeEntryHeader = styled.div`
   color: ${({ theme }) => theme.shadeGrey700};
   display: flex;
@@ -20,4 +15,8 @@ export const AddEntryButton = styled.div`
     margin-top: 20px;
     padding: 0 20px;
   }
+`;
+
+export const Modal = styled.div`
+  position: absolute;
 `;
