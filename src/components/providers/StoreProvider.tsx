@@ -9,7 +9,7 @@ interface StoreContextProps {
   ];
 }
 
-export const StoreContext = createContext<StoreContextProps>(null);
+export const StoreContext = createContext<StoreContextProps>({} as StoreContextProps);
 
 interface StoreProviderProps {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ interface StoreProviderProps {
 
 export function StoreProvider({ children }: StoreProviderProps) {
   const store = {
-    timeEntries: useState([]),
+    timeEntries: useState<Types.TimeEntryProps[]>([]),
   };
 
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;

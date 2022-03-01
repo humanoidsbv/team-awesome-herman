@@ -10,22 +10,27 @@ import { NotFoundError } from "../src/errors/not-found-error";
 import GlobalStyle from "../src/styles/global";
 import { theme } from "../src/styles/theme";
 import { StoreProvider } from "../src/components/providers/StoreProvider";
+import { TimeEntryProps } from "../src/types/TimeEntry.types";
+
+export interface InitialTimeEntryProps {
+  initialTimeEntries: TimeEntryProps[];
+}
 
 export const getServerSideProps = async () => {
-  const timeEntries = await getTimeEntries();
+  const initialTimeEntries = await getTimeEntries();
 
-  if (timeEntries instanceof NotFoundError) {
+  if (initialTimeEntries instanceof NotFoundError) {
     return;
   }
 
   return {
     props: {
-      timeEntries,
+      initialTimeEntries,
     },
   };
 };
 
-const Homepage = ({ timeEntries }) => {
+const Homepage = ({ initialTimeEntries }: InitialTimeEntryProps) => {
   return (
     <>
       <GlobalStyle />
@@ -33,7 +38,7 @@ const Homepage = ({ timeEntries }) => {
         <StoreProvider>
           <Header />
           <PageContainer>
-            <TimeEntries timeEntries={timeEntries} />
+            <TimeEntries initialTimeEntries={initialTimeEntries} />
           </PageContainer>
         </StoreProvider>
       </ThemeProvider>

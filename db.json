@@ -8,13 +8,6 @@
       "stopTimestamp": "2021-09-24T19:42:00.000Z"
     },
     {
-      "client": "Port of Rotterdam",
-      "id": 2,
-      "activity": "Design",
-      "startTimestamp": "2021-09-25T18:59:00.000Z",
-      "stopTimestamp": "2021-09-25T20:00:00.000Z"
-    },
-    {
       "client": "Hike One",
       "id": 3,
       "activity": "Development",

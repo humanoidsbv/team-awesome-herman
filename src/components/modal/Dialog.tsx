@@ -1,26 +1,38 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext, LegacyRef } from "react";
 
 import { addTimeEntry } from "../../services/time-entry-api/add-time-entry";
 import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
+import { StoreContext } from "../providers/StoreProvider";
 
 import * as Styled from "./Modal.styled";
 import * as Types from "../../types/TimeEntry.types";
-import { TimeEntryProps } from "../../types/TimeEntry.types";
 
 interface DialogProps {
+  onClick: () => void;
   onClose: () => void;
-  setTimeEntries: React.Dispatch<React.SetStateAction<TimeEntryProps[]>>;
-  timeEntries: TimeEntryProps[];
 }
 
-export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) => {
+interface ValidityOfInputsProps {
+  client: boolean;
+  activity: boolean;
+  date: boolean;
+  timeTo: boolean;
+  timeFrom: boolean;
+}
+
+export const Dialog = ({ onClose }: DialogProps) => {
   const [newTimeEntry, setNewTimeEntry] = useState<Types.TimeEntryProps>(
     {} as Types.TimeEntryProps,
   );
   const [isFormValid, setIsFormValid] = useState<boolean>();
-  const [validityOfInputs, setValidityOfInputs] = useState<any>({});
-  const formRef = useRef();
+  const [validityOfInputs, setValidityOfInputs] = useState<ValidityOfInputsProps>(
+    {} as ValidityOfInputsProps,
+  );
+  const formRef = useRef<HTMLFormElement | null>(null);
+
+  const state = useContext(StoreContext);
+  const [timeEntries, setTimeEntries] = state.timeEntries;
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setIsFormValid(formRef.current?.checkValidity());
@@ -46,7 +58,7 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
     if (addedTimeEntry) {
       setTimeEntries([...timeEntries, addedTimeEntry]);
     }
-    setNewTimeEntry({});
+    setNewTimeEntry({} as Types.TimeEntryProps);
   };
 
   return (
@@ -57,6 +69,7 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
       role="dialog"
     >
       <DialogHeader onClose={onClose} />
+
       <form ref={formRef}>
         <label>Client</label>
         <input
