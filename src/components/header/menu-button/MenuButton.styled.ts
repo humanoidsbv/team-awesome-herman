@@ -4,9 +4,9 @@ export const MenuButton = styled.button<{ isMenuVisible: boolean }>`
   background-color: transparent;
   border: none;
   margin-top: 2px;
-  padding: ${({ isMenuVisible }) => (isMenuVisible ? "0" : "20px")};
+  padding: ${({ isMenuVisible }) => (isMenuVisible ? "0" : "30px")};
   position: ${({ isMenuVisible }) => (isMenuVisible ? "absolute" : "none")};
-  right: ${({ isMenuVisible }) => (isMenuVisible ? "20px" : "none")};
+  right: ${({ isMenuVisible }) => (isMenuVisible ? "30px" : "none")};
   top: ${({ isMenuVisible }) => (isMenuVisible ? "20px" : "none")};
 
   &:hover {

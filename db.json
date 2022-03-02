@@ -22,11 +22,62 @@
       "stopTimestamp": "2021-09-22T20:00:00.000Z"
     },
     {
-      "client": "Belastindienst",
-      "id": 6,
-      "activity": "Development",
-      "startTimestamp": "2021-09-24T18:59:00.000Z",
-      "stopTimestamp": "2021-09-24T20:00:00.000Z"
+      "date": "2022-03-03",
+      "client": "Test",
+      "activity": "Test",
+      "startTimestamp": "2022-03-03T12:24:00.000Z",
+      "stopTimestamp": "2022-03-03T15:24:00.000Z",
+      "id": 5
+    }
+  ],
+  "team-members": [
+    {
+      "emailAddress": "amijs.breunesse@humanoids.nl",
+      "label": "Test",
+      "employer": "Koppert",
+      "role": "Front-end Developer",
+      "firstName": "Amijs",
+      "lastName": "Breunesse",
+      "startingDate": "2018-03-02"
+    },
+    {
+      "emailAddress": "herman.vulkers@humanoids.nl",
+      "label": "Test",
+      "employer": "Humanoids",
+      "role": "Front-end Developer",
+      "firstName": "Herman",
+      "lastName": "Vulkers",
+      "startingDate": "2022-03-02"
+    },
+    {
+      "emailAddress": "mark@overmars.nl",
+      "label": "Fiets",
+      "employer": "Ajax",
+      "role": "Directeur",
+      "firstName": "Mark",
+      "lastName": "Overmars",
+      "startingDate": "2022-03-02",
+      "id": 3
+    },
+    {
+      "firstName": "Joe",
+      "lastName": "Biden",
+      "emailAddress": "joe.biden@humanoids.nl",
+      "label": "Test",
+      "employer": "United States",
+      "role": "President",
+      "startingDate": "2021-12-30",
+      "id": 4
+    },
+    {
+      "label": "Gaat dit goed?",
+      "firstName": "Herman de Tweede ",
+      "lastName": "Vulkers",
+      "emailAddress": "hermanvulkers@gmail.com",
+      "employer": "Humanoids",
+      "role": "Developer",
+      "startingDate": "2022-03-02",
+      "id": 5
     }
   ]
 }

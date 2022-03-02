@@ -1,26 +1,18 @@
 import React from "react";
 import { createPortal } from "react-dom";
 
-import { Dialog } from "./Dialog";
-
 import * as Styled from "./Modal.styled";
 
 interface ModalProps {
+  children: React.ReactNode | React.ReactNode[];
+  dialogHeaderTitle: string;
   isActive: boolean;
   onClose: () => void;
 }
 
-export const Modal = ({ isActive, onClose }: ModalProps) =>
+export const Modal = ({ children, dialogHeaderTitle, isActive, onClose }: ModalProps) =>
   isActive ? (
-    createPortal(
-      <Styled.Backdrop onClick={onClose}>
-        <Dialog
-          onClick={(event: { stopPropagation: () => void }) => event.stopPropagation()}
-          onClose={onClose}
-        />
-      </Styled.Backdrop>,
-      document.body,
-    )
+    createPortal(<Styled.Backdrop onClick={onClose}>{children}</Styled.Backdrop>, document.body)
   ) : (
     <></>
   );

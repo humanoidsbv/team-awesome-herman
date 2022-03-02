@@ -1,15 +1,16 @@
 import * as Styled from "../Subheader.styled";
 
-interface timeEntriesLengthProps {
-  timeEntriesLength: number;
+interface TitleAndSubtitleProps {
+  title: string;
+  subtitle: string;
 }
 
-export const TitleAndStatistic = ({ timeEntriesLength }: timeEntriesLengthProps) => {
+export const TitleAndSubtitle = ({ title, subtitle }: TitleAndSubtitleProps) => {
   return (
-    <Styled.TitleAndStatistic>
-      <Styled.Title>Timesheets</Styled.Title>
+    <Styled.TitleAndSubtitle>
+      <Styled.Title>{title}</Styled.Title>
       <Styled.Divider>|</Styled.Divider>
-      <Styled.Statistic>{timeEntriesLength} Entries</Styled.Statistic>
-    </Styled.TitleAndStatistic>
+      <Styled.Subtitle>{subtitle}</Styled.Subtitle>
+    </Styled.TitleAndSubtitle>
   );
 };

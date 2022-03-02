@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import * as Styled from "./Menu.styled";
 
 interface MenuProps {
@@ -8,10 +10,14 @@ export const Menu = ({ isMenuVisible }: MenuProps): React.ReactElement => {
   return (
     <Styled.MenuList isMenuVisible={isMenuVisible}>
       <li>
-        <a href="/">Timesheets</a>
+        <Link href="/">
+          <a>Timesheets</a>
+        </Link>
       </li>
       <li>
-        <a href="/">Team members</a>
+        <Link href="/team-members">
+          <a>Team members</a>
+        </Link>
       </li>
       <li>
         <a href="/">Projects</a>

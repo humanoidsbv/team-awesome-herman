@@ -2,24 +2,26 @@ import { useContext } from "react";
 
 import { Button } from "../../shared/Button";
 import { StoreContext } from "../../providers/StoreProvider";
-import { TitleAndStatistic } from "./title-and-statistic/TitleAndStatistic";
+import { TitleAndSubtitle } from "./title-and-statistic/TitleAndStatistic";
 
 import * as Styled from "./Subheader.styled";
 
 interface SubheaderProps {
   setIsModalActive: (arg: boolean) => void;
+  title: string;
+  subtitle: string;
+  buttonLabel: string;
 }
 
-export const Subheader = ({ setIsModalActive }: SubheaderProps) => {
+export const Subheader = ({ setIsModalActive, title, subtitle, buttonLabel }: SubheaderProps) => {
   const state = useContext(StoreContext);
-  const [timeEntries] = state.timeEntries;
 
   return (
     <Styled.Subheader>
-      <TitleAndStatistic timeEntriesLength={timeEntries.length} />
+      <TitleAndSubtitle title={title} subtitle={subtitle} />
       <Button
         icon={true}
-        label="New time entry"
+        label={buttonLabel}
         onClick={() => setIsModalActive(true)}
         variety="primary"
       />

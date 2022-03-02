@@ -1,19 +1,21 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
+
+import { DialogNewTimeEntry } from "../modal/DialogNewTimeEntry";
 
 import { Modal } from "../modal/Modal";
-import { Subheader } from "../header/subheader/Subheader";
 import { StoreContext } from "../providers/StoreProvider";
+import { Subheader } from "../header/subheader/Subheader";
 import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
 
-import { TimeEntryProps } from "../../types/TimeEntry.types";
 import { InitialTimeEntryProps } from "../../../pages/index";
+import { TimeEntryProps } from "../../types/TimeEntry.types";
 
 export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
   const state = useContext(StoreContext);
 
-  const [timeEntries, setTimeEntries] = state.timeEntries;
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
+  const [timeEntries, setTimeEntries] = state.timeEntries;
 
   const handleClose = () => {
     setIsModalActive(false);
@@ -23,11 +25,27 @@ export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
     setTimeEntries(initialTimeEntries);
   }, []);
 
+  const buttonLabel = "Add new time entry";
+  const dialogHeaderTitle = "New time entry";
+  const subtitle = timeEntries.length + " entries";
+  const title = "Time entries";
+
   return (
     <>
-      <Modal isActive={isModalActive} onClose={handleClose} />
+      <Subheader
+        buttonLabel={buttonLabel}
+        setIsModalActive={setIsModalActive}
+        subtitle={subtitle}
+        title={title}
+      />
 
-      <Subheader setIsModalActive={setIsModalActive} />
+      <Modal isActive={isModalActive} onClose={handleClose} dialogHeaderTitle={dialogHeaderTitle}>
+        <DialogNewTimeEntry
+          onClick={(event) => event.stopPropagation()}
+          onClose={handleClose}
+          dialogHeaderTitle={dialogHeaderTitle}
+        />
+      </Modal>
 
       {timeEntries
         .sort(

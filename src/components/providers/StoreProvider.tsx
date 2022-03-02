@@ -1,11 +1,16 @@
 import React, { createContext, useState } from "react";
 
-import * as Types from "../../types/TimeEntry.types";
+import { TimeEntryProps } from "../../types/TimeEntry.types";
+import { TeamMemberProps } from "../../types/TeamMember.types";
 
 interface StoreContextProps {
   timeEntries: [
-    timeEntries: Types.TimeEntryProps[],
-    setTimeEntries: React.Dispatch<React.SetStateAction<Types.TimeEntryProps[]>>,
+    timeEntries: TimeEntryProps[],
+    setTimeEntries: React.Dispatch<React.SetStateAction<TimeEntryProps[]>>,
+  ];
+  teamMembers: [
+    teamMembers: TeamMemberProps[],
+    setTeamMembers: React.Dispatch<React.SetStateAction<TeamMemberProps[]>>,
   ];
 }
 
@@ -17,7 +22,8 @@ interface StoreProviderProps {
 
 export function StoreProvider({ children }: StoreProviderProps) {
   const store = {
-    timeEntries: useState<Types.TimeEntryProps[]>([]),
+    timeEntries: useState<TimeEntryProps[]>([]),
+    teamMembers: useState<TeamMemberProps[]>([]),
   };
 
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;

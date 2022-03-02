@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: #F5F7F9; 
   }
 
+  h5 {
+    font-size: 20px;
+  }
+
   @font-face {
     font-family: "Bello";
     src: url("../../public/assets/fonts/bello-script.ttf") format("ttf");

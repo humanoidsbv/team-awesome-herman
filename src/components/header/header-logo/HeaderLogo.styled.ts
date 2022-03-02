@@ -8,7 +8,7 @@ export const Container = styled.div`
   flex-grow: 1;
   font-family: ${({ theme }) => theme.fontSecondary};
   font-size: 26px;
-  margin: 1rem;
+  margin: 30px;
 
   @media only screen and (min-width: 1024px) {
     flex-grow: 0;

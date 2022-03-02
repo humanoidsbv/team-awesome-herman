@@ -1,38 +1,41 @@
-import React, { useState, useRef, useContext, LegacyRef } from "react";
+import React, { PointerEvent, useContext, useRef, useState } from "react";
 
 import { addTimeEntry } from "../../services/time-entry-api/add-time-entry";
 import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
 import { StoreContext } from "../providers/StoreProvider";
 
-import * as Styled from "./Modal.styled";
+import * as Styled from "./DialogNewTimeEntry.styled";
 import * as Types from "../../types/TimeEntry.types";
 
-interface DialogProps {
-  onClick: () => void;
+interface DialogNewTimeEntryProps {
+  dialogHeaderTitle: string;
+  onClick: (event: PointerEvent) => void;
   onClose: () => void;
 }
 
 interface ValidityOfInputsProps {
-  client: boolean;
   activity: boolean;
+  client: boolean;
   date: boolean;
-  timeTo: boolean;
   timeFrom: boolean;
+  timeTo: boolean;
 }
 
-export const Dialog = ({ onClose }: DialogProps) => {
+export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTimeEntryProps) => {
+  const state = useContext(StoreContext);
+  const [timeEntries, setTimeEntries] = state.timeEntries;
+
   const [newTimeEntry, setNewTimeEntry] = useState<Types.TimeEntryProps>(
     {} as Types.TimeEntryProps,
   );
+
+  const formRef = useRef<HTMLFormElement | null>(null);
+
   const [isFormValid, setIsFormValid] = useState<boolean>();
   const [validityOfInputs, setValidityOfInputs] = useState<ValidityOfInputsProps>(
     {} as ValidityOfInputsProps,
   );
-  const formRef = useRef<HTMLFormElement | null>(null);
-
-  const state = useContext(StoreContext);
-  const [timeEntries, setTimeEntries] = state.timeEntries;
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setIsFormValid(formRef.current?.checkValidity());
@@ -68,29 +71,27 @@ export const Dialog = ({ onClose }: DialogProps) => {
       onClick={(event) => event.stopPropagation()}
       role="dialog"
     >
-      <DialogHeader onClose={onClose} />
+      <DialogHeader onClose={onClose} dialogHeaderTitle={dialogHeaderTitle} />
 
       <form ref={formRef}>
         <label>Client</label>
         <input
           name="client"
           onChange={handleChange}
-          placeholder="Client"
           required
           type="text"
           value={newTimeEntry.client ?? ""}
         />
-        {!validityOfInputs.client && <span>Required field.</span>}
+        {validityOfInputs.client === false && <span>Required field.</span>}
         <label>Activity</label>
         <input
           name="activity"
           onChange={handleChange}
-          placeholder="Activity"
           required
           type="text"
           value={newTimeEntry.activity ?? ""}
         />
-        {!validityOfInputs.activity && <span>Required field.</span>}
+        {validityOfInputs.activity === false && <span>Required field.</span>}
         <Styled.FormDateTime>
           <Styled.FormDate>
             <label>Date</label>
@@ -101,7 +102,7 @@ export const Dialog = ({ onClose }: DialogProps) => {
               type="date"
               value={newTimeEntry.date ?? ""}
             />
-            {!validityOfInputs.date && <span>Required field.</span>}
+            {validityOfInputs.date === false && <span>Required field.</span>}
           </Styled.FormDate>
           <Styled.FormTimeFrom>
             <label>From</label>
@@ -112,7 +113,7 @@ export const Dialog = ({ onClose }: DialogProps) => {
               type="time"
               value={newTimeEntry.timeFrom ?? ""}
             ></input>
-            {!validityOfInputs.timeFrom && <span>Required field.</span>}
+            {validityOfInputs.timeFrom === false && <span>Required field.</span>}
           </Styled.FormTimeFrom>
           <Styled.FormTimeTo>
             <label>To</label>
@@ -123,7 +124,7 @@ export const Dialog = ({ onClose }: DialogProps) => {
               type="time"
               value={newTimeEntry.timeTo ?? ""}
             ></input>
-            {!validityOfInputs.timeTo && <span>Required field.</span>}
+            {validityOfInputs.timeTo === false && <span>Required field.</span>}
           </Styled.FormTimeTo>
           <Styled.FormTimeDuration>Total Placeholder</Styled.FormTimeDuration>
         </Styled.FormDateTime>

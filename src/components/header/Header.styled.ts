@@ -7,6 +7,12 @@ export const Header = styled.header<{ isMenuVisible: boolean }>`
   flex-direction: ${({ isMenuVisible }) => (isMenuVisible ? "column" : "row")};
   height: ${({ isMenuVisible }) => (isMenuVisible ? "100vh" : "70px")};
   justify-content: start;
+  position: fixed;
+  width: 100%;
+
+  @media only screen and (${({ theme }) => theme.tablet}) {
+    position: static;
+  }
 
   @media only screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
