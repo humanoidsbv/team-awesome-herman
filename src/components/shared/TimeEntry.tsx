@@ -6,9 +6,9 @@ import DeleteIconWrapper from "../../../public/assets/icons/bin.svg";
 
 import { deleteTimeEntry } from "../../services/time-entry-api/delete-time-entry";
 
-import * as Styled from "./TimeEntry.styled";
-
 import { TimeEntryProps } from "../../types/TimeEntry.types";
+
+import * as Styled from "./TimeEntry.styled";
 
 interface ITimeEntry {
   timeEntry: TimeEntryProps;
@@ -16,10 +16,10 @@ interface ITimeEntry {
 
 export const TimeEntry = ({ timeEntry }: ITimeEntry) => {
   const { client, startTimestamp, stopTimestamp, id } = timeEntry;
-  const timeFormat = {
+  const timeFormat: Intl.DateTimeFormatOptions = {
     hour: "2-digit",
     minute: "2-digit",
-  } as const;
+  };
 
   const startDate = new Date(startTimestamp);
   const formattedStartTime = startDate.toLocaleTimeString("nl-NL", timeFormat);
