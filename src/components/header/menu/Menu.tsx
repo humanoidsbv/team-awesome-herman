@@ -10,14 +10,10 @@ export const Menu = ({ isMenuVisible }: MenuProps): React.ReactElement => {
   return (
     <Styled.MenuList isMenuVisible={isMenuVisible}>
       <li>
-        <Link href="/">
-          <a>Timesheets</a>
-        </Link>
+        <Link href="/">Timesheets</Link>
       </li>
       <li>
-        <Link href="/team-members">
-          <a>Team members</a>
-        </Link>
+        <Link href="/team-members">Team members</Link>
       </li>
       <li>
         <a href="/">Projects</a>

@@ -9,11 +9,10 @@ interface ITeamMember {
 }
 
 export const TeamMember = ({ teamMember }: ITeamMember) => {
-  const startDateObject = new Date(teamMember.startingDate);
-  const month = startDateObject.toLocaleString("default", { month: "long" });
-  const year = startDateObject.getFullYear();
-  const startDate = month + " " + year;
-
+  const startDate = new Date(teamMember.startingDate).toLocaleString("default", {
+    month: "long",
+    year: "numeric",
+  });
   const fullName = teamMember.firstName + " " + teamMember.lastName;
 
   return (
@@ -26,14 +25,14 @@ export const TeamMember = ({ teamMember }: ITeamMember) => {
         </Styled.NameAndFunction>
       </Styled.Profile>
       <Styled.EmployerAndStartingDate>
-        <Styled.EmployerAndTitle>
-          <Styled.Employer>{teamMember.employer}</Styled.Employer>
+        <Styled.Employer>
+          <Styled.EmployerName>{teamMember.employer}</Styled.EmployerName>
           <Styled.EmployerTitle>Employer</Styled.EmployerTitle>
-        </Styled.EmployerAndTitle>
-        <Styled.StartingDateAndTitle>
+        </Styled.Employer>
+        <Styled.Date>
           <Styled.StartingDate>{startDate}</Styled.StartingDate>
           <Styled.StartingDateTitle>Starting date</Styled.StartingDateTitle>
-        </Styled.StartingDateAndTitle>
+        </Styled.Date>
       </Styled.EmployerAndStartingDate>
     </Styled.TeamMember>
   );

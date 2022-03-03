@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { StoreContext } from "../providers/StoreProvider";
+import { StoreContext } from "../../providers/StoreProvider";
 
 import DeleteIconWrapper from "../../../public/assets/icons/bin.svg";
 

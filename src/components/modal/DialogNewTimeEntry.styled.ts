@@ -20,8 +20,8 @@ export const Dialog = styled.div`
   }
 
   input:invalid:not([value=""]) {
-    border: 2px solid red;
     background-color: pink;
+    border: 2px solid red;
   }
 
   label {

@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { DialogNewTimeEntry } from "../modal/DialogNewTimeEntry";
 
 import { Modal } from "../modal/Modal";
-import { StoreContext } from "../providers/StoreProvider";
+import { StoreContext } from "../../providers/StoreProvider";
 import { Subheader } from "../header/subheader/Subheader";
 import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
@@ -25,31 +25,26 @@ export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
     setTimeEntries(initialTimeEntries);
   }, []);
 
-  const buttonLabel = "Add new time entry";
-  const dialogHeaderTitle = "New time entry";
-  const subtitle = timeEntries.length + " entries";
-  const title = "Time entries";
-
   return (
     <>
       <Subheader
-        buttonLabel={buttonLabel}
+        buttonLabel={"Add new time entry"}
         setIsModalActive={setIsModalActive}
-        subtitle={subtitle}
-        title={title}
+        subtitle={timeEntries.length + " entries"}
+        title={"Time entries"}
       />
 
-      <Modal isActive={isModalActive} onClose={handleClose} dialogHeaderTitle={dialogHeaderTitle}>
+      <Modal isActive={isModalActive} onClose={handleClose}>
         <DialogNewTimeEntry
           onClick={(event) => event.stopPropagation()}
           onClose={handleClose}
-          dialogHeaderTitle={dialogHeaderTitle}
+          dialogHeaderTitle={"New time entry"}
         />
       </Modal>
 
       {timeEntries
         .sort(
-          (a: any, b: any) =>
+          (a: TimeEntryProps, b: TimeEntryProps) =>
             new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime(),
         )
         .map((timeEntry: TimeEntryProps, i: number) => {

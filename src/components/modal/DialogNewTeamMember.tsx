@@ -3,7 +3,7 @@ import React, { PointerEvent, useContext, useRef, useState } from "react";
 import { addTeamMember } from "../../services/team-member-api/add-team-member";
 import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
-import { StoreContext } from "../providers/StoreProvider";
+import { StoreContext } from "../../providers/StoreProvider";
 
 import * as Styled from "./DialogNewTeamMember.styled";
 import * as Types from "../../types/TeamMember.types";
@@ -14,12 +14,12 @@ interface DialogTeamMembersProps {
   onClose: () => void;
 }
 
-interface ValidityOfInputsProps {
-  firstName: boolean;
-  lastName: boolean;
+interface inputValidityProps {
   emailAddress: boolean;
-  label: boolean;
   employer: boolean;
+  firstName: boolean;
+  label: boolean;
+  lastName: boolean;
   role: boolean;
   startingDate: boolean;
 }
@@ -35,13 +35,11 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const [isFormValid, setIsFormValid] = useState<boolean>();
-  const [validityOfInputs, setValidityOfInputs] = useState<ValidityOfInputsProps>(
-    {} as ValidityOfInputsProps,
-  );
+  const [inputValidity, setInputValidity] = useState<inputValidityProps>({} as inputValidityProps);
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setIsFormValid(formRef.current?.checkValidity());
-    setValidityOfInputs({ ...validityOfInputs, [target.name]: target.checkValidity() });
+    setInputValidity({ ...inputValidity, [target.name]: target.checkValidity() });
     setNewTeamMember({ ...newTeamMember, [target.name]: target.value });
   };
 
@@ -51,6 +49,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
     if (addedTeamMember) {
       setTeamMembers([...teamMembers, addedTeamMember]);
     }
+
     setNewTeamMember({} as Types.TeamMemberProps);
   };
 
@@ -79,7 +78,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
               value={newTeamMember.firstName ?? ""}
             />
 
-            {validityOfInputs.firstName === false && <span>Required field.</span>}
+            {inputValidity.firstName === false && <span>Required field.</span>}
           </Styled.FirstName>
           <Styled.LastName>
             <label>Last name</label>
@@ -90,7 +89,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
               type="text"
               value={newTeamMember.lastName ?? ""}
             />
-            {validityOfInputs.lastName === false && <span>Required field.</span>}
+            {inputValidity.lastName === false && <span>Required field.</span>}
           </Styled.LastName>
         </Styled.Name>
 
@@ -102,7 +101,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
           type="email"
           value={newTeamMember.emailAddress ?? ""}
         />
-        {validityOfInputs.emailAddress === false && <span>Required field.</span>}
+        {inputValidity.emailAddress === false && <span>Required field.</span>}
 
         <label htmlFor="label">Label</label>
         <textarea
@@ -113,7 +112,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
           rows={3}
           value={newTeamMember.label ?? ""}
         ></textarea>
-        {validityOfInputs.label === false && <span>Required field.</span>}
+        {inputValidity.label === false && <span>Required field.</span>}
 
         <label>Employer</label>
         <input
@@ -123,7 +122,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
           type="text"
           value={newTeamMember.employer ?? ""}
         ></input>
-        {validityOfInputs.employer === false && <span>Required field.</span>}
+        {inputValidity.employer === false && <span>Required field.</span>}
         <Styled.RoleAndStartingDate>
           <Styled.Role>
             <label>Role</label>
@@ -134,7 +133,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
               type="text"
               value={newTeamMember.role ?? ""}
             ></input>
-            {validityOfInputs.role === false && <span>Required field.</span>}
+            {inputValidity.role === false && <span>Required field.</span>}
           </Styled.Role>
           <Styled.StartingDate>
             <label>Starting date</label>
@@ -145,7 +144,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
               type="date"
               value={newTeamMember.startingDate ?? ""}
             ></input>
-            {validityOfInputs.startingDate === false && <span>Required field.</span>}
+            {inputValidity.startingDate === false && <span>Required field.</span>}
           </Styled.StartingDate>
         </Styled.RoleAndStartingDate>
       </form>

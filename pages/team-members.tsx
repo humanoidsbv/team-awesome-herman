@@ -7,7 +7,7 @@ import { NotFoundError } from "../src/errors/not-found-error";
 
 import GlobalStyle from "../src/styles/global";
 import { theme } from "../src/styles/theme";
-import { StoreProvider } from "../src/components/providers/StoreProvider";
+import { StoreProvider } from "../src/providers/StoreProvider";
 import { TeamMemberProps } from "../src/types/TeamMember.types";
 import { TeamMembers } from "../src/components/team-members/TeamMembers";
 import { getTeamMembers } from "../src/services/team-member-api/get-team-members";

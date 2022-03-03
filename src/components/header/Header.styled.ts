@@ -10,6 +10,10 @@ export const Header = styled.header<{ isMenuVisible: boolean }>`
   position: fixed;
   width: 100%;
 
+  a:visited {
+    text-decoration: underline;
+  }
+
   @media only screen and (${({ theme }) => theme.tablet}) {
     position: static;
   }

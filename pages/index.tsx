@@ -9,7 +9,7 @@ import { NotFoundError } from "../src/errors/not-found-error";
 
 import GlobalStyle from "../src/styles/global";
 import { theme } from "../src/styles/theme";
-import { StoreProvider } from "../src/components/providers/StoreProvider";
+import { StoreProvider } from "../src/providers/StoreProvider";
 import { TimeEntryProps } from "../src/types/TimeEntry.types";
 
 export interface InitialTimeEntryProps {

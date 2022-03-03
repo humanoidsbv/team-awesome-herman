@@ -1,24 +1,22 @@
-import { useContext } from "react";
-
 import { Button } from "../../shared/Button";
-import { StoreContext } from "../../providers/StoreProvider";
-import { TitleAndSubtitle } from "./title-and-statistic/TitleAndStatistic";
 
 import * as Styled from "./Subheader.styled";
 
 interface SubheaderProps {
-  setIsModalActive: (arg: boolean) => void;
-  title: string;
-  subtitle: string;
   buttonLabel: string;
+  setIsModalActive: (arg: boolean) => void;
+  subtitle: string;
+  title: string;
 }
 
 export const Subheader = ({ setIsModalActive, title, subtitle, buttonLabel }: SubheaderProps) => {
-  const state = useContext(StoreContext);
-
   return (
     <Styled.Subheader>
-      <TitleAndSubtitle title={title} subtitle={subtitle} />
+      <Styled.TitleAndSubtitle>
+        <Styled.Title>{title}</Styled.Title>
+        <Styled.Divider>|</Styled.Divider>
+        <Styled.Subtitle>{subtitle}</Styled.Subtitle>
+      </Styled.TitleAndSubtitle>
       <Button
         icon={true}
         label={buttonLabel}

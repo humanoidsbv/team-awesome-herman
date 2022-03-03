@@ -68,7 +68,7 @@ export const EmployerAndStartingDate = styled.div`
   padding: 15px;
 `;
 
-export const EmployerAndTitle = styled.div`
+export const Employer = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 2px;
@@ -78,7 +78,7 @@ export const EmployerAndTitle = styled.div`
   }
 `;
 
-export const Employer = styled.div`
+export const EmployerName = styled.div`
   display: flex;
   flex-direction: column;
   font-size: ${({ theme }) => theme.fontSizeBody};
@@ -89,7 +89,7 @@ export const EmployerTitle = styled.div`
   font-size: ${({ theme }) => theme.fontSizeSmall};
 `;
 
-export const StartingDateAndTitle = styled.div`
+export const Date = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 2px;

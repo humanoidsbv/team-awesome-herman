@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 
-import { TimeEntryProps } from "../../types/TimeEntry.types";
-import { TeamMemberProps } from "../../types/TeamMember.types";
+import { TimeEntryProps } from "../types/TimeEntry.types";
+import { TeamMemberProps } from "../types/TeamMember.types";
 
 interface StoreContextProps {
   timeEntries: [
@@ -22,8 +22,8 @@ interface StoreProviderProps {
 
 export function StoreProvider({ children }: StoreProviderProps) {
   const store = {
-    timeEntries: useState<TimeEntryProps[]>([]),
     teamMembers: useState<TeamMemberProps[]>([]),
+    timeEntries: useState<TimeEntryProps[]>([]),
   };
 
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;
