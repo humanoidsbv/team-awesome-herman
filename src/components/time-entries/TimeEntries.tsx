@@ -1,61 +1,65 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
+
+import { DialogNewTimeEntry } from "../modal/DialogNewTimeEntry";
 
 import { Modal } from "../modal/Modal";
+import { StoreContext } from "../../providers/StoreProvider";
 import { Subheader } from "../header/subheader/Subheader";
-import { StoreContext } from "../providers/StoreProvider";
 import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
 
+import { InitialTimeEntryProps } from "../../../pages/index";
 import { TimeEntryProps } from "../../types/TimeEntry.types";
 
-export const TimeEntries = (props: { timeEntries: TimeEntryProps[] }) => {
+export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
   const state = useContext(StoreContext);
-  const [timeEntries, setTimeEntries] = state.timeEntries;
+
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
+  const [timeEntries, setTimeEntries] = state.timeEntries;
 
   const handleClose = () => {
     setIsModalActive(false);
   };
 
+  useEffect(() => {
+    setTimeEntries(initialTimeEntries);
+  }, []);
+
   return (
     <>
-      <Modal
-        isActive={isModalActive}
-        onClose={handleClose}
-        setTimeEntries={setTimeEntries}
-        timeEntries={timeEntries}
+      <Subheader
+        buttonLabel={`Add new time entry`}
+        setIsModalActive={setIsModalActive}
+        subtitle={`${timeEntries.length}` + `entries`}
+        title={`Time entries`}
       />
 
-      <Subheader setIsModalActive={setIsModalActive} timeEntries={timeEntries} />
+      <Modal isActive={isModalActive} onClose={handleClose}>
+        <DialogNewTimeEntry
+          onClick={(event) => event.stopPropagation()}
+          onClose={handleClose}
+          dialogHeaderTitle={`New time entry`}
+        />
+      </Modal>
 
       {timeEntries
         .sort(
-          (a: any, b: any) =>
+          (a: TimeEntryProps, b: TimeEntryProps) =>
             new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime(),
         )
-        .map(
-          (
-            timeEntry: {
-              client: string;
-              id: number;
-              startTimestamp: string;
-              stopTimestamp: string;
-            },
-            i: number,
-          ) => {
-            const currentDate = new Date(timeEntries[i].startTimestamp).toLocaleDateString();
-            const previousDate = new Date(timeEntries[i - 1]?.startTimestamp).toLocaleDateString();
-            const isNewDate = currentDate !== previousDate;
+        .map((timeEntry: TimeEntryProps, i: number) => {
+          const currentDate = new Date(timeEntries[i].startTimestamp).toLocaleDateString();
+          const previousDate = new Date(timeEntries[i - 1]?.startTimestamp).toLocaleDateString();
+          const isNewDate = currentDate !== previousDate;
 
-            return (
-              <React.Fragment key={timeEntry.id}>
-                {isNewDate && <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />}
+          return (
+            <React.Fragment key={timeEntry.id}>
+              {isNewDate && <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />}
 
-                <TimeEntry timeEntry={timeEntry} setTimeEntries={setTimeEntries} />
-              </React.Fragment>
-            );
-          },
-        )}
+              <TimeEntry timeEntry={timeEntry} />
+            </React.Fragment>
+          );
+        })}
     </>
   );
 };

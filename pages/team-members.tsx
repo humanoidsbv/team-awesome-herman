@@ -2,35 +2,34 @@ import { ThemeProvider } from "styled-components";
 
 import { Header } from "../src/components/header/Header";
 import { PageContainer } from "../src/components/shared/PageContainer";
-import { TimeEntries } from "../src/components/time-entries/TimeEntries";
 
-import { getTimeEntries } from "../src/services/time-entry-api/get-time-entries";
 import { NotFoundError } from "../src/errors/not-found-error";
 
 import GlobalStyle from "../src/styles/global";
 import { theme } from "../src/styles/theme";
 import { StoreProvider } from "../src/providers/StoreProvider";
-import { TimeEntryProps } from "../src/types/TimeEntry.types";
+import { TeamMemberProps } from "../src/types/TeamMember.types";
+import { TeamMembers } from "../src/components/team-members/TeamMembers";
+import { getTeamMembers } from "../src/services/team-member-api/get-team-members";
 
-export interface InitialTimeEntryProps {
-  initialTimeEntries: TimeEntryProps[];
+export interface InitialTeamMembersProps {
+  initialTeamMembers: TeamMemberProps[];
 }
 
 export const getServerSideProps = async () => {
-  const initialTimeEntries = await getTimeEntries();
-
-  if (initialTimeEntries instanceof NotFoundError) {
+  const initialTeamMembers = await getTeamMembers();
+  if (initialTeamMembers instanceof NotFoundError) {
     return;
   }
 
   return {
     props: {
-      initialTimeEntries,
+      initialTeamMembers,
     },
   };
 };
 
-const Homepage = ({ initialTimeEntries }: InitialTimeEntryProps) => {
+const Homepage = ({ initialTeamMembers }: InitialTeamMembersProps) => {
   return (
     <>
       <GlobalStyle />
@@ -38,7 +37,7 @@ const Homepage = ({ initialTimeEntries }: InitialTimeEntryProps) => {
         <StoreProvider>
           <Header />
           <PageContainer>
-            <TimeEntries initialTimeEntries={initialTimeEntries} />
+            <TeamMembers initialTeamMembers={initialTeamMembers} />
           </PageContainer>
         </StoreProvider>
       </ThemeProvider>

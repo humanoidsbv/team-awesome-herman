@@ -1,10 +1,10 @@
 export interface TimeEntryProps {
   activity?: string;
-  date?: string;
-  timeTo?: string;
-  timeFrom?: string;
   client: string;
+  date?: string;
   id: number;
   startTimestamp: string;
   stopTimestamp: string;
+  timeFrom?: string;
+  timeTo?: string;
 }

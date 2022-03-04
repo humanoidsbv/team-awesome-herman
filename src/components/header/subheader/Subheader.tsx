@@ -1,20 +1,25 @@
 import { Button } from "../../shared/Button";
-import { TitleAndStatistic } from "./title-and-statistic/TitleAndStatistic";
 
 import * as Styled from "./Subheader.styled";
 
 interface SubheaderProps {
+  buttonLabel: string;
   setIsModalActive: (arg: boolean) => void;
-  timeEntries: {}[];
+  subtitle: string;
+  title: string;
 }
 
-export const Subheader = ({ setIsModalActive, timeEntries }: SubheaderProps) => {
+export const Subheader = ({ setIsModalActive, title, subtitle, buttonLabel }: SubheaderProps) => {
   return (
     <Styled.Subheader>
-      <TitleAndStatistic timeEntriesLength={timeEntries.length} />
+      <Styled.SubheaderTitle>
+        <Styled.Title>{title}</Styled.Title>
+        <Styled.Divider>|</Styled.Divider>
+        <Styled.Subtitle>{subtitle}</Styled.Subtitle>
+      </Styled.SubheaderTitle>
       <Button
         icon={true}
-        label="New time entry"
+        label={buttonLabel}
         onClick={() => setIsModalActive(true)}
         variety="primary"
       />

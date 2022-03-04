@@ -1,30 +1,43 @@
-import React, { useState, useRef } from "react";
+import React, { PointerEvent, useContext, useRef, useState } from "react";
 
 import { addTimeEntry } from "../../services/time-entry-api/add-time-entry";
 import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
+import { StoreContext } from "../../providers/StoreProvider";
 
-import * as Styled from "./Modal.styled";
+import * as Styled from "./DialogNewTimeEntry.styled";
 import * as Types from "../../types/TimeEntry.types";
-import { TimeEntryProps } from "../../types/TimeEntry.types";
 
-interface DialogProps {
+interface DialogNewTimeEntryProps {
+  dialogHeaderTitle: string;
+  onClick: (event: PointerEvent) => void;
   onClose: () => void;
-  setTimeEntries: React.Dispatch<React.SetStateAction<TimeEntryProps[]>>;
-  timeEntries: TimeEntryProps[];
 }
 
-export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) => {
+interface inputValidityProps {
+  activity: boolean;
+  client: boolean;
+  date: boolean;
+  timeFrom: boolean;
+  timeTo: boolean;
+}
+
+export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTimeEntryProps) => {
+  const state = useContext(StoreContext);
+  const [timeEntries, setTimeEntries] = state.timeEntries;
+
   const [newTimeEntry, setNewTimeEntry] = useState<Types.TimeEntryProps>(
     {} as Types.TimeEntryProps,
   );
+
+  const formRef = useRef<HTMLFormElement | null>(null);
+
   const [isFormValid, setIsFormValid] = useState<boolean>();
-  const [validityOfInputs, setValidityOfInputs] = useState<any>({});
-  const formRef = useRef();
+  const [inputValidity, setInputValidity] = useState<inputValidityProps>({} as inputValidityProps);
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setIsFormValid(formRef.current?.checkValidity());
-    setValidityOfInputs({ ...validityOfInputs, [target.name]: target.checkValidity() });
+    setInputValidity({ ...inputValidity, [target.name]: target.checkValidity() });
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
   };
 
@@ -46,7 +59,8 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
     if (addedTimeEntry) {
       setTimeEntries([...timeEntries, addedTimeEntry]);
     }
-    setNewTimeEntry({});
+
+    setNewTimeEntry({} as Types.TimeEntryProps);
   };
 
   return (
@@ -56,28 +70,27 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
       onClick={(event) => event.stopPropagation()}
       role="dialog"
     >
-      <DialogHeader onClose={onClose} />
+      <DialogHeader onClose={onClose} dialogHeaderTitle={dialogHeaderTitle} />
+
       <form ref={formRef}>
         <label>Client</label>
         <input
           name="client"
           onChange={handleChange}
-          placeholder="Client"
           required
           type="text"
-          value={newTimeEntry.client ?? ""}
+          value={newTimeEntry.client}
         />
-        {!validityOfInputs.client && <span>Required field.</span>}
+        {inputValidity.client === false && <span>Required field.</span>}
         <label>Activity</label>
         <input
           name="activity"
           onChange={handleChange}
-          placeholder="Activity"
           required
           type="text"
-          value={newTimeEntry.activity ?? ""}
+          value={newTimeEntry.activity}
         />
-        {!validityOfInputs.activity && <span>Required field.</span>}
+        {inputValidity.activity === false && <span>Required field.</span>}
         <Styled.FormDateTime>
           <Styled.FormDate>
             <label>Date</label>
@@ -86,9 +99,9 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
               onChange={handleChange}
               required
               type="date"
-              value={newTimeEntry.date ?? ""}
+              value={newTimeEntry.date}
             />
-            {!validityOfInputs.date && <span>Required field.</span>}
+            {inputValidity.date === false && <span>Required field.</span>}
           </Styled.FormDate>
           <Styled.FormTimeFrom>
             <label>From</label>
@@ -97,9 +110,9 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
               onChange={handleChange}
               required
               type="time"
-              value={newTimeEntry.timeFrom ?? ""}
+              value={newTimeEntry.timeFrom}
             ></input>
-            {!validityOfInputs.timeFrom && <span>Required field.</span>}
+            {inputValidity.timeFrom === false && <span>Required field.</span>}
           </Styled.FormTimeFrom>
           <Styled.FormTimeTo>
             <label>To</label>
@@ -108,9 +121,9 @@ export const Dialog = ({ onClose, setTimeEntries, timeEntries }: DialogProps) =>
               onChange={handleChange}
               required
               type="time"
-              value={newTimeEntry.timeTo ?? ""}
+              value={newTimeEntry.timeTo}
             ></input>
-            {!validityOfInputs.timeTo && <span>Required field.</span>}
+            {inputValidity.timeTo === false && <span>Required field.</span>}
           </Styled.FormTimeTo>
           <Styled.FormTimeDuration>Total Placeholder</Styled.FormTimeDuration>
         </Styled.FormDateTime>

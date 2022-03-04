@@ -8,13 +8,6 @@
       "stopTimestamp": "2021-09-24T19:42:00.000Z"
     },
     {
-      "client": "Port of Rotterdam",
-      "id": 2,
-      "activity": "Design",
-      "startTimestamp": "2021-09-25T18:59:00.000Z",
-      "stopTimestamp": "2021-09-25T20:00:00.000Z"
-    },
-    {
       "client": "Hike One",
       "id": 3,
       "activity": "Development",
@@ -27,13 +20,66 @@
       "activity": "Development",
       "startTimestamp": "2021-09-22T13:00:00.000Z",
       "stopTimestamp": "2021-09-22T20:00:00.000Z"
+    }
+  ],
+  "team-members": [
+    {
+      "emailAddress": "amijs.breunesse@humanoids.nl",
+      "label": "Test",
+      "employer": "Koppert",
+      "role": "Front-end Developer",
+      "firstName": "Amijs",
+      "lastName": "Breunesse",
+      "startingDate": "2018-03-02"
     },
     {
-      "client": "Belastindienst",
-      "id": 6,
-      "activity": "Development",
-      "startTimestamp": "2021-09-24T18:59:00.000Z",
-      "stopTimestamp": "2021-09-24T20:00:00.000Z"
+      "emailAddress": "herman.vulkers@humanoids.nl",
+      "label": "Test",
+      "employer": "Humanoids",
+      "role": "Front-end Developer",
+      "firstName": "Herman",
+      "lastName": "Vulkers",
+      "startingDate": "2022-03-02"
+    },
+    {
+      "emailAddress": "mark@overmars.nl",
+      "label": "Fiets",
+      "employer": "Ajax",
+      "role": "Directeur",
+      "firstName": "Mark",
+      "lastName": "Overmars",
+      "startingDate": "2022-03-02",
+      "id": 3
+    },
+    {
+      "firstName": "Joe",
+      "lastName": "Biden",
+      "emailAddress": "joe.biden@humanoids.nl",
+      "label": "Test",
+      "employer": "United States",
+      "role": "President",
+      "startingDate": "2021-12-30",
+      "id": 4
+    },
+    {
+      "label": "Gaat dit goed?",
+      "firstName": "Herman de Tweede ",
+      "lastName": "Vulkers",
+      "emailAddress": "hermanvulkers@gmail.com",
+      "employer": "Humanoids",
+      "role": "Developer",
+      "startingDate": "2022-03-02",
+      "id": 5
+    },
+    {
+      "firstName": "ASdkaskd",
+      "lastName": "akldsad",
+      "emailAddress": "asd@ASkd.nl",
+      "label": "adkasd",
+      "employer": "aksdsa",
+      "role": "alsdlsad",
+      "startingDate": "2022-03-03",
+      "id": 6
     }
   ]
 }

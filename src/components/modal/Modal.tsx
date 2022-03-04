@@ -1,31 +1,17 @@
 import React from "react";
 import { createPortal } from "react-dom";
-import { ITimeEntry } from "../../types/TimeEntry.types";
-
-import { Dialog } from "./Dialog";
 
 import * as Styled from "./Modal.styled";
 
 interface ModalProps {
+  children: React.ReactNode | React.ReactNode[];
   isActive: boolean;
   onClose: () => void;
-  setTimeEntries: React.Dispatch<React.SetStateAction<ITimeEntry[]>>;
-  timeEntries: ITimeEntry[];
 }
 
-export const Modal = ({ isActive, onClose, setTimeEntries, timeEntries }: ModalProps) =>
+export const Modal = ({ children, isActive, onClose }: ModalProps) =>
   isActive ? (
-    createPortal(
-      <Styled.Backdrop onClick={onClose}>
-        <Dialog
-          onClick={(event: { stopPropagation: () => any }) => event.stopPropagation()}
-          onClose={onClose}
-          setTimeEntries={setTimeEntries}
-          timeEntries={timeEntries}
-        />
-      </Styled.Backdrop>,
-      document.body,
-    )
+    createPortal(<Styled.Backdrop onClick={onClose}>{children}</Styled.Backdrop>, document.body)
   ) : (
     <></>
   );

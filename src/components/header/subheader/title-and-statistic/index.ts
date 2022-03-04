@@ -1,1 +1,0 @@
-export { TitleAndStatistic } from "./TitleAndStatistic";

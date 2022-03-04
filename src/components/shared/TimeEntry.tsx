@@ -1,16 +1,25 @@
+import React, { useContext } from "react";
+
+import { StoreContext } from "../../providers/StoreProvider";
+
 import DeleteIconWrapper from "../../../public/assets/icons/bin.svg";
 
 import { deleteTimeEntry } from "../../services/time-entry-api/delete-time-entry";
 
-import * as Styled from "./TimeEntry.styled";
-
 import { TimeEntryProps } from "../../types/TimeEntry.types";
 
-export const TimeEntry = ({
-  timeEntry: { client, id, startTimestamp, stopTimestamp },
-  setTimeEntries,
-}: TimeEntryProps) => {
-  const timeFormat = { hour: "2-digit", minute: "2-digit" };
+import * as Styled from "./TimeEntry.styled";
+
+interface ITimeEntry {
+  timeEntry: TimeEntryProps;
+}
+
+export const TimeEntry = ({ timeEntry }: ITimeEntry) => {
+  const { client, startTimestamp, stopTimestamp, id } = timeEntry;
+  const timeFormat: Intl.DateTimeFormatOptions = {
+    hour: "2-digit",
+    minute: "2-digit",
+  };
 
   const startDate = new Date(startTimestamp);
   const formattedStartTime = startDate.toLocaleTimeString("nl-NL", timeFormat);
@@ -22,6 +31,9 @@ export const TimeEntry = ({
   const totalMinutes = Math.floor(diff / 1000 / 60);
   const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;
+
+  const state = useContext(StoreContext);
+  const [, setTimeEntries] = state.timeEntries;
 
   const removeTimeEntry = () => {
     setTimeEntries((timeEntries: TimeEntryProps[]) =>

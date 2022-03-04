@@ -4,7 +4,7 @@ export const Profile = styled.div`
   align-items: center;
   display: flex;
   margin-left: auto;
-  margin-right: 24px;
+  margin-right: 30px;
 
   @media only screen and (max-width: 1024px) {
     display: none;
@@ -30,7 +30,8 @@ export const DropdownArrow = styled.div`
   width: 10px;
 `;
 export const Avatar = styled.div`
-  background-image: url("assets/images/amijs.png");
+  background-image: url("assets/images/herman.jpg");
+  background-size: cover;
   border-radius: 30px;
   height: 35px;
   margin-left: 8px;
