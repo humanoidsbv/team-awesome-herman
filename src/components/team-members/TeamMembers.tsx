@@ -18,7 +18,7 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [teamMembers, setTeamMembers] = state.teamMembers;
 
-  const [filterProperty, setFilterProperty] = useState("firstName");
+  const [sortOption, setSortOption] = useState("firstName");
 
   const handleClose = () => {
     setIsModalActive(false);
@@ -29,7 +29,7 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
   }, []);
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setFilterProperty(target.value);
+    setSortOption(target.value);
   };
 
   return (
@@ -50,9 +50,9 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
       </Modal>
 
       <Styled.SortTeamMemberButton>
-        <label htmlFor="filterProperty">Filter:</label>
+        <label htmlFor="sortOption">Filter:</label>
 
-        <select name="filterProperty" id="filterProperty" onChange={handleChange}>
+        <select name="sortOption" id="sortOption" onChange={handleChange}>
           <option value="firstName">Name</option>
           <option value="employer">Employer</option>
           <option value="startingDate">Starting Date</option>
@@ -61,7 +61,7 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
 
       {teamMembers
         .sort((a: TeamMemberProps, b: TeamMemberProps) =>
-          a[filterProperty].localeCompare(b[filterProperty]),
+          a[sortOption].localeCompare(b[sortOption]),
         )
         .map((teamMember) => {
           return <TeamMember teamMember={teamMember} />;

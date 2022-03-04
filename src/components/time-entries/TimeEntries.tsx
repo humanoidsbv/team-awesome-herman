@@ -11,11 +11,15 @@ import { TimeEntryHeader } from "../shared/TimeEntryHeader";
 import { InitialTimeEntryProps } from "../../../pages/index";
 import { TimeEntryProps } from "../../types/TimeEntry.types";
 
+import * as Styled from "./TimeEntries.styled";
+
 export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
   const state = useContext(StoreContext);
 
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [timeEntries, setTimeEntries] = state.timeEntries;
+
+  const [clientFilter, setClientFilter] = useState();
 
   const handleClose = () => {
     setIsModalActive(false);
@@ -25,12 +29,19 @@ export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
     setTimeEntries(initialTimeEntries);
   }, []);
 
+  const clients = timeEntries.map((entry) => entry.client);
+  const uniqueClients = [...new Set(clients)];
+
+  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    setClientFilter(target.value);
+  };
+
   return (
     <>
       <Subheader
         buttonLabel={`Add new time entry`}
         setIsModalActive={setIsModalActive}
-        subtitle={`${timeEntries.length}` + `entries`}
+        subtitle={`${timeEntries.length}` + ` entries`}
         title={`Time entries`}
       />
 
@@ -42,7 +53,23 @@ export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
         />
       </Modal>
 
+      <Styled.ClientFilterButton>
+        <label htmlFor="clientFilter">Filter by client:</label>
+
+        <select name="clientFilter" id="clientFilter" onChange={handleChange}>
+          <option value="all">All clients</option>
+          {uniqueClients.map((client) => {
+            return <option value={client}>{client}</option>;
+          })}
+        </select>
+      </Styled.ClientFilterButton>
+
       {timeEntries
+        .filter((timeEntry) =>
+          clientFilter === undefined || clientFilter === "all"
+            ? timeEntry.client === timeEntry.client
+            : clientFilter === timeEntry.client,
+        )
         .sort(
           (a: TimeEntryProps, b: TimeEntryProps) =>
             new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime(),

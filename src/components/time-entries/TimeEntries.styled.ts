@@ -20,3 +20,13 @@ export const AddEntryButton = styled.div`
 export const Modal = styled.div`
   position: absolute;
 `;
+
+export const ClientFilterButton = styled.div`
+  align-self: flex-end;
+  margin-top: 25px;
+  font-family: ${({ theme }) => theme.fontPrimary};
+
+  label {
+    margin-right: 10px;
+  }
+`;
