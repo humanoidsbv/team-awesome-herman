@@ -63,21 +63,21 @@
     },
     {
       "label": "Gaat dit goed?",
-      "firstName": "Herman de Tweede ",
-      "lastName": "Vulkers",
+      "firstName": "Barack",
+      "lastName": "Obama",
       "emailAddress": "hermanvulkers@gmail.com",
-      "employer": "Humanoids",
+      "employer": "United States",
       "role": "Developer",
       "startingDate": "2022-03-02",
       "id": 5
     },
     {
-      "firstName": "ASdkaskd",
-      "lastName": "akldsad",
+      "firstName": "Bram",
+      "lastName": "Brink",
       "emailAddress": "asd@ASkd.nl",
-      "label": "adkasd",
-      "employer": "aksdsa",
-      "role": "alsdlsad",
+      "label": "Testje",
+      "employer": "Humanoids",
+      "role": "Developer",
       "startingDate": "2022-03-03",
       "id": 6
     }

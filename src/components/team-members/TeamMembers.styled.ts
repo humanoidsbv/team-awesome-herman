@@ -110,3 +110,13 @@ export const StartingDateTitle = styled.div`
   color: ${({ theme }) => theme.shadeGrey700};
   font-size: ${({ theme }) => theme.fontSizeSmall};
 `;
+
+export const SortTeamMemberButton = styled.div`
+  align-self: flex-end;
+  margin-top: 25px;
+  font-family: ${({ theme }) => theme.fontPrimary};
+
+  label {
+    margin-right: 10px;
+  }
+`;

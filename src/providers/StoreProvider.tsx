@@ -24,6 +24,7 @@ export function StoreProvider({ children }: StoreProviderProps) {
   const store = {
     teamMembers: useState<TeamMemberProps[]>([]),
     timeEntries: useState<TimeEntryProps[]>([]),
+    // filterProperty: useState(),
   };
 
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;
