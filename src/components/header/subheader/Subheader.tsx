@@ -12,11 +12,11 @@ interface SubheaderProps {
 export const Subheader = ({ setIsModalActive, title, subtitle, buttonLabel }: SubheaderProps) => {
   return (
     <Styled.Subheader>
-      <Styled.TitleAndSubtitle>
+      <Styled.SubheaderTitle>
         <Styled.Title>{title}</Styled.Title>
         <Styled.Divider>|</Styled.Divider>
         <Styled.Subtitle>{subtitle}</Styled.Subtitle>
-      </Styled.TitleAndSubtitle>
+      </Styled.SubheaderTitle>
       <Button
         icon={true}
         label={buttonLabel}

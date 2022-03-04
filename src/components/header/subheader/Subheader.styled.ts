@@ -24,7 +24,7 @@ export const Subheader = styled.div`
   }
 `;
 
-export const TitleAndSubtitle = styled.div`
+export const SubheaderTitle = styled.div`
   display: flex;
   justify-content: space-between;
 

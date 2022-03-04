@@ -26,17 +26,17 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
   return (
     <>
       <Subheader
-        buttonLabel={"New Humanoid"}
+        buttonLabel={`New Humanoid`}
         setIsModalActive={setIsModalActive}
-        subtitle={teamMembers.length + " Humanoids"}
-        title={"Team members"}
+        subtitle={`${teamMembers.length}` + `Humanoids`}
+        title={`Team members`}
       />
 
       <Modal isActive={isModalActive} onClose={handleClose}>
         <DialogNewTeamMember
           onClick={(event) => event.stopPropagation()}
           onClose={handleClose}
-          dialogHeaderTitle={"New Humanoid"}
+          dialogHeaderTitle={`New Humanoid`}
         />
       </Modal>
 

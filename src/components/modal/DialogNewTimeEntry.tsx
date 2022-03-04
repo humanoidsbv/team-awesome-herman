@@ -79,7 +79,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
           onChange={handleChange}
           required
           type="text"
-          value={newTimeEntry.client ?? ""}
+          value={newTimeEntry.client}
         />
         {inputValidity.client === false && <span>Required field.</span>}
         <label>Activity</label>
@@ -88,7 +88,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
           onChange={handleChange}
           required
           type="text"
-          value={newTimeEntry.activity ?? ""}
+          value={newTimeEntry.activity}
         />
         {inputValidity.activity === false && <span>Required field.</span>}
         <Styled.FormDateTime>
@@ -99,7 +99,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
               onChange={handleChange}
               required
               type="date"
-              value={newTimeEntry.date ?? ""}
+              value={newTimeEntry.date}
             />
             {inputValidity.date === false && <span>Required field.</span>}
           </Styled.FormDate>
@@ -110,7 +110,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
               onChange={handleChange}
               required
               type="time"
-              value={newTimeEntry.timeFrom ?? ""}
+              value={newTimeEntry.timeFrom}
             ></input>
             {inputValidity.timeFrom === false && <span>Required field.</span>}
           </Styled.FormTimeFrom>
@@ -121,7 +121,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
               onChange={handleChange}
               required
               type="time"
-              value={newTimeEntry.timeTo ?? ""}
+              value={newTimeEntry.timeTo}
             ></input>
             {inputValidity.timeTo === false && <span>Required field.</span>}
           </Styled.FormTimeTo>

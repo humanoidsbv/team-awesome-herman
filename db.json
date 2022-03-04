@@ -20,14 +20,6 @@
       "activity": "Development",
       "startTimestamp": "2021-09-22T13:00:00.000Z",
       "stopTimestamp": "2021-09-22T20:00:00.000Z"
-    },
-    {
-      "date": "2022-03-03",
-      "client": "Test",
-      "activity": "Test",
-      "startTimestamp": "2022-03-03T12:24:00.000Z",
-      "stopTimestamp": "2022-03-03T15:24:00.000Z",
-      "id": 5
     }
   ],
   "team-members": [

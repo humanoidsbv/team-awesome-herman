@@ -28,17 +28,17 @@ export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
   return (
     <>
       <Subheader
-        buttonLabel={"Add new time entry"}
+        buttonLabel={`Add new time entry`}
         setIsModalActive={setIsModalActive}
-        subtitle={timeEntries.length + " entries"}
-        title={"Time entries"}
+        subtitle={`${timeEntries.length}` + `entries`}
+        title={`Time entries`}
       />
 
       <Modal isActive={isModalActive} onClose={handleClose}>
         <DialogNewTimeEntry
           onClick={(event) => event.stopPropagation()}
           onClose={handleClose}
-          dialogHeaderTitle={"New time entry"}
+          dialogHeaderTitle={`New time entry`}
         />
       </Modal>
 
