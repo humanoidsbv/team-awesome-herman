@@ -28,7 +28,7 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
     setTeamMembers(initialTeamMembers);
   }, []);
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOption(target.value);
   };
 
@@ -59,9 +59,9 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
       </Styled.SortTeamMemberButton>
 
       {teamMembers
-        .sort((a: TeamMemberProps, b: TeamMemberProps) =>
-          a[sortOption as keyof TeamMemberProps].localeCompare(
-            b[sortOption as keyof TeamMemberProps],
+        .sort((a, b) =>
+          a[sortOption as keyof Omit<TeamMemberProps, "id">].localeCompare(
+            b[sortOption as keyof Omit<TeamMemberProps, "id">],
           ),
         )
         .map((teamMember) => {

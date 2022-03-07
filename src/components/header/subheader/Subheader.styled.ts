@@ -18,7 +18,7 @@ export const Subheader = styled.div`
     flex-direction: row;
     height: 70px;
     justify-content: space-between;
-    margin-top: 0px;
+    margin-top: 0;
 
     button {
       padding: 0 20px;

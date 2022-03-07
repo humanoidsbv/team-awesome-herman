@@ -22,26 +22,22 @@ export const TimeEntryHeader = ({ timeStamp }: TimeEntryHeaderProps) => {
 
   const getDurationByDay = (timeStamp: string, timeEntries: TimeEntryProps[]) => {
     const calculateDuration = ({ stopTimestamp, startTimestamp }: TimeEntryProps) => {
-      return new Date(stopTimestamp) - new Date(startTimestamp);
+      return new Date(stopTimestamp).getTime() - new Date(startTimestamp).getTime();
     };
 
-    const duration = new Date(
-      timeEntries
-        .filter(
-          ({ startTimestamp }) =>
-            new Date(startTimestamp).toDateString() === new Date(timeStamp).toDateString(),
-        )
-        .reduce((acc, timeEntry) => acc + calculateDuration(timeEntry), 0),
-    );
-
-    // console.log("hello" + timeEntry);
+    const duration = timeEntries
+      .filter(
+        ({ startTimestamp }) =>
+          new Date(startTimestamp).toDateString() === new Date(timeStamp).toDateString(),
+      )
+      .reduce((acc, timeEntry) => acc + calculateDuration(timeEntry), 0);
 
     return formatDuration(duration);
   };
 
-  const formatDuration = (duration: Date) => {
-    const hours = Number.parseInt(duration / 1000 / 60 / 60).toString();
-    const minutes = Number.parseInt((duration / 1000 / 60) % 60).toString();
+  const formatDuration = (duration: number) => {
+    const hours = parseInt(String(duration / 1000 / 60 / 60)).toString();
+    const minutes = parseInt(String((duration / 1000 / 60) % 60)).toString();
     return `${hours.padStart(2, "0")}:${minutes.padStart(2, "0")}`;
   };
 

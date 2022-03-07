@@ -89,5 +89,19 @@
       "startingDate": "2022-03-03",
       "id": 6
     }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "name": "Heineken"
+    },
+    {
+      "id": 2,
+      "name": "Hike One"
+    },
+    {
+      "id": 3,
+      "name": "Nationale Nederlanden"
+    }
   ]
 }

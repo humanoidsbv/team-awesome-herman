@@ -8,12 +8,17 @@ import { Subheader } from "../header/subheader/Subheader";
 import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
 
-import { InitialTimeEntryProps } from "../../../pages/index";
 import { TimeEntryProps } from "../../types/TimeEntry.types";
+import { ClientProps } from "../../types/Client.types";
 
 import * as Styled from "./TimeEntries.styled";
 
-export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
+interface TimeEntriesProps {
+  initialTimeEntries: TimeEntryProps[];
+  clients: ClientProps[];
+}
+
+export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) => {
   const state = useContext(StoreContext);
 
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
@@ -28,10 +33,7 @@ export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
     setTimeEntries(initialTimeEntries);
   }, []);
 
-  const clients = timeEntries.map((entry) => entry.client);
-  const uniqueClients = Array.from(new Set(clients));
-
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
     setClientFilter(target.value);
   };
 
@@ -57,8 +59,8 @@ export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
 
         <select name="clientFilter" id="clientFilter" onChange={handleChange}>
           <option value="all">All clients</option>
-          {uniqueClients.map((client) => {
-            return <option value={client}>{client}</option>;
+          {clients.map((client) => {
+            return <option value={client.name}>{client.name}</option>;
           })}
         </select>
       </Styled.ClientFilterButton>

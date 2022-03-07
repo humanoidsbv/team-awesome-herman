@@ -16,7 +16,7 @@ interface DialogTeamMembersProps {
 
 interface inputValidityProps {
   emailAddress: boolean;
-  employer: boolean;
+  client: boolean;
   firstName: boolean;
   label: boolean;
   lastName: boolean;
@@ -37,7 +37,9 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
   const [isFormValid, setIsFormValid] = useState<boolean>();
   const [inputValidity, setInputValidity] = useState<inputValidityProps>({} as inputValidityProps);
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     setIsFormValid(formRef.current?.checkValidity());
     setInputValidity({ ...inputValidity, [target.name]: target.checkValidity() });
     setNewTeamMember({ ...newTeamMember, [target.name]: target.value });

@@ -9,7 +9,7 @@ export const getTeamMembers = async () => {
   })
     .then((response) => {
       if (response.status === 404) {
-        throw new NotFoundError(response);
+        throw new NotFoundError(response.toString());
       }
       return response;
     })
