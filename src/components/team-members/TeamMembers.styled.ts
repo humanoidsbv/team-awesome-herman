@@ -61,14 +61,14 @@ export const Function = styled.div`
   font-size: ${({ theme }) => theme.fontSizeSmall};
 `;
 
-export const EmployerAndStartingDate = styled.div`
+export const ClientAndStartingDate = styled.div`
   align-items: center;
   column-gap: 30px;
   display: flex;
   padding: 15px;
 `;
 
-export const Employer = styled.div`
+export const Client = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 2px;
@@ -78,13 +78,13 @@ export const Employer = styled.div`
   }
 `;
 
-export const EmployerName = styled.div`
+export const ClientName = styled.div`
   display: flex;
   flex-direction: column;
   font-size: ${({ theme }) => theme.fontSizeBody};
 `;
 
-export const EmployerTitle = styled.div`
+export const ClientTitle = styled.div`
   color: ${({ theme }) => theme.shadeGrey700};
   font-size: ${({ theme }) => theme.fontSizeSmall};
 `;
@@ -92,9 +92,9 @@ export const EmployerTitle = styled.div`
 export const Date = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 2px;
-  position: absolute;
   left: 200px;
+  position: absolute;
+  row-gap: 2px;
 
   @media only screen and (${({ theme }) => theme.tablet}) {
     text-align: right;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const HeaderLogo = styled.div<{ isMenuVisible: boolean }>`
   align-items: center;
   color: #ffffff;
   display: flex;
@@ -9,6 +9,8 @@ export const Container = styled.div`
   font-family: ${({ theme }) => theme.fontSecondary};
   font-size: 26px;
   margin: 30px;
+
+  align-self: ${({ isMenuVisible }) => (isMenuVisible ? "start" : "auto")};
 
   @media only screen and (min-width: 1024px) {
     flex-grow: 0;

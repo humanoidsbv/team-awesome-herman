@@ -23,8 +23,8 @@ export const Modal = styled.div`
 
 export const ClientFilterButton = styled.div`
   align-self: flex-end;
-  margin-top: 25px;
   font-family: ${({ theme }) => theme.fontPrimary};
+  margin-top: 25px;
 
   label {
     margin-right: 10px;

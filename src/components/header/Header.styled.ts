@@ -16,6 +16,7 @@ export const Header = styled.header<{ isMenuVisible: boolean }>`
 
   @media only screen and (${({ theme }) => theme.tablet}) {
     position: static;
+    z-index: 1;
   }
 
   @media only screen and (${({ theme }) => theme.desktop}) {

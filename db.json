@@ -34,7 +34,7 @@
     {
       "emailAddress": "amijs.breunesse@humanoids.nl",
       "label": "Test",
-      "employer": "Koppert",
+      "client": "Koppert",
       "role": "Front-end Developer",
       "firstName": "Amijs",
       "lastName": "Breunesse",
@@ -43,7 +43,7 @@
     {
       "emailAddress": "herman.vulkers@humanoids.nl",
       "label": "Test",
-      "employer": "Humanoids",
+      "client": "Humanoids",
       "role": "Front-end Developer",
       "firstName": "Herman",
       "lastName": "Vulkers",
@@ -52,7 +52,7 @@
     {
       "emailAddress": "mark@overmars.nl",
       "label": "Fiets",
-      "employer": "Ajax",
+      "client": "Ajax",
       "role": "Directeur",
       "firstName": "Mark",
       "lastName": "Overmars",
@@ -64,7 +64,7 @@
       "lastName": "Biden",
       "emailAddress": "joe.biden@humanoids.nl",
       "label": "Test",
-      "employer": "United States",
+      "client": "United States",
       "role": "President",
       "startingDate": "2021-12-30",
       "id": 4
@@ -74,7 +74,7 @@
       "firstName": "Barack",
       "lastName": "Obama",
       "emailAddress": "hermanvulkers@gmail.com",
-      "employer": "United States",
+      "client": "United States",
       "role": "Developer",
       "startingDate": "2022-03-02",
       "id": 5
@@ -84,7 +84,7 @@
       "lastName": "Brink",
       "emailAddress": "asd@ASkd.nl",
       "label": "Testje",
-      "employer": "Humanoids",
+      "client": "Humanoids",
       "role": "Developer",
       "startingDate": "2022-03-03",
       "id": 6

@@ -35,33 +35,34 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
   return (
     <>
       <Subheader
-        buttonLabel={`New Humanoid`}
+        buttonLabel="New Humanoid"
         setIsModalActive={setIsModalActive}
-        subtitle={`${teamMembers.length}` + ` Humanoids`}
-        title={`Team members`}
+        subtitle={`${teamMembers.length} Humanoids`}
+        title="Team members"
       />
 
       <Modal isActive={isModalActive} onClose={handleClose}>
         <DialogNewTeamMember
           onClick={(event) => event.stopPropagation()}
           onClose={handleClose}
-          dialogHeaderTitle={`New Humanoid`}
+          dialogHeaderTitle="New Humanoid"
         />
       </Modal>
 
       <Styled.SortTeamMemberButton>
-        <label htmlFor="sortOption">Filter:</label>
-
+        <label htmlFor="sortOption">Sort by:</label>
         <select name="sortOption" id="sortOption" onChange={handleChange}>
           <option value="firstName">Name</option>
-          <option value="employer">Employer</option>
+          <option value="client">Client</option>
           <option value="startingDate">Starting Date</option>
         </select>
       </Styled.SortTeamMemberButton>
 
       {teamMembers
         .sort((a: TeamMemberProps, b: TeamMemberProps) =>
-          a[sortOption].localeCompare(b[sortOption]),
+          a[sortOption as keyof TeamMemberProps].localeCompare(
+            b[sortOption as keyof TeamMemberProps],
+          ),
         )
         .map((teamMember) => {
           return <TeamMember teamMember={teamMember} />;

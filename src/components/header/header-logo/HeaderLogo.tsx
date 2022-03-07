@@ -2,10 +2,14 @@ import TeamAwesomeLogo from "../../../../public/assets/icons/team-awesome.svg";
 
 import * as Styled from "./HeaderLogo.styled";
 
-export const HeaderLogo = (): React.ReactElement => {
+interface HeaderLogoProps {
+  isMenuVisible: boolean;
+}
+
+export const HeaderLogo = ({ isMenuVisible }: HeaderLogoProps) => {
   return (
-    <Styled.Container>
+    <Styled.HeaderLogo isMenuVisible={isMenuVisible}>
       <TeamAwesomeLogo />
-    </Styled.Container>
+    </Styled.HeaderLogo>
   );
 };

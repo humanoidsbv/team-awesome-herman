@@ -7,7 +7,9 @@ export const Subheader = styled.div`
   flex-direction: column;
   font-family: ${({ theme }) => theme.fontPrimary};
   height: 120px;
-  padding: 30px;
+  justify-content: center;
+  margin-top: 70px;
+  padding: 20px 30px;
   row-gap: 10px;
   width: 100vw;
 
@@ -16,6 +18,7 @@ export const Subheader = styled.div`
     flex-direction: row;
     height: 70px;
     justify-content: space-between;
+    margin-top: 0px;
 
     button {
       padding: 0 20px;

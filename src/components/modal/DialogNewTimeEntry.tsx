@@ -125,7 +125,6 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
             ></input>
             {inputValidity.timeTo === false && <span>Required field.</span>}
           </Styled.FormTimeTo>
-          <Styled.FormTimeDuration>Total Placeholder</Styled.FormTimeDuration>
         </Styled.FormDateTime>
       </form>
 

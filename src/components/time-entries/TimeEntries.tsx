@@ -18,8 +18,7 @@ export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
 
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [timeEntries, setTimeEntries] = state.timeEntries;
-
-  const [clientFilter, setClientFilter] = useState();
+  const [clientFilter, setClientFilter] = useState<React.SetStateAction<string>>();
 
   const handleClose = () => {
     setIsModalActive(false);
@@ -30,7 +29,7 @@ export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
   }, []);
 
   const clients = timeEntries.map((entry) => entry.client);
-  const uniqueClients = [...new Set(clients)];
+  const uniqueClients = Array.from(new Set(clients));
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setClientFilter(target.value);
@@ -39,17 +38,17 @@ export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
   return (
     <>
       <Subheader
-        buttonLabel={`Add new time entry`}
+        buttonLabel="Add new time entry"
         setIsModalActive={setIsModalActive}
-        subtitle={`${timeEntries.length}` + ` entries`}
-        title={`Time entries`}
+        subtitle={`${timeEntries.length} entries`}
+        title="Timesheets"
       />
 
       <Modal isActive={isModalActive} onClose={handleClose}>
         <DialogNewTimeEntry
           onClick={(event) => event.stopPropagation()}
           onClose={handleClose}
-          dialogHeaderTitle={`New time entry`}
+          dialogHeaderTitle="New time entry"
         />
       </Modal>
 
