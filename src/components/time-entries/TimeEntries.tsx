@@ -60,7 +60,11 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
         <select name="clientFilter" id="clientFilter" onChange={handleChange}>
           <option value="all">All clients</option>
           {clients.map((client) => {
-            return <option value={client.name}>{client.name}</option>;
+            return (
+              <option key={client.id} value={client.name}>
+                {client.name}
+              </option>
+            );
           })}
         </select>
       </Styled.ClientFilterButton>

@@ -14,10 +14,8 @@ import * as Styled from "./TeamMembers.styled";
 
 export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => {
   const state = useContext(StoreContext);
-
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [teamMembers, setTeamMembers] = state.teamMembers;
-
   const [sortOption, setSortOption] = useState("firstName");
 
   const handleClose = () => {

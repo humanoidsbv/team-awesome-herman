@@ -16,7 +16,7 @@ export const Dialog = styled.div`
     border-radius: 5px;
     border: solid 1px lightgrey;
     font-family: Proxima Nova;
-    /* margin: 5px 0 10px; */
+    margin-bottom: 10px;
     padding: 10px;
   }
 
@@ -28,14 +28,14 @@ export const Dialog = styled.div`
   label {
     color: ${({ theme }) => theme.shadeGrey700};
     font-size: ${({ theme }) => theme.fontSizeSmall};
-    margin: 18px 0 4px;
+    margin: 10px 0 8px;
   }
 
   textarea {
     border-radius: 5px;
     border: solid 1px lightgrey;
     font-family: Proxima Nova;
-    margin: 5px 0 10px;
+    margin-bottom: 10px;
     padding: 10px;
   }
 

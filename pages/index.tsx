@@ -1,18 +1,16 @@
 import { ThemeProvider } from "styled-components";
 
-import { Header } from "../src/components/header/Header";
-import { PageContainer } from "../src/components/shared/PageContainer";
-import { TimeEntries } from "../src/components/time-entries/TimeEntries";
-
-import { getTimeEntries } from "../src/services/time-entry-api/get-time-entries";
-import { getClients } from "../src/services/clients-api/get-clients";
-import { NotFoundError } from "../src/errors/not-found-error";
-
-import GlobalStyle from "../src/styles/global";
-import { theme } from "../src/styles/theme";
-import { StoreProvider } from "../src/providers/StoreProvider";
-import { TimeEntryProps } from "../src/types/TimeEntry.types";
 import { ClientProps } from "../src/types/Client.types";
+import { getClients } from "../src/services/clients-api/get-clients";
+import { getTimeEntries } from "../src/services/time-entry-api/get-time-entries";
+import { Header } from "../src/components/header/Header";
+import { NotFoundError } from "../src/errors/not-found-error";
+import { PageContainer } from "../src/components/shared/PageContainer";
+import { StoreProvider } from "../src/providers/StoreProvider";
+import { theme } from "../src/styles/theme";
+import { TimeEntries } from "../src/components/time-entries/TimeEntries";
+import { TimeEntryProps } from "../src/types/TimeEntry.types";
+import GlobalStyle from "../src/styles/global";
 
 interface HomepageProps {
   initialTimeEntries: TimeEntryProps[];

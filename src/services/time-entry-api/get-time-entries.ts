@@ -1,7 +1,7 @@
 import { NotFoundError } from "../../errors/not-found-error";
 
 export const getTimeEntries = async () => {
-  return fetch("http://localhost:3004/time-entries/", {
+  return fetch(`${process.env.NEXT_PUBLIC_DB_HOST}/time-entries/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

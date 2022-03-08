@@ -10,7 +10,6 @@ export const TeamMember = styled.div`
   border-left: 4px solid ${({ theme }) => theme.colorBluePrimary500};
   border-radius: 5px;
   display: flex;
-  display: flex;
   flex-direction: column;
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: ${({ theme }) => theme.fontSizeBody};
