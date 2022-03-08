@@ -1,8 +1,8 @@
 import React from "react";
 
-import * as Styled from "./TeamMembers.styled";
-
 import { TeamMemberProps } from "../../types/TeamMember.types";
+
+import * as Styled from "./TeamMembers.styled";
 
 interface ITeamMember {
   teamMember: TeamMemberProps;

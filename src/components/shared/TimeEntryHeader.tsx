@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 
-import * as Styled from "../time-entries/TimeEntries.styled";
-
 import { StoreContext } from "../../providers/StoreProvider";
-
 import { TimeEntryProps } from "../../types/TimeEntry.types";
+import * as Styled from "../time-entries/TimeEntries.styled";
 
 interface TimeEntryHeaderProps {
   timeStamp: string;

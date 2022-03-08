@@ -4,10 +4,9 @@
   "description": "Team Awesome - Humanoids Crash Course project",
   "main": "script.js",
   "scripts": {
-    "dev": "next & npm run json-server",
+    "dev": "next & json-server --watch db.json --port 3004",
     "build": "next build",
     "start": "next start",
-    "json-server": "json-server --watch db.json --port 3004",
     "lint": "eslint '*/**/*.{js,ts,tsx}'"
   },
   "repository": {
@@ -21,6 +20,7 @@
   },
   "homepage": "https://github.com/humanoidsbv/team-awesome-herman#readme",
   "dependencies": {
+    "json-server": "^0.17.0",
     "next": "^12.0.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
