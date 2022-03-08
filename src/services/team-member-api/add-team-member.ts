@@ -1,6 +1,6 @@
 interface TeamMemberProps {
   emailAddress: string;
-  employer: string;
+  client: string;
   firstName: string;
   function: string;
   id: number;

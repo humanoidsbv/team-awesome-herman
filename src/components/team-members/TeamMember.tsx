@@ -24,16 +24,16 @@ export const TeamMember = ({ teamMember }: ITeamMember) => {
           <Styled.Function>{teamMember.function}</Styled.Function>
         </Styled.NameAndFunction>
       </Styled.Profile>
-      <Styled.EmployerAndStartingDate>
-        <Styled.Employer>
-          <Styled.EmployerName>{teamMember.employer}</Styled.EmployerName>
-          <Styled.EmployerTitle>Employer</Styled.EmployerTitle>
-        </Styled.Employer>
+      <Styled.ClientAndStartingDate>
+        <Styled.Client>
+          <Styled.ClientName>{teamMember.client}</Styled.ClientName>
+          <Styled.ClientTitle>Client</Styled.ClientTitle>
+        </Styled.Client>
         <Styled.Date>
           <Styled.StartingDate>{startDate}</Styled.StartingDate>
           <Styled.StartingDateTitle>Starting date</Styled.StartingDateTitle>
         </Styled.Date>
-      </Styled.EmployerAndStartingDate>
+      </Styled.ClientAndStartingDate>
     </Styled.TeamMember>
   );
 };

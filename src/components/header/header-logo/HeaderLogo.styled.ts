@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const HeaderLogo = styled.div<{ isMenuVisible: boolean }>`
   align-items: center;
+  align-self: ${({ isMenuVisible }) => (isMenuVisible ? "start" : "")};
   color: #ffffff;
   display: flex;
   flex-basis: 0;

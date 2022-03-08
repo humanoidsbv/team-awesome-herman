@@ -1,7 +1,7 @@
 import { NotFoundError } from "../../errors/not-found-error";
 
-export const getTimeEntries = async () => {
-  return fetch("http://localhost:3004/time-entries/", {
+export const getClients = async () => {
+  return fetch("http://localhost:3004/clients/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

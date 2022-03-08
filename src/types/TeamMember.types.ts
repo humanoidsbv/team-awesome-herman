@@ -1,6 +1,6 @@
 export interface TeamMemberProps {
   emailAddress: string;
-  employer: string;
+  client: string;
   firstName: string;
   function: string;
   id: number;
@@ -8,4 +8,5 @@ export interface TeamMemberProps {
   lastName: string;
   role: string;
   startingDate: string;
+  sortOption: string;
 }

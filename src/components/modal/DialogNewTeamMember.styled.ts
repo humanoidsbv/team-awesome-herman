@@ -41,8 +41,8 @@ export const Dialog = styled.div`
 
   span {
     color: red;
-    margin-top: 5px;
     font-size: ${({ theme }) => theme.fontSizeSmall};
+    margin-top: 5px;
   }
 
   button {

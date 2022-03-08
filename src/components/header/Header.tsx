@@ -16,7 +16,7 @@ export const Header = () => {
 
   return (
     <Styled.Header isMenuVisible={isMenuVisible}>
-      <HeaderLogo />
+      <HeaderLogo isMenuVisible={isMenuVisible} />
       <Menu isMenuVisible={isMenuVisible} />
       <Profile />
       <MenuButton isMenuVisible={isMenuVisible} onClick={toggleMenu} />

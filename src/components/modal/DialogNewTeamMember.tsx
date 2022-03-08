@@ -16,7 +16,7 @@ interface DialogTeamMembersProps {
 
 interface inputValidityProps {
   emailAddress: boolean;
-  employer: boolean;
+  client: boolean;
   firstName: boolean;
   label: boolean;
   lastName: boolean;
@@ -37,7 +37,9 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
   const [isFormValid, setIsFormValid] = useState<boolean>();
   const [inputValidity, setInputValidity] = useState<inputValidityProps>({} as inputValidityProps);
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     setIsFormValid(formRef.current?.checkValidity());
     setInputValidity({ ...inputValidity, [target.name]: target.checkValidity() });
     setNewTeamMember({ ...newTeamMember, [target.name]: target.value });
@@ -77,7 +79,6 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
               type="text"
               value={newTeamMember.firstName}
             />
-
             {inputValidity.firstName === false && <span>Required field.</span>}
           </Styled.FirstName>
           <Styled.LastName>
@@ -114,15 +115,16 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
         ></textarea>
         {inputValidity.label === false && <span>Required field.</span>}
 
-        <label>Employer</label>
+        <label>Client</label>
         <input
-          name="employer"
+          name="client"
           onChange={handleChange}
           required
           type="text"
-          value={newTeamMember.employer}
+          value={newTeamMember.client}
         ></input>
-        {inputValidity.employer === false && <span>Required field.</span>}
+        {inputValidity.client === false && <span>Required field.</span>}
+
         <Styled.RoleAndStartingDate>
           <Styled.Role>
             <label>Role</label>

@@ -9,6 +9,7 @@ export const Header = styled.header<{ isMenuVisible: boolean }>`
   justify-content: start;
   position: fixed;
   width: 100%;
+  z-index: 2;
 
   a:visited {
     text-decoration: underline;
@@ -16,6 +17,7 @@ export const Header = styled.header<{ isMenuVisible: boolean }>`
 
   @media only screen and (${({ theme }) => theme.tablet}) {
     position: static;
+    z-index: 1;
   }
 
   @media only screen and (${({ theme }) => theme.desktop}) {

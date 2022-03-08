@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 
-import { TimeEntryProps } from "../types/TimeEntry.types";
 import { TeamMemberProps } from "../types/TeamMember.types";
+import { TimeEntryProps } from "../types/TimeEntry.types";
 
 interface StoreContextProps {
   timeEntries: [

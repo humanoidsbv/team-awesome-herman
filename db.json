@@ -20,13 +20,21 @@
       "activity": "Development",
       "startTimestamp": "2021-09-22T13:00:00.000Z",
       "stopTimestamp": "2021-09-22T20:00:00.000Z"
+    },
+    {
+      "client": "Heineken",
+      "activity": "Dev",
+      "date": "2022-03-04",
+      "startTimestamp": "2022-03-04T12:58:00.000Z",
+      "stopTimestamp": "2022-03-04T13:58:00.000Z",
+      "id": 5
     }
   ],
   "team-members": [
     {
       "emailAddress": "amijs.breunesse@humanoids.nl",
       "label": "Test",
-      "employer": "Koppert",
+      "client": "Koppert",
       "role": "Front-end Developer",
       "firstName": "Amijs",
       "lastName": "Breunesse",
@@ -35,7 +43,7 @@
     {
       "emailAddress": "herman.vulkers@humanoids.nl",
       "label": "Test",
-      "employer": "Humanoids",
+      "client": "Humanoids",
       "role": "Front-end Developer",
       "firstName": "Herman",
       "lastName": "Vulkers",
@@ -44,7 +52,7 @@
     {
       "emailAddress": "mark@overmars.nl",
       "label": "Fiets",
-      "employer": "Ajax",
+      "client": "Ajax",
       "role": "Directeur",
       "firstName": "Mark",
       "lastName": "Overmars",
@@ -56,30 +64,44 @@
       "lastName": "Biden",
       "emailAddress": "joe.biden@humanoids.nl",
       "label": "Test",
-      "employer": "United States",
+      "client": "United States",
       "role": "President",
       "startingDate": "2021-12-30",
       "id": 4
     },
     {
       "label": "Gaat dit goed?",
-      "firstName": "Herman de Tweede ",
-      "lastName": "Vulkers",
+      "firstName": "Barack",
+      "lastName": "Obama",
       "emailAddress": "hermanvulkers@gmail.com",
-      "employer": "Humanoids",
+      "client": "United States",
       "role": "Developer",
       "startingDate": "2022-03-02",
       "id": 5
     },
     {
-      "firstName": "ASdkaskd",
-      "lastName": "akldsad",
+      "firstName": "Bram",
+      "lastName": "Brink",
       "emailAddress": "asd@ASkd.nl",
-      "label": "adkasd",
-      "employer": "aksdsa",
-      "role": "alsdlsad",
+      "label": "Testje",
+      "client": "Humanoids",
+      "role": "Developer",
       "startingDate": "2022-03-03",
       "id": 6
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "name": "Heineken"
+    },
+    {
+      "id": 2,
+      "name": "Hike One"
+    },
+    {
+      "id": 3,
+      "name": "Nationale Nederlanden"
     }
   ]
 }

@@ -8,14 +8,22 @@ import { Subheader } from "../header/subheader/Subheader";
 import { TimeEntry } from "../shared";
 import { TimeEntryHeader } from "../shared/TimeEntryHeader";
 
-import { InitialTimeEntryProps } from "../../../pages/index";
 import { TimeEntryProps } from "../../types/TimeEntry.types";
+import { ClientProps } from "../../types/Client.types";
 
-export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
+import * as Styled from "./TimeEntries.styled";
+
+interface TimeEntriesProps {
+  initialTimeEntries: TimeEntryProps[];
+  clients: ClientProps[];
+}
+
+export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) => {
   const state = useContext(StoreContext);
 
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [timeEntries, setTimeEntries] = state.timeEntries;
+  const [clientFilter, setClientFilter] = useState<React.SetStateAction<string>>();
 
   const handleClose = () => {
     setIsModalActive(false);
@@ -25,24 +33,44 @@ export const TimeEntries = ({ initialTimeEntries }: InitialTimeEntryProps) => {
     setTimeEntries(initialTimeEntries);
   }, []);
 
+  const handleChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
+    setClientFilter(target.value);
+  };
+
   return (
     <>
       <Subheader
-        buttonLabel={`Add new time entry`}
+        buttonLabel="Add new time entry"
         setIsModalActive={setIsModalActive}
-        subtitle={`${timeEntries.length}` + `entries`}
-        title={`Time entries`}
+        subtitle={`${timeEntries.length} entries`}
+        title="Timesheets"
       />
 
       <Modal isActive={isModalActive} onClose={handleClose}>
         <DialogNewTimeEntry
           onClick={(event) => event.stopPropagation()}
           onClose={handleClose}
-          dialogHeaderTitle={`New time entry`}
+          dialogHeaderTitle="New time entry"
         />
       </Modal>
 
+      <Styled.ClientFilterButton>
+        <label htmlFor="clientFilter">Filter by client:</label>
+
+        <select name="clientFilter" id="clientFilter" onChange={handleChange}>
+          <option value="all">All clients</option>
+          {clients.map((client) => {
+            return <option value={client.name}>{client.name}</option>;
+          })}
+        </select>
+      </Styled.ClientFilterButton>
+
       {timeEntries
+        .filter((timeEntry) =>
+          clientFilter === undefined || clientFilter === "all"
+            ? timeEntry.client === timeEntry.client
+            : clientFilter === timeEntry.client,
+        )
         .sort(
           (a: TimeEntryProps, b: TimeEntryProps) =>
             new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime(),
