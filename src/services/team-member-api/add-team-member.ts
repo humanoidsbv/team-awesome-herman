@@ -11,15 +11,12 @@ interface TeamMemberProps {
 }
 
 export const addTeamMember = async (newTeamMember: TeamMemberProps) => {
-  const response = await fetch(
-    "https://my-json-server.typicode.com/humanoidsbv/team-awesome-herman/team-members/",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newTeamMember),
+  const response = await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}team-members/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
     },
-  );
+    body: JSON.stringify(newTeamMember),
+  });
   return response.json();
 };

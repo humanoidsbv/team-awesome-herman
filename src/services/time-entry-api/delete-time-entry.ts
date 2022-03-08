@@ -1,12 +1,9 @@
 export const deleteTimeEntry = async (id: number) => {
-  const response = await fetch(
-    "https://my-json-server.typicode.com/humanoidsbv/team-awesome-herman/time-entries/" + id,
-    {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
+  const response = await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}time-entries/` + id, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
     },
-  );
+  });
   return response.json();
 };
