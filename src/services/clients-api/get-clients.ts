@@ -1,7 +1,7 @@
 import { NotFoundError } from "../../errors/not-found-error";
 
 export const getClients = async () => {
-  return fetch(`${process.env.NEXT_PUBLIC_DB_HOST}clients/`, {
+  return fetch(`${process.env.NEXT_PUBLIC_DB_HOST}/clients/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

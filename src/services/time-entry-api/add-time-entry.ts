@@ -6,7 +6,7 @@ interface TimeEntryProps {
 }
 
 export const addTimeEntry = async (newTimeEntry: TimeEntryProps) => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}time-entries/`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}/time-entries/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
