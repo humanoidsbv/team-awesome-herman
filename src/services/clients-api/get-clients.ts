@@ -1,7 +1,7 @@
 import { NotFoundError } from "../../errors/not-found-error";
 
 export const getClients = async () => {
-  return fetch("http://localhost:3004/clients/", {
+  return fetch("https://my-json-server.typicode.com/humanoidsbv/team-awesome-herman/clients/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
