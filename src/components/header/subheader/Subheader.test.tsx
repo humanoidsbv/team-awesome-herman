@@ -4,7 +4,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { StoreProvider } from "../../../providers/StoreProvider";
 import { Button } from "../../shared/Button";
 
-describe("Subheader", () => {
+describe("Activate modal", () => {
   const setIsModalActive = jest.fn();
   const buttonLabel = "Add new time entry";
 
