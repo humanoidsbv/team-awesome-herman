@@ -1,8 +1,8 @@
 async function fetchTeamMembers() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}/team-members/`);
-  const json = await res.json();
+  const mockedResponse = await res.json();
 
-  return json;
+  return mockedResponse;
 }
 
 const unmockedFetch = global.fetch;
@@ -19,7 +19,7 @@ afterAll(() => {
 });
 
 test("if fetchTeamMembers works", async () => {
-  const json = await fetchTeamMembers();
-  expect(Array.isArray(json)).toEqual(true);
-  expect(json.length).toEqual(2);
+  const mockedResponse = await fetchTeamMembers();
+  expect(Array.isArray(mockedResponse)).toEqual(true);
+  expect(mockedResponse.length).toEqual(2);
 });
