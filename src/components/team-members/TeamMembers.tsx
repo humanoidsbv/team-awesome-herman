@@ -48,12 +48,14 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
       </Modal>
 
       <Styled.SortTeamMemberButton>
-        <label htmlFor="sortOption">Sort by:</label>
-        <select name="sortOption" id="sortOption" onChange={handleChange}>
-          <option value="firstName">Name</option>
-          <option value="client">Client</option>
-          <option value="startingDate">Starting Date</option>
-        </select>
+        <label htmlFor="sortOption">
+          Sort by:
+          <select name="sortOption" id="sortOption" onChange={handleChange}>
+            <option value="firstName">Name</option>
+            <option value="client">Client</option>
+            <option value="startingDate">Starting Date</option>
+          </select>
+        </label>
       </Styled.SortTeamMemberButton>
 
       {teamMembers

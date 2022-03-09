@@ -1,3 +1,5 @@
+import React from "react";
+
 import * as Styled from "./Button.styled";
 
 import Icon from "../../../public/assets/icons/Plus-Icon.svg";

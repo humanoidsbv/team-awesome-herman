@@ -42,8 +42,8 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
   };
 
   const handleSubmit = async () => {
-    const startTimestamp = new Date(newTimeEntry.timeFrom + " " + newTimeEntry.date).toISOString();
-    const stopTimestamp = new Date(newTimeEntry.timeTo + " " + newTimeEntry.date).toISOString();
+    const startTimestamp = new Date(`${newTimeEntry.timeFrom} ${newTimeEntry.date}`).toISOString();
+    const stopTimestamp = new Date(`${newTimeEntry.timeTo} ${newTimeEntry.date}`).toISOString();
 
     const newTimeEntryFormatted = {
       ...newTimeEntry,
@@ -111,7 +111,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
               required
               type="time"
               value={newTimeEntry.timeFrom}
-            ></input>
+            />
             {inputValidity.timeFrom === false && <span>Required field.</span>}
           </Styled.FormTimeFrom>
           <Styled.FormTimeTo>
@@ -122,7 +122,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
               required
               type="time"
               value={newTimeEntry.timeTo}
-            ></input>
+            />
             {inputValidity.timeTo === false && <span>Required field.</span>}
           </Styled.FormTimeTo>
         </Styled.FormDateTime>

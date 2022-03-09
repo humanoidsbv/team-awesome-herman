@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Button } from "../../shared/Button";
 
 import * as Styled from "./Subheader.styled";
@@ -17,12 +19,7 @@ export const Subheader = ({ setIsModalActive, title, subtitle, buttonLabel }: Su
         <Styled.Divider>|</Styled.Divider>
         <Styled.Subtitle>{subtitle}</Styled.Subtitle>
       </Styled.SubheaderTitle>
-      <Button
-        icon={true}
-        label={buttonLabel}
-        onClick={() => setIsModalActive(true)}
-        variety="primary"
-      />
+      <Button icon label={buttonLabel} onClick={() => setIsModalActive(true)} variety="primary" />
     </Styled.Subheader>
   );
 };

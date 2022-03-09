@@ -84,6 +84,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
           <Styled.LastName>
             <label>Last name</label>
             <input
+              id="lastName"
               name="lastName"
               onChange={handleChange}
               required
@@ -112,7 +113,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
           required
           rows={3}
           value={newTeamMember.label}
-        ></textarea>
+        />
         {inputValidity.label === false && <span>Required field.</span>}
 
         <label>Client</label>
@@ -122,7 +123,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
           required
           type="text"
           value={newTeamMember.client}
-        ></input>
+        />
         {inputValidity.client === false && <span>Required field.</span>}
 
         <Styled.RoleAndStartingDate>
@@ -134,7 +135,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
               required
               type="text"
               value={newTeamMember.role}
-            ></input>
+            />
             {inputValidity.role === false && <span>Required field.</span>}
           </Styled.Role>
           <Styled.StartingDate>
@@ -145,7 +146,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
               required
               type="date"
               value={newTeamMember.startingDate}
-            ></input>
+            />
             {inputValidity.startingDate === false && <span>Required field.</span>}
           </Styled.StartingDate>
         </Styled.RoleAndStartingDate>

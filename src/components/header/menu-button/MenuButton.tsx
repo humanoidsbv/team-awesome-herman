@@ -1,6 +1,9 @@
-import * as Styled from "./MenuButton.styled";
-import HamburgerIcon from "../../../../public/assets/icons/Hamburger.svg";
+import React from "react";
+
 import CloseIcon from "../../../../public/assets/icons/Close.svg";
+import HamburgerIcon from "../../../../public/assets/icons/Hamburger.svg";
+
+import * as Styled from "./MenuButton.styled";
 
 type MenuButtonProps = {
   isMenuVisible: boolean;

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-import { HeaderLogo } from "../header/header-logo/HeaderLogo";
-import { Menu } from "../header/menu/Menu";
-import { MenuButton } from "../header/menu-button/MenuButton";
-import { Profile } from "../header/profile/Profile";
+import { HeaderLogo } from "./header-logo/HeaderLogo";
+import { Menu } from "./menu/Menu";
+import { MenuButton } from "./menu-button/MenuButton";
+import { Profile } from "./profile/Profile";
 
 import * as Styled from "./Header.styled";
 

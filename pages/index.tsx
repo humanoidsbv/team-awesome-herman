@@ -1,3 +1,5 @@
+import React from "react";
+
 import { ThemeProvider } from "styled-components";
 
 import { ClientProps } from "../src/types/Client.types";
@@ -22,7 +24,7 @@ export const getServerSideProps = async () => {
   const clients = await getClients();
 
   if (initialTimeEntries instanceof NotFoundError) {
-    return;
+    return {};
   }
 
   return {

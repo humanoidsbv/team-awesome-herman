@@ -13,7 +13,7 @@ export const TeamMember = ({ teamMember }: ITeamMember) => {
     month: "long",
     year: "numeric",
   });
-  const fullName = teamMember.firstName + " " + teamMember.lastName;
+  const fullName = `${teamMember.firstName} ${teamMember.lastName}`;
 
   return (
     <Styled.TeamMember>

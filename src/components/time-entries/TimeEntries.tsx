@@ -55,24 +55,25 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
       </Modal>
 
       <Styled.ClientFilterButton>
-        <label htmlFor="clientFilter">Filter by client:</label>
-
-        <select name="clientFilter" id="clientFilter" onChange={handleChange}>
-          <option value="all">All clients</option>
-          {clients.map((client) => {
-            return (
-              <option key={client.id} value={client.name}>
-                {client.name}
-              </option>
-            );
-          })}
-        </select>
+        <label htmlFor="clientFilter">
+          Filter by client:
+          <select name="clientFilter" id="clientFilter" onChange={handleChange}>
+            <option value="all">All clients</option>
+            {clients.map((client) => {
+              return (
+                <option key={client.id} value={client.name}>
+                  {client.name}
+                </option>
+              );
+            })}
+          </select>
+        </label>
       </Styled.ClientFilterButton>
 
       {timeEntries
         .filter((timeEntry) =>
           clientFilter === undefined || clientFilter === "all"
-            ? timeEntry.client === timeEntry.client
+            ? true
             : clientFilter === timeEntry.client,
         )
         .sort(
