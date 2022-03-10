@@ -10,7 +10,6 @@ import * as Types from "../../types/TimeEntry.types";
 
 interface DialogNewTimeEntryProps {
   dialogHeaderTitle: string;
-  onClick: (event: PointerEvent) => void;
   onClose: () => void;
 }
 

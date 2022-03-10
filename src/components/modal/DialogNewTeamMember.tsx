@@ -10,7 +10,6 @@ import * as Types from "../../types/TeamMember.types";
 
 interface DialogTeamMembersProps {
   dialogHeaderTitle: string;
-  onClick: (event: PointerEvent) => void;
   onClose: () => void;
 }
 

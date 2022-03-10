@@ -40,11 +40,7 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
       />
 
       <Modal isActive={isModalActive} onClose={handleClose}>
-        <DialogNewTeamMember
-          onClick={(event) => event.stopPropagation()}
-          onClose={handleClose}
-          dialogHeaderTitle="New Humanoid"
-        />
+        <DialogNewTeamMember onClose={handleClose} dialogHeaderTitle="New Humanoid" />
       </Modal>
 
       <Styled.SortTeamMemberButton>

@@ -47,11 +47,7 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
       />
 
       <Modal isActive={isModalActive} onClose={handleClose}>
-        <DialogNewTimeEntry
-          onClick={(event) => event.stopPropagation()}
-          onClose={handleClose}
-          dialogHeaderTitle="New time entry"
-        />
+        <DialogNewTimeEntry onClose={handleClose} dialogHeaderTitle="New time entry" />
       </Modal>
 
       <Styled.ClientFilterButton>
