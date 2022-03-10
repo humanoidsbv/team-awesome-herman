@@ -71,82 +71,104 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
       <form ref={formRef}>
         <Styled.Name>
           <Styled.FirstName>
-            <label>First name</label>
-            <input
-              name="firstName"
-              onChange={handleChange}
-              required
-              type="text"
-              value={newTeamMember.firstName}
-            />
+            <label htmlFor="firstName">
+              First name
+              <input
+                id="firstName"
+                name="firstName"
+                onChange={handleChange}
+                required
+                type="text"
+                value={newTeamMember.firstName}
+              />
+            </label>
             {inputValidity.firstName === false && <span>Required field.</span>}
           </Styled.FirstName>
+
           <Styled.LastName>
-            <label>Last name</label>
-            <input
-              id="lastName"
-              name="lastName"
-              onChange={handleChange}
-              required
-              type="text"
-              value={newTeamMember.lastName}
-            />
+            <label htmlFor="lastName">
+              Last name
+              <input
+                id="lastName"
+                name="lastName"
+                onChange={handleChange}
+                required
+                type="text"
+                value={newTeamMember.lastName}
+              />
+            </label>
+
             {inputValidity.lastName === false && <span>Required field.</span>}
           </Styled.LastName>
         </Styled.Name>
 
-        <label>E-mail</label>
-        <input
-          name="emailAddress"
-          onChange={handleChange}
-          required
-          type="email"
-          value={newTeamMember.emailAddress}
-        />
+        <label htmlFor="emailAddress">
+          E-mail
+          <input
+            id="emailAddress"
+            name="emailAddress"
+            onChange={handleChange}
+            required
+            type="email"
+            value={newTeamMember.emailAddress}
+          />
+        </label>
         {inputValidity.emailAddress === false && <span>Required field.</span>}
 
-        <label htmlFor="label">Label</label>
-        <textarea
-          id="label"
-          name="label"
-          onChange={handleChange}
-          required
-          rows={3}
-          value={newTeamMember.label}
-        />
+        <label htmlFor="label">
+          Label
+          <textarea
+            id="label"
+            name="label"
+            onChange={handleChange}
+            required
+            rows={3}
+            value={newTeamMember.label}
+          />
+        </label>
         {inputValidity.label === false && <span>Required field.</span>}
 
-        <label>Client</label>
-        <input
-          name="client"
-          onChange={handleChange}
-          required
-          type="text"
-          value={newTeamMember.client}
-        />
+        <label htmlFor="client">
+          Client
+          <input
+            id="client"
+            name="client"
+            onChange={handleChange}
+            required
+            type="text"
+            value={newTeamMember.client}
+          />
+        </label>
         {inputValidity.client === false && <span>Required field.</span>}
 
         <Styled.RoleAndStartingDate>
           <Styled.Role>
-            <label>Role</label>
-            <input
-              name="role"
-              onChange={handleChange}
-              required
-              type="text"
-              value={newTeamMember.role}
-            />
+            <label htmlFor="role">
+              Role
+              <input
+                id="role"
+                name="role"
+                onChange={handleChange}
+                required
+                type="text"
+                value={newTeamMember.role}
+              />
+            </label>
             {inputValidity.role === false && <span>Required field.</span>}
           </Styled.Role>
+
           <Styled.StartingDate>
-            <label>Starting date</label>
-            <input
-              name="startingDate"
-              onChange={handleChange}
-              required
-              type="date"
-              value={newTeamMember.startingDate}
-            />
+            <label htmlFor="startingDate">
+              Starting date{" "}
+              <input
+                id="startingDate"
+                name="startingDate"
+                onChange={handleChange}
+                required
+                type="date"
+                value={newTeamMember.startingDate}
+              />
+            </label>
             {inputValidity.startingDate === false && <span>Required field.</span>}
           </Styled.StartingDate>
         </Styled.RoleAndStartingDate>
