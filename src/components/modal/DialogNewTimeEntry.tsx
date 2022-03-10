@@ -66,6 +66,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
     <Styled.Dialog
       aria-labelledby="dialog"
       aria-modal="true"
+      data-cy="dialog"
       onClick={(event) => event.stopPropagation()}
       role="dialog"
     >

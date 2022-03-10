@@ -10,7 +10,7 @@ interface MenuProps {
 
 export const Menu = ({ isMenuVisible }: MenuProps): React.ReactElement => {
   return (
-    <Styled.MenuList isMenuVisible={isMenuVisible}>
+    <Styled.MenuList isMenuVisible={isMenuVisible} data-cy="menu">
       <li>
         <Link href="/">Timesheets</Link>
       </li>

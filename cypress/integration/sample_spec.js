@@ -1,24 +1,19 @@
+beforeEach(() => {
+  cy.visit("http://localhost:3001/ ");
+});
+
 describe("Routing", () => {
   it("Navigates to other pages", () => {
-    cy.visit("http://localhost:3000/");
-    cy.wait(2000);
+    cy.get("[data-cy=menu-button]").should("exist");
+    cy.get("[data-cy=menu-button]").click();
+    cy.get("[data-cy=menu]").contains("Team members").click();
+    cy.wait(3000);
 
-    cy.get(".cUPEOE").should("exist");
-    cy.get(".cUPEOE").click();
-    cy.wait(2000);
+    cy.get("[data-cy=menu-button]").click();
+    cy.get("[data-cy=menu]").contains("Timesheets").click();
+    cy.wait(3000);
 
-    cy.get(".okulo").contains("Team members").should("exist");
-    cy.get(".okulo").contains("Team members").click();
-    cy.wait(2000);
-
-    cy.get(".cUPEOE").click();
-    cy.wait(2000);
-
-    cy.get(".okulo").contains("Timesheets").click();
-    cy.wait(2000);
-
-    cy.get(".hxeFdb").click();
-    cy.wait(2000);
+    cy.get("[data-cy=subheader]").contains("Add new time entry").click();
 
     cy.get("[data-cy=client-input]").type("Nike");
     cy.get("[data-cy=activity-input]").type("Development");
@@ -26,9 +21,8 @@ describe("Routing", () => {
     cy.get("[data-cy=timefrom-input]").type("16:00");
     cy.get("[data-cy=timeto-input]").type("19:00");
 
-    cy.get(".hxeFdb").contains("Add time entry").click();
-    cy.wait(2000);
+    cy.get("[data-cy=dialog").contains("Add time entry").click();
 
-    cy.get(".iZHwAb").contains("Cancel").click();
+    cy.get("[data-cy=dialog]").contains("Cancel").click();
   });
 });
