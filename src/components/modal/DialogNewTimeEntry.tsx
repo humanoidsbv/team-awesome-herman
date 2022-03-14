@@ -1,4 +1,4 @@
-import React, { PointerEvent, useContext, useRef, useState } from "react";
+import { ChangeEvent, useContext, useRef, useState } from "react";
 
 import { addTimeEntry } from "../../services/time-entry-api/add-time-entry";
 import { Button } from "../shared";
@@ -34,7 +34,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
   const [isFormValid, setIsFormValid] = useState<boolean>();
   const [inputValidity, setInputValidity] = useState<inputValidityProps>({} as inputValidityProps);
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setIsFormValid(formRef.current?.checkValidity());
     setInputValidity({ ...inputValidity, [target.name]: target.checkValidity() });
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });

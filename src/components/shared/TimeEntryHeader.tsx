@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 
 import { StoreContext } from "../../providers/StoreProvider";
 import { TimeEntryProps } from "../../types/TimeEntry.types";
+
 import * as Styled from "../time-entries/TimeEntries.styled";
 
 interface TimeEntryHeaderProps {
@@ -42,7 +43,7 @@ export const TimeEntryHeader = ({ timeStamp }: TimeEntryHeaderProps) => {
   return (
     <Styled.TimeEntryHeader>
       <span>{dateFormatted}</span>
-      <span>{getDurationByDay(timeStamp, timeEntries)}</span>
+      <span>{getDurationByDay()}</span>
     </Styled.TimeEntryHeader>
   );
 };

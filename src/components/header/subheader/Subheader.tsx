@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Button } from "../../shared/Button";
 
 import * as Styled from "./Subheader.styled";

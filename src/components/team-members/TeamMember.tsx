@@ -1,5 +1,3 @@
-import React from "react";
-
 import { TeamMemberProps } from "../../types/TeamMember.types";
 
 import * as Styled from "./TeamMembers.styled";

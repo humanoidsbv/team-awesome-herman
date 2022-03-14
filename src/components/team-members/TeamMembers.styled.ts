@@ -115,6 +115,13 @@ export const SortTeamMemberButton = styled.div`
   margin-top: 25px;
   font-family: ${({ theme }) => theme.fontPrimary};
 
+  select {
+    background-color: ${({ theme }) => theme.shadeGrey300};
+    border: none;
+    display: flex;
+    padding: 5px;
+  }
+
   label {
     margin-right: 10px;
   }

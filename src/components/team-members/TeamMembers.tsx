@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import { ChangeEvent, useContext, useState, useEffect } from "react";
 
 import { DialogNewTeamMember } from "../modal/DialogNewTeamMember";
 
@@ -26,7 +26,7 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
     setTeamMembers(initialTeamMembers);
   }, []);
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
     setSortOption(target.value);
   };
 
@@ -44,14 +44,11 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
       </Modal>
 
       <Styled.SortTeamMemberButton>
-        <label htmlFor="sortOption">
-          Sort by:
-          <select name="sortOption" id="sortOption" onChange={handleChange}>
-            <option value="firstName">Name</option>
-            <option value="client">Client</option>
-            <option value="startingDate">Starting Date</option>
-          </select>
-        </label>
+        <select name="sortOption" id="sortOption" onChange={handleChange}>
+          <option value="firstName">Name</option>
+          <option value="client">Client</option>
+          <option value="startingDate">Starting Date</option>
+        </select>
       </Styled.SortTeamMemberButton>
 
       {teamMembers

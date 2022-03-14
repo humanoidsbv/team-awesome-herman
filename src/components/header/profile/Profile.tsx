@@ -1,11 +1,9 @@
-import React from "react";
-
 import DropdownArrow from "../../../../public/assets/icons/Arrow-down.svg";
 import HumanoidsLogo from "../../../../public/assets/icons/humanoids-logo.svg";
 
 import * as Styled from "./Profile.styled";
 
-export const Profile = (): React.ReactElement => {
+export const Profile = () => {
   return (
     <Styled.Profile>
       <Styled.ProfileButton>

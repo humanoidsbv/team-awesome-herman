@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { HeaderLogo } from "./header-logo/HeaderLogo";
 import { Menu } from "./menu/Menu";

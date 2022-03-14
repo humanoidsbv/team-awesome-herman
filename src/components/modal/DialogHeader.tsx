@@ -1,5 +1,3 @@
-import React from "react";
-
 import CloseIconWrapper from "../../../public/assets/icons/Close.svg";
 
 import * as Styled from "./Modal.styled";

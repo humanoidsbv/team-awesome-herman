@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "eslint '*/**/*.{js,ts,tsx}'",
     "test": "jest --watch",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -30,21 +32,31 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.3.3",
-    "ts-node": "^10.7.0"
+    "ts-node": "^10.7.0",
+    "@storybook/addon-actions": "^6.4.19"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.5",
     "@humanoids/eslint-config": "0.0.14",
     "@humanoids/prettier-config": "^0.0.4",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-interactions": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/react": "^6.4.19",
+    "@storybook/testing-library": "^0.0.9",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.17",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/styled-components": "^5.1.22",
     "babel-jest": "^27.5.1",
+    "babel-loader": "^8.2.3",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "eslint": "^8.8.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-storybook": "^0.5.7",
     "jest": "^27.5.1",
     "prettier": "^2.5.1",
     "ts-jest": "^27.1.3",

@@ -26,6 +26,8 @@ export const Dialog = styled.div`
 
   label {
     color: ${({ theme }) => theme.shadeGrey700};
+    display: flex;
+    flex-direction: column;
     font-size: ${({ theme }) => theme.fontSizeSmall};
     margin: 18px 0 4px;
   }

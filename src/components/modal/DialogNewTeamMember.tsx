@@ -1,4 +1,4 @@
-import React, { PointerEvent, useContext, useRef, useState } from "react";
+import { ChangeEvent, useContext, useRef, useState } from "react";
 
 import { addTeamMember } from "../../services/team-member-api/add-team-member";
 import { Button } from "../shared";
@@ -38,7 +38,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
 
   const handleChange = ({
     target,
-  }: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+  }: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
     setIsFormValid(formRef.current?.checkValidity());
     setInputValidity({ ...inputValidity, [target.name]: target.checkValidity() });
     setNewTeamMember({ ...newTeamMember, [target.name]: target.value });

@@ -1,5 +1,3 @@
-import React from "react";
-
 import Link from "next/link";
 
 import * as Styled from "./Menu.styled";
@@ -8,7 +6,7 @@ interface MenuProps {
   isMenuVisible: boolean;
 }
 
-export const Menu = ({ isMenuVisible }: MenuProps): React.ReactElement => {
+export const Menu = ({ isMenuVisible }: MenuProps) => {
   return (
     <Styled.MenuList isMenuVisible={isMenuVisible} data-cy="menu">
       <li>

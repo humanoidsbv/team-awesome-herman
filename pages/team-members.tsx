@@ -1,5 +1,3 @@
-import React from "react";
-
 import { ThemeProvider } from "styled-components";
 
 import { getTeamMembers } from "../src/services/team-member-api/get-team-members";
