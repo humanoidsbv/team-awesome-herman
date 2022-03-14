@@ -9,17 +9,23 @@ Team Awesome was created as practice project for the Humanoids Front-end Crash C
 ## Installation
 
 ```bash
-# Run a development version on your localhost
-npm run dev
+#To install Node and NPM:
+brew install node
 
-# Run Jest tests
-npm run test
+#To install the necessary dependencies from the package.json:
+npm i
 
-# Run Storybook
-npm run storybook
+#To run the application:
+npm run build
+npm run start
 ```
 
 ## Usage
+
+```bash
+# To run a development version on your localhost
+npm run dev
+```
 
 The two main features on Team Awesome are:
 
@@ -27,6 +33,14 @@ The two main features on Team Awesome are:
 - the ability to add new team members on the Team members page.
 
 Press the green button in the top right of the subheader to add a new entry or a team member. The new item will render on the main page, behind the dialog. Click the cancel button or the close icon (top right) to close the dialog. On the time entries page, entries can be filtered by client, using a dropdown menu located top right, above the entries. Time entries can also be removed by clicking the bin icon. On the team members page, members can be sorted by different values, such as name or starting date.
+
+```bash
+# Run Jest tests
+npm run test
+
+# Run Storybook
+npm run storybook
+```
 
 ## Technology
 
