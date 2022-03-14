@@ -1,5 +1,5 @@
 beforeEach(() => {
-  cy.visit("http://localhost:3001/ ");
+  cy.visit("http://localhost:3000/ ");
 });
 
 describe("Routing", () => {
@@ -7,11 +7,11 @@ describe("Routing", () => {
     cy.get("[data-cy=menu-button]").should("exist");
     cy.get("[data-cy=menu-button]").click();
     cy.get("[data-cy=menu]").contains("Team members").click();
-    cy.wait(3000);
+    cy.get("[data-cy=subheader]").should("contain", "Team members");
 
     cy.get("[data-cy=menu-button]").click();
     cy.get("[data-cy=menu]").contains("Timesheets").click();
-    cy.wait(3000);
+    cy.get("[data-cy=subheader]").should("contain", "Timesheets");
 
     cy.get("[data-cy=subheader]").contains("Add new time entry").click();
 

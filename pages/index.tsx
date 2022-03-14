@@ -1,5 +1,3 @@
-import React from "react";
-
 import { ThemeProvider } from "styled-components";
 
 import { ClientProps } from "../src/types/Client.types";
