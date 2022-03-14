@@ -158,7 +158,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
 
           <Styled.StartingDate>
             <label htmlFor="startingDate">
-              Starting date{" "}
+              Starting date
               <input
                 id="startingDate"
                 name="startingDate"
