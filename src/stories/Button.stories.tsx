@@ -1,16 +1,21 @@
+import { Story, Meta } from "@storybook/react";
 import { Button, ButtonProps } from "../components/shared/Button";
 
 export default {
   title: "Button",
   component: Button,
-  argTypes: {
-    variety: {
-      options: ["primary", "secondary"],
-      control: { type: "select" },
-    },
-  },
+} as Meta;
+
+const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = {
+  label: "Primary",
+  variety: "primary",
 };
 
-const Template = (args: ButtonProps) => <Button {...args} />;
-
-export const Default = Template.bind({});
+export const Secondary = Template.bind({});
+Secondary.args = {
+  label: "Secondary",
+  variety: "secondary",
+};
