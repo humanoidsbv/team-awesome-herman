@@ -18,7 +18,7 @@ export const getServerSideProps = async () => {
   const initialTeamMembers = await getTeamMembers();
 
   if (initialTeamMembers instanceof NotFoundError) {
-    return;
+    return {};
   }
 
   return {

@@ -11,18 +11,13 @@ interface SubheaderProps {
 
 export const Subheader = ({ setIsModalActive, title, subtitle, buttonLabel }: SubheaderProps) => {
   return (
-    <Styled.Subheader>
+    <Styled.Subheader data-cy="subheader">
       <Styled.SubheaderTitle>
         <Styled.Title>{title}</Styled.Title>
         <Styled.Divider>|</Styled.Divider>
         <Styled.Subtitle>{subtitle}</Styled.Subtitle>
       </Styled.SubheaderTitle>
-      <Button
-        icon={true}
-        label={buttonLabel}
-        onClick={() => setIsModalActive(true)}
-        variety="primary"
-      />
+      <Button icon label={buttonLabel} onClick={() => setIsModalActive(true)} variety="primary" />
     </Styled.Subheader>
   );
 };

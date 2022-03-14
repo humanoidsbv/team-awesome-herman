@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
-
-import { StoreContext } from "../../providers/StoreProvider";
-
-import DeleteIconWrapper from "../../../public/assets/icons/bin.svg";
+import { useContext } from "react";
 
 import { deleteTimeEntry } from "../../services/time-entry-api/delete-time-entry";
-
+import { StoreContext } from "../../providers/StoreProvider";
 import { TimeEntryProps } from "../../types/TimeEntry.types";
+import DeleteIconWrapper from "../../../public/assets/icons/bin.svg";
 
 import * as Styled from "./TimeEntry.styled";
 

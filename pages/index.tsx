@@ -22,7 +22,7 @@ export const getServerSideProps = async () => {
   const clients = await getClients();
 
   if (initialTimeEntries instanceof NotFoundError) {
-    return;
+    return {};
   }
 
   return {

@@ -1,10 +1,10 @@
-import React from "react";
+import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 import * as Styled from "./Modal.styled";
 
 interface ModalProps {
-  children: React.ReactNode | React.ReactNode[];
+  children: ReactNode | ReactNode[];
   isActive: boolean;
   onClose: () => void;
 }

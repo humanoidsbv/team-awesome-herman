@@ -26,6 +26,13 @@ export const ClientFilterButton = styled.div`
   font-family: ${({ theme }) => theme.fontPrimary};
   margin-top: 25px;
 
+  select {
+    background-color: ${({ theme }) => theme.shadeGrey300};
+    border: none;
+    display: flex;
+    padding: 5px;
+  }
+
   label {
     margin-right: 10px;
   }

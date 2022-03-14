@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import { ChangeEvent, Fragment, SetStateAction, useContext, useState, useEffect } from "react";
 
 import { DialogNewTimeEntry } from "../modal/DialogNewTimeEntry";
 
@@ -23,7 +23,7 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
 
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [timeEntries, setTimeEntries] = state.timeEntries;
-  const [clientFilter, setClientFilter] = useState<React.SetStateAction<string>>();
+  const [clientFilter, setClientFilter] = useState<SetStateAction<string>>("all");
 
   const handleClose = () => {
     setIsModalActive(false);
@@ -33,7 +33,7 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
     setTimeEntries(initialTimeEntries);
   }, []);
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
     setClientFilter(target.value);
   };
 
@@ -47,16 +47,10 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
       />
 
       <Modal isActive={isModalActive} onClose={handleClose}>
-        <DialogNewTimeEntry
-          onClick={(event) => event.stopPropagation()}
-          onClose={handleClose}
-          dialogHeaderTitle="New time entry"
-        />
+        <DialogNewTimeEntry onClose={handleClose} dialogHeaderTitle="New time entry" />
       </Modal>
 
       <Styled.ClientFilterButton>
-        <label htmlFor="clientFilter">Filter by client:</label>
-
         <select name="clientFilter" id="clientFilter" onChange={handleChange}>
           <option value="all">All clients</option>
           {clients.map((client) => {
@@ -70,11 +64,7 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
       </Styled.ClientFilterButton>
 
       {timeEntries
-        .filter((timeEntry) =>
-          clientFilter === undefined || clientFilter === "all"
-            ? timeEntry.client === timeEntry.client
-            : clientFilter === timeEntry.client,
-        )
+        .filter((timeEntry) => clientFilter === "all" || clientFilter === timeEntry.client)
         .sort(
           (a: TimeEntryProps, b: TimeEntryProps) =>
             new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime(),
@@ -85,11 +75,11 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
           const isNewDate = currentDate !== previousDate;
 
           return (
-            <React.Fragment key={timeEntry.id}>
+            <Fragment key={timeEntry.id}>
               {isNewDate && <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />}
 
               <TimeEntry timeEntry={timeEntry} />
-            </React.Fragment>
+            </Fragment>
           );
         })}
     </>

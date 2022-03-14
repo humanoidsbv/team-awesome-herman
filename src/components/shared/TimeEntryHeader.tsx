@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 
 import { StoreContext } from "../../providers/StoreProvider";
 import { TimeEntryProps } from "../../types/TimeEntry.types";
+
 import * as Styled from "../time-entries/TimeEntries.styled";
 
 interface TimeEntryHeaderProps {
@@ -18,7 +19,13 @@ export const TimeEntryHeader = ({ timeStamp }: TimeEntryHeaderProps) => {
     year: "numeric",
   });
 
-  const getDurationByDay = (timeStamp: string, timeEntries: TimeEntryProps[]) => {
+  const formatDuration = (duration: number) => {
+    const hours = parseInt(String(duration / 1000 / 60 / 60), 10).toString();
+    const minutes = parseInt(String((duration / 1000 / 60) % 60), 10).toString();
+    return `${hours.padStart(2, "0")}:${minutes.padStart(2, "0")}`;
+  };
+
+  const getDurationByDay = () => {
     const calculateDuration = ({ stopTimestamp, startTimestamp }: TimeEntryProps) => {
       return new Date(stopTimestamp).getTime() - new Date(startTimestamp).getTime();
     };
@@ -33,16 +40,10 @@ export const TimeEntryHeader = ({ timeStamp }: TimeEntryHeaderProps) => {
     return formatDuration(duration);
   };
 
-  const formatDuration = (duration: number) => {
-    const hours = parseInt(String(duration / 1000 / 60 / 60)).toString();
-    const minutes = parseInt(String((duration / 1000 / 60) % 60)).toString();
-    return `${hours.padStart(2, "0")}:${minutes.padStart(2, "0")}`;
-  };
-
   return (
     <Styled.TimeEntryHeader>
       <span>{dateFormatted}</span>
-      <span>{getDurationByDay(timeStamp, timeEntries)}</span>
+      <span>{getDurationByDay()}</span>
     </Styled.TimeEntryHeader>
   );
 };

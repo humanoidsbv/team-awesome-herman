@@ -1,5 +1,3 @@
-import React from "react";
-
 import { TeamMemberProps } from "../../types/TeamMember.types";
 
 import * as Styled from "./TeamMembers.styled";
@@ -13,7 +11,7 @@ export const TeamMember = ({ teamMember }: ITeamMember) => {
     month: "long",
     year: "numeric",
   });
-  const fullName = teamMember.firstName + " " + teamMember.lastName;
+  const fullName = `${teamMember.firstName} ${teamMember.lastName}`;
 
   return (
     <Styled.TeamMember>
