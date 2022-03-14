@@ -1,26 +1,22 @@
-import { action } from "@storybook/addon-actions";
-
+import { Story, Meta } from "@storybook/react";
 import { Button, ButtonProps } from "../components/shared/Button";
 
 export default {
   title: "Button",
+  label: { defaultValue: "Button" },
   component: Button,
-  argTypes: {
-    text: "Button",
-    onClick: { action: "clicked" },
-    label: "",
-    variety: {
-      options: ["secondary", "primary"],
-      control: { type: "select" },
-    },
-  },
+} as Meta;
+
+const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = {
+  label: "Primary",
+  variety: "primary",
 };
 
-const Template = ({ label }: ButtonProps) => <Button label={label} />;
-
-export const Default = Template.bind({});
-
-export const Primary = () => <Button onClick={action("clicked")} label="Primary" />;
-export const Secondary = () => (
-  <Button variety="secondary" onClick={action("clicked")} label="Secondary" />
-);
+export const Secondary = Template.bind({});
+Secondary.args = {
+  label: "Secondary",
+  variety: "secondary",
+};
