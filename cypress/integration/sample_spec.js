@@ -1,9 +1,7 @@
-beforeEach(() => {
-  cy.visit("http://localhost:3000/ ");
-});
-
 describe("Routing", () => {
   it("Navigates to other pages", () => {
+    cy.visit("https://team-awesome-herman-412rhokts-humanoidsbv.vercel.app/");
+
     cy.get("[data-cy=menu-button]").should("exist");
     cy.get("[data-cy=menu-button]").click();
     cy.get("[data-cy=menu]").contains("Team members").click();
