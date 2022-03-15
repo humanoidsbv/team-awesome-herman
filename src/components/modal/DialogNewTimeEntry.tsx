@@ -1,16 +1,18 @@
-import { ChangeEvent, useContext, useRef, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 
 import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
-import { StoreContext } from "../../providers/StoreProvider";
 
 import * as Styled from "./DialogNewTimeEntry.styled";
 import * as Types from "../../types/TimeEntry.types";
+import { TimeEntryProps } from "../../types/TimeEntry.types";
 
 interface DialogNewTimeEntryProps {
   dialogHeaderTitle: string;
   onClose: () => void;
+  setTimeEntries: Dispatch<SetStateAction<TimeEntryProps[]>>;
+  timeEntries: TimeEntryProps[];
 }
 
 interface inputValidityProps {
@@ -21,10 +23,12 @@ interface inputValidityProps {
   timeTo: boolean;
 }
 
-export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTimeEntryProps) => {
-  const state = useContext(StoreContext);
-  const [timeEntries, setTimeEntries] = state.timeEntries;
-
+export const DialogNewTimeEntry = ({
+  dialogHeaderTitle,
+  onClose,
+  timeEntries,
+  setTimeEntries,
+}: DialogNewTimeEntryProps) => {
   const [newTimeEntry, setNewTimeEntry] = useState<Types.TimeEntryProps>(
     {} as Types.TimeEntryProps,
   );
@@ -61,6 +65,9 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
         }
       }
     `,
+    {
+      onCompleted: (data) => setTimeEntries([...timeEntries, data.createTimeEntry]),
+    },
   );
 
   const handleSubmit = async () => {
@@ -84,8 +91,6 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
         stopTimestamp: newTimeEntryFormatted.stopTimestamp,
       },
     });
-
-    setTimeEntries([...timeEntries, newTimeEntryFormatted]);
   };
 
   return (

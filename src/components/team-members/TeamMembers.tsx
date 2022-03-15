@@ -42,7 +42,12 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
       />
 
       <Modal isActive={isModalActive} onClose={handleClose}>
-        <DialogNewTeamMember onClose={handleClose} dialogHeaderTitle="New Humanoid" />
+        <DialogNewTeamMember
+          onClose={handleClose}
+          dialogHeaderTitle="New Humanoid"
+          teamMembers={teamMembers}
+          setTeamMembers={setTeamMembers}
+        />
       </Modal>
 
       <Styled.SortTeamMemberButton>

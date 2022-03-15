@@ -49,7 +49,12 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
       />
 
       <Modal isActive={isModalActive} onClose={handleClose}>
-        <DialogNewTimeEntry onClose={handleClose} dialogHeaderTitle="New time entry" />
+        <DialogNewTimeEntry
+          onClose={handleClose}
+          dialogHeaderTitle="New time entry"
+          timeEntries={timeEntries}
+          setTimeEntries={setTimeEntries}
+        />
       </Modal>
 
       <Styled.ClientFilterButton>

@@ -1,16 +1,18 @@
-import { ChangeEvent, useContext, useRef, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 
 import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
-import { StoreContext } from "../../providers/StoreProvider";
 
 import * as Styled from "./DialogNewTeamMember.styled";
 import * as Types from "../../types/TeamMember.types";
+import { TeamMemberProps } from "../../types/TeamMember.types";
 
 interface DialogTeamMembersProps {
   dialogHeaderTitle: string;
   onClose: () => void;
+  setTeamMembers: Dispatch<SetStateAction<TeamMemberProps[]>>;
+  teamMembers: TeamMemberProps[];
 }
 
 interface inputValidityProps {
@@ -23,10 +25,12 @@ interface inputValidityProps {
   startingDate: boolean;
 }
 
-export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMembersProps) => {
-  const state = useContext(StoreContext);
-  const [teamMembers, setTeamMembers] = state.teamMembers;
-
+export const DialogNewTeamMember = ({
+  dialogHeaderTitle,
+  onClose,
+  teamMembers,
+  setTeamMembers,
+}: DialogTeamMembersProps) => {
   const [newTeamMember, setNewTeamMember] = useState<Types.TeamMemberProps>(
     {} as Types.TeamMemberProps,
   );
@@ -74,6 +78,9 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
         }
       }
     `,
+    {
+      onCompleted: (data) => setTeamMembers([...teamMembers, data.createTeamMember]),
+    },
   );
 
   const handleSubmit = async () => {
@@ -88,8 +95,6 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
         startingDate: newTeamMember.startingDate,
       },
     });
-
-    setTeamMembers([...teamMembers, newTeamMember]);
   };
 
   return (
