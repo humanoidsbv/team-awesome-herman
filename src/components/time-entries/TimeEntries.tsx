@@ -79,6 +79,7 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
         .map((timeEntry: TimeEntryProps, i: number) => {
           const currentDate = new Date(timeEntries[i].startTimestamp).toLocaleDateString();
           const previousDate = new Date(timeEntries[i - 1]?.startTimestamp).toLocaleDateString();
+
           const isNewDate = currentDate !== previousDate;
 
           return (
