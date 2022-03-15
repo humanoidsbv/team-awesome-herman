@@ -1,6 +1,6 @@
 import { ChangeEvent, useContext, useRef, useState } from "react";
+import { gql, useMutation } from "@apollo/client";
 
-import { addTeamMember } from "../../services/team-member-api/add-team-member";
 import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
 import { StoreContext } from "../../providers/StoreProvider";
@@ -44,14 +44,52 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
     setNewTeamMember({ ...newTeamMember, [target.name]: target.value });
   };
 
+  const [addTeamMember] = useMutation(
+    gql`
+      mutation CreateTeamMember(
+        $emailAddress: String!
+        $label: String!
+        $client: String!
+        $role: String!
+        $firstName: String!
+        $lastName: String!
+        $startingDate: String!
+      ) {
+        createTeamMember(
+          emailAddress: $emailAddress
+          label: $label
+          client: $client
+          role: $role
+          firstName: $firstName
+          lastName: $lastName
+          startingDate: $startingDate
+        ) {
+          emailAddress
+          label
+          client
+          role
+          firstName
+          lastName
+          startingDate
+        }
+      }
+    `,
+  );
+
   const handleSubmit = async () => {
-    const addedTeamMember = await addTeamMember(newTeamMember);
+    addTeamMember({
+      variables: {
+        emailAddress: newTeamMember.emailAddress,
+        label: newTeamMember.label,
+        client: newTeamMember.client,
+        role: newTeamMember.role,
+        firstName: newTeamMember.firstName,
+        lastName: newTeamMember.lastName,
+        startingDate: newTeamMember.startingDate,
+      },
+    });
 
-    if (addedTeamMember) {
-      setTeamMembers([...teamMembers, addedTeamMember]);
-    }
-
-    setNewTeamMember({} as Types.TeamMemberProps);
+    setTeamMembers([...teamMembers, newTeamMember]);
   };
 
   return (

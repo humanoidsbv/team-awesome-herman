@@ -1,6 +1,6 @@
 import { ChangeEvent, useContext, useRef, useState } from "react";
+import { gql, useMutation } from "@apollo/client";
 
-import { addTimeEntry } from "../../services/time-entry-api/add-time-entry";
 import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
 import { StoreContext } from "../../providers/StoreProvider";
@@ -40,6 +40,29 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
   };
 
+  const [addTimeEntry] = useMutation(
+    gql`
+      mutation CreateTimeEntry(
+        $activity: String!
+        $client: String!
+        $startTimestamp: String!
+        $stopTimestamp: String!
+      ) {
+        createTimeEntry(
+          activity: $activity
+          client: $client
+          startTimestamp: $startTimestamp
+          stopTimestamp: $stopTimestamp
+        ) {
+          activity
+          client
+          startTimestamp
+          stopTimestamp
+        }
+      }
+    `,
+  );
+
   const handleSubmit = async () => {
     const startTimestamp = new Date(`${newTimeEntry.timeFrom} ${newTimeEntry.date}`).toISOString();
     const stopTimestamp = new Date(`${newTimeEntry.timeTo} ${newTimeEntry.date}`).toISOString();
@@ -53,13 +76,16 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
     delete newTimeEntryFormatted.timeFrom;
     delete newTimeEntryFormatted.timeTo;
 
-    const addedTimeEntry = await addTimeEntry(newTimeEntryFormatted);
+    addTimeEntry({
+      variables: {
+        activity: newTimeEntryFormatted.activity,
+        client: newTimeEntryFormatted.client,
+        startTimestamp: newTimeEntryFormatted.startTimestamp,
+        stopTimestamp: newTimeEntryFormatted.stopTimestamp,
+      },
+    });
 
-    if (addedTimeEntry) {
-      setTimeEntries([...timeEntries, addedTimeEntry]);
-    }
-
-    setNewTimeEntry({} as Types.TimeEntryProps);
+    setTimeEntries([...timeEntries, newTimeEntryFormatted]);
   };
 
   return (

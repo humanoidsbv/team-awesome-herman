@@ -37,6 +37,8 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
     setClientFilter(target.value);
   };
 
+  useEffect(() => {}, [timeEntries]);
+
   return (
     <>
       <Subheader

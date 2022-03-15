@@ -30,6 +30,8 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
     setSortOption(target.value);
   };
 
+  useEffect(() => {}, [teamMembers]);
+
   return (
     <>
       <Subheader

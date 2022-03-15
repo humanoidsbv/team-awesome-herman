@@ -1,5 +1,5 @@
 {
-  "time-entries": [
+  "timeEntries": [
     {
       "client": "Heineken",
       "id": 1,
@@ -30,7 +30,7 @@
       "id": 5
     }
   ],
-  "team-members": [
+  "teamMembers": [
     {
       "emailAddress": "amijs.breunesse@humanoids.nl",
       "label": "Test",
