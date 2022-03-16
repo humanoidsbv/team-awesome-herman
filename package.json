@@ -4,7 +4,7 @@
   "description": "Team Awesome - Humanoids Crash Course project",
   "main": "script.js",
   "scripts": {
-    "dev": "next & json-server --watch db.json --port 3004 & json-graphql-server db.json --p 3333",
+    "dev": "next & json-graphql-server db.json --p 3333",
     "build": "next build",
     "start": "next start",
     "lint": "eslint '*/**/*.{js,ts,tsx}'",

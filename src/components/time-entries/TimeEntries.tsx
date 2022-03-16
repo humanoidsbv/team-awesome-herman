@@ -1,7 +1,6 @@
 import { ChangeEvent, Fragment, SetStateAction, useContext, useState, useEffect } from "react";
 
 import { DialogNewTimeEntry } from "../modal/DialogNewTimeEntry";
-
 import { Modal } from "../modal/Modal";
 import { StoreContext } from "../../providers/StoreProvider";
 import { Subheader } from "../header/subheader/Subheader";
@@ -20,24 +19,21 @@ interface TimeEntriesProps {
 
 export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) => {
   const state = useContext(StoreContext);
-
-  const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [timeEntries, setTimeEntries] = state.timeEntries;
+  const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [clientFilter, setClientFilter] = useState<SetStateAction<string>>("all");
-
-  const handleClose = () => {
-    setIsModalActive(false);
-  };
 
   useEffect(() => {
     setTimeEntries(initialTimeEntries);
   }, []);
 
+  const handleClose = () => {
+    setIsModalActive(false);
+  };
+
   const handleChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
     setClientFilter(target.value);
   };
-
-  useEffect(() => {}, [timeEntries]);
 
   return (
     <>
@@ -49,12 +45,7 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
       />
 
       <Modal isActive={isModalActive} onClose={handleClose}>
-        <DialogNewTimeEntry
-          onClose={handleClose}
-          dialogHeaderTitle="New time entry"
-          timeEntries={timeEntries}
-          setTimeEntries={setTimeEntries}
-        />
+        <DialogNewTimeEntry onClose={handleClose} dialogHeaderTitle="New time entry" />
       </Modal>
 
       <Styled.ClientFilterButton>
@@ -76,10 +67,9 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
           (a: TimeEntryProps, b: TimeEntryProps) =>
             new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime(),
         )
-        .map((timeEntry: TimeEntryProps, i: number) => {
-          const currentDate = new Date(timeEntries[i].startTimestamp).toLocaleDateString();
-          const previousDate = new Date(timeEntries[i - 1]?.startTimestamp).toLocaleDateString();
-
+        .map((timeEntry: TimeEntryProps, i: number, entries) => {
+          const currentDate = new Date(entries[i].startTimestamp).toLocaleDateString();
+          const previousDate = new Date(entries[i - 1]?.startTimestamp).toLocaleDateString();
           const isNewDate = currentDate !== previousDate;
 
           return (

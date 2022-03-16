@@ -14,23 +14,21 @@ import * as Styled from "./TeamMembers.styled";
 
 export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => {
   const state = useContext(StoreContext);
-  const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [teamMembers, setTeamMembers] = state.teamMembers;
+  const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [sortOption, setSortOption] = useState("firstName");
-
-  const handleClose = () => {
-    setIsModalActive(false);
-  };
 
   useEffect(() => {
     setTeamMembers(initialTeamMembers);
   }, []);
 
+  const handleClose = () => {
+    setIsModalActive(false);
+  };
+
   const handleChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
     setSortOption(target.value);
   };
-
-  useEffect(() => {}, [teamMembers]);
 
   return (
     <>
@@ -42,12 +40,7 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
       />
 
       <Modal isActive={isModalActive} onClose={handleClose}>
-        <DialogNewTeamMember
-          onClose={handleClose}
-          dialogHeaderTitle="New Humanoid"
-          teamMembers={teamMembers}
-          setTeamMembers={setTeamMembers}
-        />
+        <DialogNewTeamMember onClose={handleClose} dialogHeaderTitle="New Humanoid" />
       </Modal>
 
       <Styled.SortTeamMemberButton>

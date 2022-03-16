@@ -1,9 +1,11 @@
 import { useContext } from "react";
 
-import { deleteTimeEntry } from "../../services/time-entry-api/delete-time-entry";
+import { useMutation } from "@apollo/client";
 import { StoreContext } from "../../providers/StoreProvider";
 import { TimeEntryProps } from "../../types/TimeEntry.types";
 import DeleteIconWrapper from "../../../public/assets/icons/bin.svg";
+
+import { REMOVE_TIME_ENTRY } from "../../services/mutations";
 
 import * as Styled from "./TimeEntry.styled";
 
@@ -32,11 +34,14 @@ export const TimeEntry = ({ timeEntry }: ITimeEntry) => {
   const state = useContext(StoreContext);
   const [, setTimeEntries] = state.timeEntries;
 
-  const removeTimeEntry = () => {
+  const [deleteTimeEntry] = useMutation(REMOVE_TIME_ENTRY);
+
+  const handleRemoveTimeEntry = async () => {
+    await deleteTimeEntry({ variables: { id } });
+
     setTimeEntries((timeEntries: TimeEntryProps[]) =>
       timeEntries.filter((entry: { id: number }) => entry.id !== id),
     );
-    deleteTimeEntry(id);
   };
 
   return (
@@ -52,7 +57,7 @@ export const TimeEntry = ({ timeEntry }: ITimeEntry) => {
           </span>
         </Styled.Duration>
       </Styled.TimeRange>
-      <Styled.DeleteIconWrapper onClick={removeTimeEntry}>
+      <Styled.DeleteIconWrapper onClick={handleRemoveTimeEntry}>
         <DeleteIconWrapper />
       </Styled.DeleteIconWrapper>
     </Styled.TimeEntry>

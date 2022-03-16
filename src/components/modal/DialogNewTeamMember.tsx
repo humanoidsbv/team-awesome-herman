@@ -1,18 +1,18 @@
-import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
-import { gql, useMutation } from "@apollo/client";
+import { ChangeEvent, useContext, useRef, useState } from "react";
+import { useMutation } from "@apollo/client";
+import { StoreContext } from "../../providers/StoreProvider";
 
 import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
 
+import { CREATE_TEAM_MEMBER } from "../../services/mutations";
+
 import * as Styled from "./DialogNewTeamMember.styled";
 import * as Types from "../../types/TeamMember.types";
-import { TeamMemberProps } from "../../types/TeamMember.types";
 
 interface DialogTeamMembersProps {
   dialogHeaderTitle: string;
   onClose: () => void;
-  setTeamMembers: Dispatch<SetStateAction<TeamMemberProps[]>>;
-  teamMembers: TeamMemberProps[];
 }
 
 interface inputValidityProps {
@@ -25,18 +25,15 @@ interface inputValidityProps {
   startingDate: boolean;
 }
 
-export const DialogNewTeamMember = ({
-  dialogHeaderTitle,
-  onClose,
-  teamMembers,
-  setTeamMembers,
-}: DialogTeamMembersProps) => {
+export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMembersProps) => {
   const [newTeamMember, setNewTeamMember] = useState<Types.TeamMemberProps>(
     {} as Types.TeamMemberProps,
   );
 
-  const formRef = useRef<HTMLFormElement | null>(null);
+  const state = useContext(StoreContext);
+  const [teamMembers, setTeamMembers] = state.teamMembers;
 
+  const formRef = useRef<HTMLFormElement | null>(null);
   const [isFormValid, setIsFormValid] = useState<boolean>();
   const [inputValidity, setInputValidity] = useState<inputValidityProps>({} as inputValidityProps);
 
@@ -48,43 +45,14 @@ export const DialogNewTeamMember = ({
     setNewTeamMember({ ...newTeamMember, [target.name]: target.value });
   };
 
-  const [addTeamMember] = useMutation(
-    gql`
-      mutation CreateTeamMember(
-        $emailAddress: String!
-        $label: String!
-        $client: String!
-        $role: String!
-        $firstName: String!
-        $lastName: String!
-        $startingDate: String!
-      ) {
-        createTeamMember(
-          emailAddress: $emailAddress
-          label: $label
-          client: $client
-          role: $role
-          firstName: $firstName
-          lastName: $lastName
-          startingDate: $startingDate
-        ) {
-          emailAddress
-          label
-          client
-          role
-          firstName
-          lastName
-          startingDate
-        }
-      }
-    `,
-    {
-      onCompleted: (data) => setTeamMembers([...teamMembers, data.createTeamMember]),
+  const [addTeamMember] = useMutation(CREATE_TEAM_MEMBER, {
+    onCompleted: async ({ createTeamMember }) => {
+      setTeamMembers([...teamMembers, createTeamMember]);
     },
-  );
+  });
 
   const handleSubmit = async () => {
-    addTeamMember({
+    await addTeamMember({
       variables: {
         emailAddress: newTeamMember.emailAddress,
         label: newTeamMember.label,
