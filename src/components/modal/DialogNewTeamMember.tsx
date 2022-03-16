@@ -89,7 +89,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
                 onChange={handleChange}
                 required
                 type="text"
-                value={newTeamMember.firstName}
+                value={newTeamMember.firstName || ""}
               />
             </label>
             {inputValidity.firstName === false && <span>Required field.</span>}
@@ -104,7 +104,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
                 onChange={handleChange}
                 required
                 type="text"
-                value={newTeamMember.lastName}
+                value={newTeamMember.lastName || ""}
               />
             </label>
 
@@ -120,7 +120,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
             onChange={handleChange}
             required
             type="email"
-            value={newTeamMember.emailAddress}
+            value={newTeamMember.emailAddress || ""}
           />
         </label>
         {inputValidity.emailAddress === false && <span>Required field.</span>}
@@ -133,7 +133,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
             onChange={handleChange}
             required
             rows={3}
-            value={newTeamMember.label}
+            value={newTeamMember.label || ""}
           />
         </label>
         {inputValidity.label === false && <span>Required field.</span>}
@@ -146,7 +146,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
             onChange={handleChange}
             required
             type="text"
-            value={newTeamMember.client}
+            value={newTeamMember.client || ""}
           />
         </label>
         {inputValidity.client === false && <span>Required field.</span>}
@@ -161,7 +161,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
                 onChange={handleChange}
                 required
                 type="text"
-                value={newTeamMember.role}
+                value={newTeamMember.role || ""}
               />
             </label>
             {inputValidity.role === false && <span>Required field.</span>}
@@ -176,7 +176,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
                 onChange={handleChange}
                 required
                 type="date"
-                value={newTeamMember.startingDate}
+                value={newTeamMember.startingDate || ""}
               />
             </label>
             {inputValidity.startingDate === false && <span>Required field.</span>}
