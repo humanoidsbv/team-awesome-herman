@@ -11,16 +11,14 @@ import { theme } from "../src/styles/theme";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
-      <ApolloProvider client={client}>
-        <ThemeProvider {...{ theme }}>
-          <GlobalStyle />
-          <StoreProvider>
-            <Component {...pageProps} />
-          </StoreProvider>
-        </ThemeProvider>
-      </ApolloProvider>
-    </>
+    <ApolloProvider client={client}>
+      <ThemeProvider {...{ theme }}>
+        <GlobalStyle />
+        <StoreProvider>
+          <Component {...pageProps} />
+        </StoreProvider>
+      </ThemeProvider>
+    </ApolloProvider>
   );
 };
 

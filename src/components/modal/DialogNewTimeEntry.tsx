@@ -59,12 +59,14 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
     delete newTimeEntryFormatted.timeFrom;
     delete newTimeEntryFormatted.timeTo;
 
+    const { activity, client } = newTimeEntryFormatted;
+
     await addTimeEntry({
       variables: {
-        activity: newTimeEntryFormatted.activity,
-        client: newTimeEntryFormatted.client,
-        startTimestamp: newTimeEntryFormatted.startTimestamp,
-        stopTimestamp: newTimeEntryFormatted.stopTimestamp,
+        activity,
+        client,
+        startTimestamp,
+        stopTimestamp,
       },
     });
   };

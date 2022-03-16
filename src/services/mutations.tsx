@@ -22,6 +22,14 @@ export const CREATE_TIME_ENTRY = gql`
   }
 `;
 
+export const REMOVE_TIME_ENTRY = gql`
+  mutation RemoveTimeEntry($id: ID!) {
+    removeTimeEntry(id: $id) {
+      id
+    }
+  }
+`;
+
 export const CREATE_TEAM_MEMBER = gql`
   mutation CreateTeamMember(
     $emailAddress: String!
@@ -49,14 +57,6 @@ export const CREATE_TEAM_MEMBER = gql`
       firstName
       lastName
       startingDate
-    }
-  }
-`;
-
-export const REMOVE_TIME_ENTRY = gql`
-  mutation RemoveTimeEntry($id: ID!) {
-    removeTimeEntry(id: $id) {
-      id
     }
   }
 `;

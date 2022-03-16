@@ -51,17 +51,11 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
     },
   });
 
+  const { emailAddress, label, client, role, firstName, lastName, startingDate } = newTeamMember;
+
   const handleSubmit = async () => {
     await addTeamMember({
-      variables: {
-        emailAddress: newTeamMember.emailAddress,
-        label: newTeamMember.label,
-        client: newTeamMember.client,
-        role: newTeamMember.role,
-        firstName: newTeamMember.firstName,
-        lastName: newTeamMember.lastName,
-        startingDate: newTeamMember.startingDate,
-      },
+      variables: { emailAddress, label, client, role, firstName, lastName, startingDate },
     });
   };
 
