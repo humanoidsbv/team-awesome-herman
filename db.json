@@ -38,7 +38,8 @@
       "role": "Front-end Developer",
       "firstName": "Amijs",
       "lastName": "Breunesse",
-      "startingDate": "2018-03-02"
+      "startingDate": "2018-03-02",
+      "id": 1
     },
     {
       "emailAddress": "herman.vulkers@humanoids.nl",
@@ -47,7 +48,8 @@
       "role": "Front-end Developer",
       "firstName": "Herman",
       "lastName": "Vulkers",
-      "startingDate": "2022-03-02"
+      "startingDate": "2022-03-02",
+      "id": 2
     },
     {
       "emailAddress": "mark@overmars.nl",

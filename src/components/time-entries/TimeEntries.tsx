@@ -76,7 +76,7 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
             <Fragment key={timeEntry.id}>
               {isNewDate && <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />}
 
-              <TimeEntry timeEntry={timeEntry} />
+              <TimeEntry timeEntry={timeEntry} key={timeEntry.id} />
             </Fragment>
           );
         })}
