@@ -58,7 +58,7 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
           ),
         )
         .map((teamMember) => {
-          return <TeamMember teamMember={teamMember} key={teamMember.id} />;
+          return <TeamMember key={teamMember.id} teamMember={teamMember} />;
         })}
     </>
   );

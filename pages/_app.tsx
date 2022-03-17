@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { ApolloProvider } from "@apollo/client";
 import { StoreProvider } from "../src/providers/StoreProvider";
 
-import client from "../apollo-client";
+import { client } from "../apollo-client";
 
 import GlobalStyle from "../src/styles/global";
 import { theme } from "../src/styles/theme";

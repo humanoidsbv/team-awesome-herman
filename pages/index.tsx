@@ -1,4 +1,4 @@
-import client from "../apollo-client";
+import { client } from "../apollo-client";
 
 import { Header } from "../src/components/header/Header";
 
@@ -27,12 +27,12 @@ interface HomePageProps {
   clients: ClientProps[];
 }
 
-const Homepage = ({ initialTimeEntries, clients }: HomePageProps) => {
+const Homepage = ({ clients, initialTimeEntries }: HomePageProps) => {
   return (
     <>
       <Header />
       <PageContainer>
-        <TimeEntries initialTimeEntries={initialTimeEntries} clients={clients} />
+        <TimeEntries clients={clients} initialTimeEntries={initialTimeEntries} />
       </PageContainer>
     </>
   );

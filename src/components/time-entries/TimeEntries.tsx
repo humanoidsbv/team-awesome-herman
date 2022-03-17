@@ -13,11 +13,11 @@ import { ClientProps } from "../../types/Client.types";
 import * as Styled from "./TimeEntries.styled";
 
 interface TimeEntriesProps {
-  initialTimeEntries: TimeEntryProps[];
   clients: ClientProps[];
+  initialTimeEntries: TimeEntryProps[];
 }
 
-export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) => {
+export const TimeEntries = ({ clients, initialTimeEntries }: TimeEntriesProps) => {
   const state = useContext(StoreContext);
   const [timeEntries, setTimeEntries] = state.timeEntries;
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
@@ -76,7 +76,7 @@ export const TimeEntries = ({ initialTimeEntries, clients }: TimeEntriesProps) =
             <Fragment key={timeEntry.id}>
               {isNewDate && <TimeEntryHeader timeStamp={timeEntry.startTimestamp} />}
 
-              <TimeEntry timeEntry={timeEntry} key={timeEntry.id} />
+              <TimeEntry key={timeEntry.id} timeEntry={timeEntry} />
             </Fragment>
           );
         })}

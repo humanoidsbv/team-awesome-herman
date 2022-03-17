@@ -24,6 +24,11 @@ export const MenuList = styled.ul<{ isMenuVisible: boolean }>`
     text-decoration: none;
   }
 
+  .active {
+    text-decoration: underline;
+    color: yellow;
+  }
+
   @media only screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
     display: flex;

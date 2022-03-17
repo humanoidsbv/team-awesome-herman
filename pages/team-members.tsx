@@ -1,4 +1,4 @@
-import client from "../apollo-client";
+import { client } from "../apollo-client";
 
 import { Header } from "../src/components/header/Header";
 import { PageContainer } from "../src/components/shared/PageContainer";
