@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
+import { StoreContext } from "../../providers/StoreProvider";
 
 import * as Styled from "./PageContainer.styled";
 
@@ -7,5 +8,8 @@ interface PageContainerProps {
 }
 
 export const PageContainer = ({ children }: PageContainerProps) => {
-  return <Styled.PageContainer>{children}</Styled.PageContainer>;
+  const state = useContext(StoreContext);
+  const [isMenuVisible] = state.isMenuVisible;
+
+  return <Styled.PageContainer isMenuVisible={isMenuVisible}>{children}</Styled.PageContainer>;
 };

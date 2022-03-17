@@ -1,9 +1,11 @@
 import { ChangeEvent, useContext, useRef, useState } from "react";
+import { useMutation } from "@apollo/client";
+import { StoreContext } from "../../providers/StoreProvider";
 
-import { addTeamMember } from "../../services/team-member-api/add-team-member";
 import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
-import { StoreContext } from "../../providers/StoreProvider";
+
+import { CREATE_TEAM_MEMBER } from "../../services/mutations";
 
 import * as Styled from "./DialogNewTeamMember.styled";
 import * as Types from "../../types/TeamMember.types";
@@ -24,15 +26,14 @@ interface inputValidityProps {
 }
 
 export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMembersProps) => {
-  const state = useContext(StoreContext);
-  const [teamMembers, setTeamMembers] = state.teamMembers;
-
   const [newTeamMember, setNewTeamMember] = useState<Types.TeamMemberProps>(
     {} as Types.TeamMemberProps,
   );
 
-  const formRef = useRef<HTMLFormElement | null>(null);
+  const state = useContext(StoreContext);
+  const [teamMembers, setTeamMembers] = state.teamMembers;
 
+  const formRef = useRef<HTMLFormElement | null>(null);
   const [isFormValid, setIsFormValid] = useState<boolean>();
   const [inputValidity, setInputValidity] = useState<inputValidityProps>({} as inputValidityProps);
 
@@ -44,14 +45,18 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
     setNewTeamMember({ ...newTeamMember, [target.name]: target.value });
   };
 
+  const [addTeamMember] = useMutation(CREATE_TEAM_MEMBER, {
+    onCompleted: async ({ createTeamMember }) => {
+      setTeamMembers([...teamMembers, createTeamMember]);
+    },
+  });
+
+  const { emailAddress, label, client, role, firstName, lastName, startingDate } = newTeamMember;
+
   const handleSubmit = async () => {
-    const addedTeamMember = await addTeamMember(newTeamMember);
-
-    if (addedTeamMember) {
-      setTeamMembers([...teamMembers, addedTeamMember]);
-    }
-
-    setNewTeamMember({} as Types.TeamMemberProps);
+    await addTeamMember({
+      variables: { emailAddress, label, client, role, firstName, lastName, startingDate },
+    });
   };
 
   return (
@@ -78,7 +83,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
                 onChange={handleChange}
                 required
                 type="text"
-                value={newTeamMember.firstName}
+                value={newTeamMember.firstName || ""}
               />
             </label>
             {inputValidity.firstName === false && <span>Required field.</span>}
@@ -93,7 +98,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
                 onChange={handleChange}
                 required
                 type="text"
-                value={newTeamMember.lastName}
+                value={newTeamMember.lastName || ""}
               />
             </label>
 
@@ -109,7 +114,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
             onChange={handleChange}
             required
             type="email"
-            value={newTeamMember.emailAddress}
+            value={newTeamMember.emailAddress || ""}
           />
         </label>
         {inputValidity.emailAddress === false && <span>Required field.</span>}
@@ -122,7 +127,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
             onChange={handleChange}
             required
             rows={3}
-            value={newTeamMember.label}
+            value={newTeamMember.label || ""}
           />
         </label>
         {inputValidity.label === false && <span>Required field.</span>}
@@ -135,7 +140,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
             onChange={handleChange}
             required
             type="text"
-            value={newTeamMember.client}
+            value={newTeamMember.client || ""}
           />
         </label>
         {inputValidity.client === false && <span>Required field.</span>}
@@ -150,7 +155,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
                 onChange={handleChange}
                 required
                 type="text"
-                value={newTeamMember.role}
+                value={newTeamMember.role || ""}
               />
             </label>
             {inputValidity.role === false && <span>Required field.</span>}
@@ -165,7 +170,7 @@ export const DialogNewTeamMember = ({ dialogHeaderTitle, onClose }: DialogTeamMe
                 onChange={handleChange}
                 required
                 type="date"
-                value={newTeamMember.startingDate}
+                value={newTeamMember.startingDate || ""}
               />
             </label>
             {inputValidity.startingDate === false && <span>Required field.</span>}

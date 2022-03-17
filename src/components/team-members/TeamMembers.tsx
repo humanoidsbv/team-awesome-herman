@@ -14,17 +14,17 @@ import * as Styled from "./TeamMembers.styled";
 
 export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => {
   const state = useContext(StoreContext);
-  const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [teamMembers, setTeamMembers] = state.teamMembers;
+  const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [sortOption, setSortOption] = useState("firstName");
-
-  const handleClose = () => {
-    setIsModalActive(false);
-  };
 
   useEffect(() => {
     setTeamMembers(initialTeamMembers);
   }, []);
+
+  const handleClose = () => {
+    setIsModalActive(false);
+  };
 
   const handleChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
     setSortOption(target.value);
@@ -58,7 +58,7 @@ export const TeamMembers = ({ initialTeamMembers }: InitialTeamMembersProps) => 
           ),
         )
         .map((teamMember) => {
-          return <TeamMember teamMember={teamMember} />;
+          return <TeamMember key={teamMember.id} teamMember={teamMember} />;
         })}
     </>
   );

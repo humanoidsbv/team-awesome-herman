@@ -1,5 +1,5 @@
 {
-  "time-entries": [
+  "timeEntries": [
     {
       "client": "Heineken",
       "id": 1,
@@ -22,7 +22,7 @@
       "stopTimestamp": "2021-09-22T20:00:00.000Z"
     },
     {
-      "client": "Heineken",
+      "client": "Nike",
       "activity": "Dev",
       "date": "2022-03-04",
       "startTimestamp": "2022-03-04T12:58:00.000Z",
@@ -30,7 +30,7 @@
       "id": 5
     }
   ],
-  "team-members": [
+  "teamMembers": [
     {
       "emailAddress": "amijs.breunesse@humanoids.nl",
       "label": "Test",
@@ -38,7 +38,8 @@
       "role": "Front-end Developer",
       "firstName": "Amijs",
       "lastName": "Breunesse",
-      "startingDate": "2018-03-02"
+      "startingDate": "2018-03-02",
+      "id": 1
     },
     {
       "emailAddress": "herman.vulkers@humanoids.nl",
@@ -47,7 +48,8 @@
       "role": "Front-end Developer",
       "firstName": "Herman",
       "lastName": "Vulkers",
-      "startingDate": "2022-03-02"
+      "startingDate": "2022-03-02",
+      "id": 2
     },
     {
       "emailAddress": "mark@overmars.nl",

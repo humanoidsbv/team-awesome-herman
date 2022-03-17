@@ -1,9 +1,11 @@
 import { ChangeEvent, useContext, useRef, useState } from "react";
+import { useMutation } from "@apollo/client";
+import { StoreContext } from "../../providers/StoreProvider";
 
-import { addTimeEntry } from "../../services/time-entry-api/add-time-entry";
 import { Button } from "../shared";
 import { DialogHeader } from "./DialogHeader";
-import { StoreContext } from "../../providers/StoreProvider";
+
+import { CREATE_TIME_ENTRY } from "../../services/mutations";
 
 import * as Styled from "./DialogNewTimeEntry.styled";
 import * as Types from "../../types/TimeEntry.types";
@@ -22,15 +24,14 @@ interface inputValidityProps {
 }
 
 export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTimeEntryProps) => {
-  const state = useContext(StoreContext);
-  const [timeEntries, setTimeEntries] = state.timeEntries;
-
   const [newTimeEntry, setNewTimeEntry] = useState<Types.TimeEntryProps>(
     {} as Types.TimeEntryProps,
   );
 
-  const formRef = useRef<HTMLFormElement | null>(null);
+  const state = useContext(StoreContext);
+  const [timeEntries, setTimeEntries] = state.timeEntries;
 
+  const formRef = useRef<HTMLFormElement | null>(null);
   const [isFormValid, setIsFormValid] = useState<boolean>();
   const [inputValidity, setInputValidity] = useState<inputValidityProps>({} as inputValidityProps);
 
@@ -39,6 +40,12 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
     setInputValidity({ ...inputValidity, [target.name]: target.checkValidity() });
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
   };
+
+  const [addTimeEntry] = useMutation(CREATE_TIME_ENTRY, {
+    onCompleted: async ({ createTimeEntry }) => {
+      setTimeEntries([...timeEntries, createTimeEntry]);
+    },
+  });
 
   const handleSubmit = async () => {
     const startTimestamp = new Date(`${newTimeEntry.timeFrom} ${newTimeEntry.date}`).toISOString();
@@ -49,17 +56,19 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
       startTimestamp,
       stopTimestamp,
     };
-
     delete newTimeEntryFormatted.timeFrom;
     delete newTimeEntryFormatted.timeTo;
 
-    const addedTimeEntry = await addTimeEntry(newTimeEntryFormatted);
+    const { activity, client } = newTimeEntryFormatted;
 
-    if (addedTimeEntry) {
-      setTimeEntries([...timeEntries, addedTimeEntry]);
-    }
-
-    setNewTimeEntry({} as Types.TimeEntryProps);
+    await addTimeEntry({
+      variables: {
+        activity,
+        client,
+        startTimestamp,
+        stopTimestamp,
+      },
+    });
   };
 
   return (
@@ -82,7 +91,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
             onChange={handleChange}
             required
             type="text"
-            value={newTimeEntry.client}
+            value={newTimeEntry.client || ""}
           />
         </label>
 
@@ -96,7 +105,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
             onChange={handleChange}
             required
             type="text"
-            value={newTimeEntry.activity}
+            value={newTimeEntry.activity || ""}
           />
         </label>
 
@@ -112,7 +121,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
                 onChange={handleChange}
                 required
                 type="date"
-                value={newTimeEntry.date}
+                value={newTimeEntry.date || ""}
               />
             </label>
 
@@ -128,7 +137,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
                 onChange={handleChange}
                 required
                 type="time"
-                value={newTimeEntry.timeFrom}
+                value={newTimeEntry.timeFrom || ""}
               />
             </label>
 
@@ -144,7 +153,7 @@ export const DialogNewTimeEntry = ({ dialogHeaderTitle, onClose }: DialogNewTime
                 onChange={handleChange}
                 required
                 type="time"
-                value={newTimeEntry.timeTo}
+                value={newTimeEntry.timeTo || ""}
               />
             </label>
 

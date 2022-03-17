@@ -16,6 +16,7 @@ export const Dialog = styled.div`
     border-radius: 5px;
     border: solid 1px lightgrey;
     font-family: Proxima Nova;
+    margin-top: 3px;
     padding: 10px;
   }
 
@@ -29,13 +30,12 @@ export const Dialog = styled.div`
     display: flex;
     flex-direction: column;
     font-size: ${({ theme }) => theme.fontSizeSmall};
-    margin: 18px 0 4px;
+    margin: 10px 0 4px;
   }
 
   span {
     color: red;
     font-size: ${({ theme }) => theme.fontSizeSmall};
-    margin-top: 5px;
   }
 
   button {
